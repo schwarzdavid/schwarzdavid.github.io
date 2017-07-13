@@ -9,6 +9,7 @@ Source code  of my personal website. **Under construction yet**
 - [ ] Add Google Analytics
 - [ ] Check PageSpeed Insights
 - [ ] SEO check
+- [ ] Fix IE
 
 # License
 
