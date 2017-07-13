@@ -1,0 +1,21 @@
+{
+  "name": "schwarzdavid.rocksV2",
+  "authors": [
+    "David Schwarz <schwarz.david10@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  }
+}
