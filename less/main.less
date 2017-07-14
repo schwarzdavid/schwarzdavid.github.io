@@ -503,12 +503,22 @@ p {
 				flex-direction: column;
 				margin: 0 -@side-spacing / 2;
 
+				@media @_screen_sm {
+					margin-left: -@side-spacing-sm / 2;
+					margin-right: -@side-spacing-sm / 2;
+				}
+
 				@media @_screen_xs {
 					flex-direction: row;
 				}
 
 				.timeline {
 					margin: 0 @side-spacing / 2;
+
+					@media @_screen_sm {
+						margin-left: @side-spacing-sm / 2;
+						margin-right: @side-spacing-sm / 2;
+					}
 
 					.section-title {
 						display: block;
@@ -525,7 +535,7 @@ p {
 						&:before,
 						&:after {
 							display: block;
-							content :'';
+							content: '';
 							position: absolute;
 							top: 0;
 							background: darken(@color-light, 15%);
