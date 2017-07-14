@@ -10,7 +10,7 @@
 
 	<link type="text/css" rel="stylesheet" href="css/main.css">
 </head>
-<body data-active="">
+<body data-active="resume">
 
 <section id="teaser">
 
@@ -60,14 +60,14 @@
 	<button type="button" id="trigger"><span>&nbsp;</span></button>
 </section>
 
-<main id="main" role="main">
+<main id="main">
 	<div class="scroll-container">
 		<section id="about">
 			<h1 class="title">Hey, I'm David! I'm a Web Developer and Software Engineer, based in Vienna, Austria.</h1>
 
 			<div class="picture">
 				<img src="img/me.jpg" alt="me" draggable="false">
-				<a href="#resume" id="resume-trigger">
+				<a href="#resume" id="resume-trigger" data-target-active="resume">
 					<span class="rotate">resume / cv</span><span class="fa fa-long-arrow-right"></span>
 				</a>
 			</div>
@@ -115,7 +115,40 @@
 </main>
 
 <section id="resume">
-	<h1>resume</h1>
+	<button type="button" data-target-active><span>&nbsp;</span></button>
+
+	<div class="content-wrapper">
+		<div class="content">
+			<h1 class="title">Resume / CV</h1>
+
+			<div class="timelines">
+				<div class="timeline">
+					<h3>Education</h3>
+					<article>
+						<header>
+							<span class="time">from <time datetime="2017-09">09.2017</time></span>
+							<h6>University of Economic Sciences Vienna</h6>
+						</header>
+						<p>WISO</p>
+					</article>
+					<article>
+						<header>
+							<span class="time"><time datetime="2016-10">10.2016</time> - <time datetime="2017-06">06.2017</time></span>
+							<h6>University of Vienna</h6>
+						</header>
+						<p>Economic Computer Science - Bachelor course</p>
+					</article>
+					<article>
+						<header>
+							<span class="time"><time datetime="2011-09">09.2011</time> - <time datetime="2016-07">07.2016</time></span>
+							<h6>HTL Ottakring</h6>
+						</header>
+						<p>College degree in computer science and media technology</p>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <script src="js/main.js"></script>

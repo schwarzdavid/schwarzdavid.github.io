@@ -21,6 +21,7 @@ body {
   transition: margin-left 0.5s ease;
   will-change: margin-left;
   margin-left: calc(-100vw + (2 * 40px));
+  transform-style: preserve-3d;
 }
 @media screen and (min-width: 768px) {
   body {
@@ -292,17 +293,88 @@ p a:after {
   transition: transform 0.5s ease;
 }
 #teaser #trigger span:after {
-  top: -4px;
+  top: 4px;
   transform: rotateZ(45deg);
 }
 #teaser #trigger span:before {
+  top: -4px;
   transform: rotateZ(-45deg);
-  top: 4px;
 }
 #resume {
   height: 100vh;
   background: #fff;
-  width: 100vw;
+  min-width: 100vw;
+  position: relative;
+}
+#resume > button {
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  background: #fff;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #e6e6e6;
+  cursor: pointer;
+  outline: none;
+  z-index: 9999;
+}
+#resume > button span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+}
+#resume > button span:before,
+#resume > button span:after {
+  display: block;
+  content: '';
+  position: absolute;
+  background: #ff6518;
+  height: 3px;
+  width: 10px;
+  left: 0;
+  top: 0;
+  margin-left: -1px;
+}
+#resume > button span:before {
+  transform: rotateZ(-45deg);
+  margin-top: -3px;
+}
+#resume > button span:after {
+  transform: rotateZ(45deg);
+  margin-top: 3px;
+}
+#resume .content-wrapper {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#resume .content-wrapper .content {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+#resume .content-wrapper .content .title {
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+  margin: 40px 0 60px;
+}
+#resume .content-wrapper .content .title:after {
+  display: block;
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 100px;
+  background: linear-gradient(135deg, #FF9200 -30%, #FF004E 140%);
+  top: 100%;
+  left: 50%;
+  margin-top: 26.66666667px;
+  transform: translate(-50%);
 }
 #main {
   height: 100vh;

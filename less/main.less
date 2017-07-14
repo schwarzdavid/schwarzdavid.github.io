@@ -54,6 +54,7 @@ body {
 	transition: margin-left @transition-duration ease;
 	will-change: margin-left;
 	margin-left: ~"calc(-100vw + (2 * @{side-spacing}))";
+	transform-style: preserve-3d;
 
 	@media @_screen_sm {
 		margin-left: ~"calc(-100vw + (2 * @{side-spacing-sm}))";
@@ -340,13 +341,13 @@ p {
 			}
 
 			&:after {
-				top: -4px;
+				top: 4px;
 				transform: rotateZ(45deg);
 			}
 
 			&:before {
+				top: -4px;
 				transform: rotateZ(-45deg);
-				top: 4px;
 			}
 		}
 	}
@@ -355,7 +356,87 @@ p {
 #resume {
 	height: 100vh;
 	background: @color-light;
-	width: 100vw;
+	min-width: 100vw;
+	position: relative;
+
+	& > button {
+		display: block;
+		position: absolute;
+		top: @side-spacing;
+		left: @side-spacing;
+		background: @color-light;
+		width: 50px;
+		height: 50px;
+		border: 1px solid darken(@color-light, 10%);
+		cursor: pointer;
+		outline: none;
+		z-index: 9999;
+
+		span {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 10px;
+			height: 4px;
+			transform: translate(-50%, -50%);
+
+			&:before,
+			&:after {
+				display: block;
+				content: '';
+				position: absolute;
+				background: @color-highlight;
+				height: 3px;
+				width: 10px;
+				left: 0;
+				top: 0;
+				margin-left: -1px;
+			}
+
+			&:before {
+				transform: rotateZ(-45deg);
+				margin-top: -3px;
+			}
+
+			&:after {
+				transform: rotateZ(45deg);
+				margin-top: 3px;
+			}
+		}
+	}
+
+	.content-wrapper {
+		height: 100%;
+		width: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+
+		.content {
+			margin: 0 auto;
+			max-width: 1000px;
+
+			.title {
+				font-size: 2rem;
+				text-align: center;
+				position: relative;
+				margin: @side-spacing 0 @side-spacing * 1.5;
+
+				&:after {
+					display: block;
+					position: absolute;
+					content: "";
+					height: 3px;
+					width: 100px;
+					background: @color-gradient;
+					top: 100%;
+					left: 50%;
+					margin-top: @side-spacing / 1.5;
+					transform: translate(-50%);
+				}
+			}
+		}
+	}
 }
 
 #main {
