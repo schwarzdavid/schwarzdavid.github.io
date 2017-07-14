@@ -89,6 +89,9 @@ p a:after {
   left: 0;
   z-index: -1;
 }
+.notransition {
+  transition: none !important;
+}
 #teaser {
   height: 100vh;
   background: #fafafa;
@@ -328,28 +331,64 @@ p a:after {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 4px;
   transform: translate(-50%, -50%);
 }
 #resume > button span:before,
 #resume > button span:after {
+  background: #ff6518;
   display: block;
   content: '';
   position: absolute;
-  background: #ff6518;
-  height: 3px;
-  width: 10px;
   left: 0;
   top: 0;
 }
-#resume > button span:before {
+@media screen and (min-width: 768px) {
+  #resume > button.back {
+    left: 70px;
+  }
+}
+#resume > button.back span {
+  width: 10px;
+  height: 4px;
+}
+#resume > button.back span:before,
+#resume > button.back span:after {
+  height: 3px;
+  width: 10px;
+}
+#resume > button.back span:before {
   transform: rotateZ(-45deg);
   margin-top: -3px;
 }
-#resume > button span:after {
+#resume > button.back span:after {
   transform: rotateZ(45deg);
   margin-top: 3px;
+}
+#resume > button.menu {
+  right: 40px;
+  left: unset;
+}
+@media screen and (min-width: 768px) {
+  #resume > button.menu {
+    left: unset;
+    right: 70px;
+  }
+}
+#resume > button.menu span {
+  width: 10px;
+  height: 2px;
+  background: #ff6518;
+}
+#resume > button.menu span:before,
+#resume > button.menu span:after {
+  width: 100%;
+  height: 100%;
+}
+#resume > button.menu span:before {
+  margin-top: 4px;
+}
+#resume > button.menu span:after {
+  margin-top: -4px;
 }
 #resume .content-wrapper {
   height: 100%;

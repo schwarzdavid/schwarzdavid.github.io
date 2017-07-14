@@ -96,7 +96,7 @@ body {
 		}
 	}
 
-	&[data-active='resume']{
+	&[data-active='resume'] {
 		margin-left: @_addition_margin;
 
 		@media @_screen_sm {
@@ -135,6 +135,10 @@ p {
 			z-index: -1;
 		}
 	}
+}
+
+.notransition {
+	transition: none !important;
 }
 
 #teaser {
@@ -384,30 +388,73 @@ p {
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			width: 10px;
-			height: 4px;
 			transform: translate(-50%, -50%);
 
 			&:before,
 			&:after {
+				background: @color-highlight;
 				display: block;
 				content: '';
 				position: absolute;
-				background: @color-highlight;
-				height: 3px;
-				width: 10px;
 				left: 0;
 				top: 0;
 			}
+		}
 
-			&:before {
-				transform: rotateZ(-45deg);
-				margin-top: -3px;
+		&.back {
+			@media @_screen_sm {
+				left: @side-spacing-sm;
 			}
 
-			&:after {
-				transform: rotateZ(45deg);
-				margin-top: 3px;
+			span {
+				width: 10px;
+				height: 4px;
+
+				&:before,
+				&:after {
+					height: 3px;
+					width: 10px;
+				}
+
+				&:before {
+					transform: rotateZ(-45deg);
+					margin-top: -3px;
+				}
+
+				&:after {
+					transform: rotateZ(45deg);
+					margin-top: 3px;
+				}
+			}
+		}
+
+		&.menu {
+			right: @side-spacing;
+			left: unset;
+
+			@media @_screen_sm {
+				left: unset;
+				right: @side-spacing-sm;
+			}
+
+			span {
+				width: 10px;
+				height: 2px;
+				background: @color-highlight;
+
+				&:before,
+				&:after {
+					width: 100%;
+					height: 100%;
+				}
+
+				&:before {
+					margin-top: 4px;
+				}
+
+				&:after {
+					margin-top: -4px;
+				}
 			}
 		}
 	}
