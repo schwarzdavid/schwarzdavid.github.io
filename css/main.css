@@ -447,6 +447,7 @@ p a:after {
 }
 #resume .content-wrapper .content .row .timeline {
   margin: 0 20px;
+  width: 100%;
 }
 @media screen and (min-width: 768px) {
   #resume .content-wrapper .content .row .timeline {
