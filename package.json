@@ -1,0 +1,32 @@
+{
+  "name": "schwarzdavid.rocks",
+  "version": "1.0.0",
+  "description": "Source code  of my personal website. **Under construction yet**",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schwarzdavid/schwarzdavid.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schwarzdavid/schwarzdavid.github.io/issues"
+  },
+  "homepage": "https://github.com/schwarzdavid/schwarzdavid.github.io#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "chalk": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-less": "^3.3.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0"
+  }
+}

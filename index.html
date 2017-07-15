@@ -8,20 +8,44 @@
 
 	<title>schwarzdavid</title>
 
-	<link type="text/css" rel="stylesheet" href="css/main.css">
-</head>
-<body data-active="resume">
+	<noscript id="deferred-styles">
+		<link type="text/css" rel="stylesheet" href="css/main.css">
+	</noscript>
 
+	<style>
+		<!--
+		inject:style
+
+		-->
+		html{font-size:16px}@media screen and (min-width:768px){html{font-size:20px}}body{margin:0;display:flex;flex-direction:row;flex-wrap:nowrap;height:100vh;width:100vw;overflow:hidden;font-family:Raleway,'Segoe UI','Open Sans',Helvetica,Arial,sans-serif;color:#1a1a1a;transition:margin-left .5s ease;will-change:margin-left;margin-left:calc(-100vw + (2 * 40px));transform-style:preserve-3d}@media screen and (min-width:768px){body{margin-left:calc(-100vw + (2 * 70px))}}body[data-active=teaser]{margin-left:0}body[data-active=teaser] #teaser{background:#1a1a1a;border-right-color:#242424}body[data-active=teaser] #teaser #trigger span{margin-left:2px}body[data-active=teaser] #teaser #trigger span:after{transform:rotateZ(-45deg)}body[data-active=teaser] #teaser #trigger span:before{transform:rotateZ(45deg)}body[data-active=teaser] #main{background:#1f1f1f;padding-left:40px}@media screen and (min-width:768px){body[data-active=teaser] #main{padding-left:70px}}body[data-active=resume]{margin-left:calc(-200vw + (2 * 40px))}@media screen and (min-width:768px){body[data-active=resume]{margin-left:calc(-200vw + (2 * 70px))}}*,:after,:before{box-sizing:border-box}img{max-width:100%}p a{color:currentcolor;text-decoration:none;position:relative;z-index:10;font-weight:500;padding:0 3px;white-space:nowrap}p a:after{display:block;position:absolute;content:'';width:100%;height:60%;background:#d9d9d9;opacity:.8;bottom:-3px;left:0;z-index:-1}.notransition{transition:none!important}#teaser{height:100vh;background:#fafafa;z-index:9999;width:calc(100vw - 40px);min-width:calc(100vw - 40px);padding-right:40px;position:relative;border-right:1px solid #f2f2f2;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;transition:background .5s ease,border-right-color .5s ease}@media screen and (min-width:768px){#teaser{width:calc(100vw - 70px);min-width:calc(100vw - 70px);padding-right:70px}}@media (orientation:landscape),screen and (min-width:1180px){#teaser{flex-direction:row-reverse;align-items:center}}#teaser .content{position:relative;width:100%;height:100%}#teaser .content .content-wrapper{padding-left:40px;width:100%;top:50%;position:absolute;transform:translateY(-50%)}@media screen and (min-width:768px){#teaser .content .content-wrapper{padding-left:70px}}@media (orientation:landscape){#teaser .content .content-wrapper{margin-top:0;padding-left:0}}#teaser .content .content-wrapper .logo{margin:0 auto;max-width:250px}@media screen and (min-width:768px){#teaser .content .content-wrapper .logo{max-width:400px}}#teaser .content .content-wrapper .subtext{text-align:center;color:#676767;font-size:1.1rem;margin:7px 0 20px 0;font-weight:500}@media screen and (min-width:768px){#teaser .content .content-wrapper .subtext{font-size:1.3rem;font-weight:400;margin:22px 0 35px 0}}#teaser .content .content-wrapper .socials{opacity:0;transition:opacity .5s ease}#teaser .content .content-wrapper .socials ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:row;justify-content:center}#teaser .content .content-wrapper .socials ul li{margin:0 5px}#teaser .content .content-wrapper .socials ul li a{display:block;color:#fff;position:relative;width:30px;height:30px;line-height:30px;text-align:center;border-radius:2px;overflow:hidden;border:1px solid #343434}#teaser .content .content-wrapper .socials ul li a:after{display:block;content:attr(aria-label);position:absolute;z-index:9999;background:red}@media screen and (min-width:768px){#teaser .content .content-wrapper .socials ul li a{width:50px;height:50px;line-height:50px}}#teaser .content .content-wrapper #cookies{position:absolute;display:none;color:rgba(255,255,255,.2);text-align:center;font-size:.6rem;top:100%;left:50%;transform:translateX(-50%);font-weight:300;margin-top:10px}#teaser .content .content-wrapper #cookies a{color:#ff6518}#teaser .content .content-wrapper #cookies a:after{display:none}#teaser .nav{flex-shrink:0;opacity:0;transition:opacity .5s ease}#teaser .nav ul{margin:0 0 10px 20px;padding:0;list-style:none;font-size:1.1rem}@media screen and (min-width:768px){#teaser .nav ul{font-size:1.2rem;margin-left:30px}}#teaser .nav ul li{position:relative;margin-top:10px}@media screen and (min-width:768px){#teaser .nav ul li{margin-top:15px}}#teaser .nav ul li:before{content:"";display:block;height:2px;width:30px;background:linear-gradient(135deg,#ff9200 -30%,#ff004e 140%)}@media screen and (min-width:768px){#teaser .nav ul li:before{width:50px}}#teaser .nav ul li a{padding:5px 10px 10px 0;display:block;color:#fff;text-decoration:none}@media screen and (min-width:768px){#teaser .nav ul li a{padding:15px 20px 20px 0}}#teaser #trigger{display:block;position:absolute;bottom:40px;border:0;width:52px;height:52px;border-radius:2px;background:linear-gradient(135deg,#ff9200 -30%,#ff004e 140%);right:-26px;color:#fff;outline:0;cursor:pointer;opacity:0;transition:opacity .5s ease}@media screen and (min-width:768px){#teaser #trigger{width:70px;height:70px;bottom:70px;right:-35px}}#teaser #trigger span{display:block;width:13px;height:0;position:absolute;top:50%;left:50%;transform:translateX(-50%);transition:margin-left .5s ease}#teaser #trigger span:after,#teaser #trigger span:before{display:block;position:absolute;content:"";height:3px;width:13px;background:currentcolor;left:0;top:0;transition:transform .5s ease}#teaser #trigger span:after{top:4px;transform:rotateZ(45deg)}#teaser #trigger span:before{top:-4px;transform:rotateZ(-45deg)}
+/*# sourceMappingURL=inject.css.map */
+
+		<!--
+		endinject
+
+		-->
+	</style>
+</head>
+<body data-active="teaser">
+
+<!-- LANDING PAGE -->
 <section id="teaser">
 
+	<!-- CENTER CONTENT -->
 	<div class="content">
 		<div class="content-wrapper">
+
+			<!-- LOGO -->
 			<figure class="logo">
 				<img src="img/logo.svg" alt="schwarzdavid logo" draggable="false">
 			</figure>
+			<!-- / LOGO -->
 
+			<!-- SUBTITLE -->
 			<h2 class="subtext">Web Developer from Austria</h2>
+			<!-- / SUBTITLE -->
 
+			<!-- SOCIAL ICONS -->
 			<nav class="socials">
 				<ul>
 					<li>
@@ -46,13 +70,19 @@
 					</li>
 				</ul>
 			</nav>
+			<!-- SOCIAL ICONS -->
 
+			<!-- COOKIE HINT -->
 			<div id="cookies">
 				<p>We are using cookies on our site - <a href="#">OK</a></p>
 			</div>
+			<!-- / COOKIE HINT -->
+
 		</div>
 	</div>
+	<!-- / CENTER CONTENT -->
 
+	<!-- BOTTOM/SIDE NAVIGATION -->
 	<nav class="nav">
 		<ul>
 			<li><a href="#">about me</a></li>
@@ -60,12 +90,20 @@
 			<li><a href="#">contact me</a></li>
 		</ul>
 	</nav>
+	<!-- / BOTTOM/SIDE NAVIGATION -->
 
+	<!-- SWITCH BUTTON -->
 	<button type="button" id="trigger"><span>&nbsp;</span></button>
-</section>
+	<!-- / SWITCH BUTTON -->
 
+</section>
+<!-- / LANDING PAGE -->
+
+<!-- MAIN CONTENT -->
 <main id="main">
 	<div class="scroll-container">
+
+		<!-- ABOUT ME -->
 		<section id="about">
 			<h1 class="title">Hey, I'm David! I'm a Web Developer and Software Engineer, based in Vienna, Austria.</h1>
 
@@ -107,26 +145,42 @@
 				</ul>
 			</nav>
 		</section>
+		<!-- / ABOUT ME -->
 
+		<!-- PORJECTS -->
 		<section id="projects">
 
 		</section>
+		<!-- / PROJECTS -->
 
+		<!-- CONTACT ME -->
 		<section id="contact">
 
 		</section>
+		<!-- / CONTACT ME -->
+
 	</div>
 </main>
+<!-- / MAIN CONTENT -->
 
+<!-- RESUME -->
 <section id="resume">
+
+	<!-- ACTION BUTTONS -->
 	<button type="button" class="back" data-target-active><span>&nbsp;</span></button>
 	<button type="button" class="menu" data-target-active="teaser"><span>&nbsp;</span></button>
+	<!-- / ACTION BUTTONS -->
 
+	<!-- SCROLL CONTAINER -->
 	<div class="content-wrapper">
 		<div class="content">
-			<h1 class="title">Resume / CV</h1>
 
-			<div class="row">
+			<!-- MAIN TITLE -->
+			<h1 class="title">Resume / CV</h1>
+			<!-- / MAIN TITLE -->
+
+			<!-- TIMELINES -->
+			<div class="history">
 				<div class="timeline">
 					<h3 class="subtitle">Education</h3>
 					<article class="item">
@@ -173,25 +227,65 @@
 					</article>
 				</div>
 			</div>
+			<!-- / TIMELINES -->
 
+			<!-- SKILLS -->
 			<div class="skills">
 				<div class="dev">
 					<h3 class="subtitle">What am I good for?</h3>
-					<p>Beside of consuming tons of coffee on a daily basis and solid skills in several programming languages I .</p>
+					<p>Beside of consuming tons of coffee on a daily basis and solid skills in several programming
+						languages I .</p>
 				</div>
 
 				<div id="languages">
 					<h3 class="subtitle">Languages</h3>
-					<div class="lang"><canvas data-value="95"></canvas><span>German</span></div>
-					<div class="lang"><canvas data-value="80"></canvas><span>English</span></div>
-					<div class="lang"><canvas data-value="65"></canvas><span>Czech</span></div>
+					<div class="lang">
+						<canvas data-value="95"></canvas>
+						<span>German</span></div>
+					<div class="lang">
+						<canvas data-value="80"></canvas>
+						<span>English</span></div>
+					<div class="lang">
+						<canvas data-value="65"></canvas>
+						<span>Czech</span></div>
 				</div>
 			</div>
+			<!-- / SKILLS -->
+
 		</div>
 	</div>
-</section>
+	<!-- / SCROLL CONTAINER -->
 
-<script src="js/main.js"></script>
+</section>
+<!-- / RESUME -->
+
+<!-- PROJECTS -->
+<section class="project" id="buchcafe"></section>
+<!-- / PROJECTS -->
+
+<!-- JAVASCRIPT FILES -->
+<script src="js/main.min.js" async></script>
+<!-- / JAVASCRIPT FILES -->
+
+<!-- LOAD CSS FILES -->
+<script>
+	function loadDeferredStyle() {
+		var addStylesNode = document.getElementById('deferred-styles');
+		var replacement = document.createElement('div');
+		replacement.innerHTML = addStylesNode.textContent;
+		document.body.appendChild(replacement);
+		addStylesNode.parentElement.removeChild(addStylesNode);
+	}
+	var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+	if (raf) {
+		raf(function () {
+			setTimeout(loadDeferredStyle, 0);
+		});
+	} else {
+		window.addEventListener('load', loadDeferredStyle);
+	}
+</script>
+<!-- / LOAD CSS FILES -->
 
 </body>
 </html>

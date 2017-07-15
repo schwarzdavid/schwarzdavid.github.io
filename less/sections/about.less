@@ -1,0 +1,144 @@
+#main #about {
+	padding: @side-spacing;
+
+	@media @_screen_sm {
+		padding-left: @side-spacing-sm;
+		padding-right: @side-spacing-sm;
+		padding-bottom: @side-spacing-sm;
+		padding-top: @side-spacing-sm;
+	}
+
+	@media @_screen_lg {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
+	.title {
+		line-height: 150%;
+		margin: @side-spacing / 2 0 @side-spacing;
+		font-size: 1.5rem;
+		font-weight: 500;
+
+		@media @_screen_sm {
+			margin-top: @side-spacing-sm / 2;
+			margin-bottom: @side-spacing-sm;
+		}
+
+		@media @_screen_md {
+			max-width: 80%;
+		}
+	}
+
+	.picture {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: flex-end;
+		margin-bottom: @side-spacing;
+
+		@media @_screen_sm {
+			margin-bottom: @side-spacing-sm;
+		}
+
+		img {
+			max-width: 200px;
+			width: 100%;
+			border: 15px solid darken(@color-light, 10%);
+			border-right-width: 0;
+			margin-right: -@side-spacing;
+
+			@media @_screen_xs {
+				max-width: 350px;
+			}
+
+			@media @_screen_sm {
+				margin-right: -@side-spacing-sm;
+				max-width: 450px;
+			}
+
+			@media @_screen_lg {
+				border-right-width: 15px;
+			}
+		}
+
+		a {
+			display: block;
+			width: @side-spacing;
+			position: relative;
+			color: currentcolor;
+			text-align: center;
+
+			@media @_screen_xs {
+				width: @side-spacing-sm;
+				font-size: 1.3rem;
+			}
+
+			.rotate {
+				display: block;
+				position: absolute;
+				transform-origin: left center;
+				transform: rotateZ(90deg) translateX(-100%);
+				height: @side-spacing;
+				text-align: right;
+				top: 0;
+				left: 50%;
+				padding-right: @side-spacing / 2;
+				font-weight: 500;
+				white-space: nowrap;
+				line-height: @side-spacing;
+
+				@media @_screen_xs {
+					height: @side-spacing-sm;
+					padding-right: @side-spacing-sm / 1.5;
+					line-height: @side-spacing-sm;
+				}
+			}
+
+			.fa {
+				color: @color-highlight;
+			}
+		}
+	}
+
+	.description {
+		line-height: 170%;
+		font-size: 1rem;
+	}
+
+	.socials {
+		margin-top: @side-spacing / 1.3;
+
+		.intro {
+			display: block;
+			font-size: .8rem;
+			font-style: italic;
+			color: lighten(@color-dark, 30%);
+		}
+
+		ul {
+			display: flex;
+			flex-direction: row;
+			margin: 10px 0 0;
+			padding: 0;
+			list-style: none;
+
+			li {
+				margin: 0 7px;
+
+				@media @_screen_md {
+					margin-left: 12px;
+					margin-right: 12px;
+				}
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				a {
+					color: @color-highlight;
+					text-decoration: none;
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+}

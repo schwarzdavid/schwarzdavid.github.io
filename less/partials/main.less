@@ -1,0 +1,18 @@
+@import "../sections/about";
+
+#main {
+	height: 100vh;
+	background: @color-light;
+	width: @_section_size;
+	min-width: @_section_size;
+	transition: background @transition-duration ease, padding-left @transition-duration ease;
+	padding-left: 0;
+	box-sizing: content-box;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	@media @_screen_sm {
+		width: @_section_size_sm;
+		min-width: @_section_size_sm;
+	}
+}

@@ -5,13 +5,15 @@ Source code  of my personal website. **Under construction yet**
 # Todos
 
 - [ ] Finish the page
-- [ ] Add Grunt/Gulp tasks
+- [x] Add Grunt/Gulp tasks
+- [x] Lazy load css files
 - [ ] Add Google Analytics
 - [ ] Check PageSpeed Insights
-- [ ] SEO check
+- [ ] SEO check (schema tags)
 - [ ] Fix IE
 - [ ] Add Favicons
 - [x] Show cookie hint
+- [ ] Add OG and Twitter meta tags
 
 # License
 
