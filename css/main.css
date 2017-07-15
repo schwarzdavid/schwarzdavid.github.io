@@ -203,6 +203,24 @@ p a:after {
     line-height: 50px;
   }
 }
+#teaser .content .content-wrapper #cookies {
+  position: absolute;
+  display: none;
+  color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-size: .6rem;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 300;
+  margin-top: 10px;
+}
+#teaser .content .content-wrapper #cookies a {
+  color: #ff6518;
+}
+#teaser .content .content-wrapper #cookies a:after {
+  display: none;
+}
 #teaser .nav {
   flex-shrink: 0;
 }
@@ -559,6 +577,11 @@ p a:after {
 }
 @media screen and (min-width: 480px) {
   #resume .content-wrapper .content .skills #languages {
+    width: 300px;
+  }
+}
+@media screen and (min-width: 768px) {
+  #resume .content-wrapper .content .skills #languages {
     width: 350px;
   }
 }
@@ -730,6 +753,7 @@ p a:after {
 #main #about .socials .intro {
   display: block;
   font-size: .8rem;
+  font-style: italic;
   color: #676767;
 }
 #main #about .socials ul {

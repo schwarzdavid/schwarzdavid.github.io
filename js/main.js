@@ -5,6 +5,17 @@
 		var activeTrigger = document.querySelectorAll('[data-target-active]');
 		var languages = document.querySelectorAll('#languages .lang canvas');
 
+		if(!window.localStorage.getItem('cookiesAccepted')){
+			var cookieEl = document.querySelector('#cookies');
+
+			cookieEl.style.display = 'block';
+			cookieEl.addEventListener('click', function (e) {
+				e.preventDefault();
+				window.localStorage.setItem('cookiesAccepted', 'yes');
+				cookieEl.style.display = 'none';
+			});
+		}
+
 		document.querySelector('#trigger').addEventListener('click', function () {
 			if(document.body.dataset.active === 'teaser') {
 				delete document.body.dataset.active;

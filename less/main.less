@@ -252,6 +252,27 @@ p {
 					}
 				}
 			}
+
+			#cookies {
+				position: absolute;
+				display: none;
+				color: fade(@color-light, 20%);
+				text-align: center;
+				font-size: .6rem;
+				top: 100%;
+				left: 50%;
+				transform: translateX(-50%);
+				font-weight: 300;
+				margin-top: 10px;
+
+				a {
+					color: @color-highlight;
+
+					&:after {
+						display: none;
+					}
+				}
+			}
 		}
 	}
 
@@ -639,6 +660,10 @@ p {
 					box-sizing: content-box;
 
 					@media @_screen_xs {
+						width: 300px;
+					}
+
+					@media @_screen_sm {
 						width: 350px;
 					}
 
@@ -812,6 +837,7 @@ p {
 			.intro {
 				display: block;
 				font-size: .8rem;
+				font-style: italic;
 				color: lighten(@color-dark, 30%);
 			}
 

@@ -10,6 +10,8 @@ Source code  of my personal website. **Under construction yet**
 - [ ] Check PageSpeed Insights
 - [ ] SEO check
 - [ ] Fix IE
+- [ ] Add Favicons
+- [x] Show cookie hint
 
 # License
 
