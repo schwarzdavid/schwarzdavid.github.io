@@ -8,12 +8,13 @@ Source code  of my personal website. **Under construction yet**
 - [x] Add Grunt/Gulp tasks
 - [x] Lazy load css files
 - [ ] Add Google Analytics
-- [ ] Check PageSpeed Insights
+- [x] Check PageSpeed Insights
 - [ ] SEO check (schema tags)
 - [ ] Fix IE
 - [ ] Add Favicons
 - [x] Show cookie hint
 - [ ] Add OG and Twitter meta tags
+- [ ] Add dist/src folders
 
 # License
 
