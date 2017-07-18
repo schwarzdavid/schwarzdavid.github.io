@@ -17,9 +17,13 @@ body {
 	font-family: 'Raleway', 'Segoe UI', 'Open Sans', Helvetica, Arial, sans-serif;
 	color: @color-dark;
 	transition: margin-left @transition-duration ease;
-	will-change: margin-left;
 	margin-left: ~"calc(-100vw + (2 * @{side-spacing}))";
+
+	// Make transition less laggy
+	transform: translateZ(0);
 	transform-style: preserve-3d;
+	backface-visibility: hidden;
+	will-change: margin-left;
 
 	@media @_screen_sm {
 		margin-left: ~"calc(-100vw + (2 * @{side-spacing-sm}))";

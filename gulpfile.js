@@ -22,6 +22,7 @@ const JS_DIR = 'js';
 const LESS_DIR = 'less';
 const CSS_DIR = 'css';
 
+const LESS_FILES = `${LESS_DIR}/**/*.less`;
 const LESS_MAIN_FILE = `${LESS_DIR}/main.less`;
 const LESS_INLINE_FILE = `${LESS_DIR}/inject.less`;
 const JS_MAIN_FILE = `${JS_DIR}/main.js`;
@@ -92,12 +93,8 @@ function watch() {
 	watcher_js.on('change', watcherChangeEvent);
 
 	let watcher_less;
-	watcher_less = gulp.watch(LESS_MAIN_FILE, ['build:less']);
+	watcher_less = gulp.watch(LESS_FILES, ['build:less']);
 	watcher_less.on('change', watcherChangeEvent);
-
-	let watcher_inline;
-	watcher_inline = gulp.watch(LESS_INLINE_FILE, ['build:less-inline']);
-	watcher_inline.on('change', watcherChangeEvent);
 }
 
 //************************************************

@@ -269,8 +269,86 @@
 					}
 				}
 
-				.dev {
+				.subtitle {
+					margin-top: @side-spacing;
+				}
 
+				.skill {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: @side-spacing / 2;
+
+					& > span {
+						small {
+							font-size: .8rem;
+							color: lighten(@color-dark, 40%);
+						}
+					}
+
+					ul {
+						display: flex;
+						margin: 0;
+						padding: 0;
+						flex-direction: row;
+						list-style: none;
+
+						li {
+							color: @color-highlight;
+							font-size: 1.3rem;
+							margin-left: 10px;
+						}
+					}
+				}
+
+				.tagcloud {
+					ul {
+						margin: 0;
+						padding: 0;
+						list-style: none;
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+
+						li {
+							display: block;
+							position: relative;
+							margin: 0 10px 15px 15px;
+							background: @color-highlight;
+							color: @color-light;
+							padding: 0 10px;
+							border-radius: 0 @border-radius @border-radius 0;
+							font-weight: 300;
+							font-size: .9rem;
+							height: 30px;
+							line-height: 30px;
+
+							&:before,
+							&:after {
+								display: block;
+								content: "";
+								position: absolute;
+							}
+
+							&:before {
+								border: 15px solid transparent;
+								border-right-color: @color-highlight;
+								right: 100%;
+								top: 0;
+							}
+
+							&:after {
+								top: 50%;
+								left: -3px;
+								width: 6px;
+								height: 6px;
+								border-radius: 50%;
+								background: @color-light;
+								transform: translateY(-50%);
+							}
+						}
+					}
 				}
 
 				#languages {
