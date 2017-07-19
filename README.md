@@ -11,11 +11,11 @@ Source code  of my personal website. **Under construction yet**
 - [x] Check PageSpeed Insights
 - [ ] SEO check (schema tags)
 - [ ] Fix IE
-- [ ] Add Favicons
+- [x] Add Favicons
 - [x] Show cookie hint
 - [ ] Add OG and Twitter meta tags
 - [x] Add dist/src folders
-- [ ] Check .htaccess file
+- [x] Check .htaccess file
 
 # License
 

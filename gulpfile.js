@@ -29,9 +29,9 @@ const JS_SRC_DIR = `${SRC_DIR}/js`;
 const JS_DIST_DIR = `${DIST_DIR}/js`;
 const LESS_DIR = `${SRC_DIR}/less`;
 const CSS_DIR = `${DIST_DIR}/css`;
-const IMG_SRC_DIR = `${SRC_DIR}/img`;
-const IMG_DIST_DIR = `${DIST_DIR}/img`;
-const IMG_SRC_PATTERN = [`${SRC_DIR}/*.{ico,png}`, `${IMG_SRC_DIR}/**/*.{png,jpg}`, `!${IMG_SRC_DIR}/resources/**/*`];
+const IMG_DIST_DIR = `${DIST_DIR}`;
+const IMG_SRC_PATTERN = [`${SRC_DIR}/**/*.{ico,png,jpg}`, `!${SRC_DIR}/img/resources/**/*`];
+const ASSET_PATTERN = `${SRC_DIR}/*.{xml,json}`;
 
 // MAIN FILES
 const LESS_FILES = `${LESS_DIR}/**/*.less`;
@@ -42,7 +42,7 @@ const HTML_MAIN_SRC_FILE = `${SRC_DIR}/index.html`;
 
 // FILES TO INJECT
 const INJECT_CSS =`${CSS_DIR}/inject.css`;
-const INJECT_LOGO = `${IMG_SRC_DIR}/logo.svg`;
+const INJECT_LOGO = `${SRC_DIR}/img/resources/logo.svg`;
 
 //************************************************
 // INITIALIZATION
@@ -114,6 +114,14 @@ function buildHtml() {
 }
 
 //************************************************
+// TASK HANDLER FOR ASSETS
+//************************************************
+function buildAssets() {
+	return gulp.src(ASSET_PATTERN)
+		.pipe(gulp.dest(DIST_DIR));
+}
+
+//************************************************
 // WATCHER
 //************************************************
 function watcherChangeEvent(e) {
@@ -137,11 +145,12 @@ function watch() {
 //************************************************
 // GULP TASKS
 //************************************************
-gulp.task('build', ['build:js', 'build:less', 'build:html', 'build:img']);
+gulp.task('build', ['build:js', 'build:less', 'build:html', 'build:img', 'build:assets']);
 gulp.task('build:js', buildJs);
 gulp.task('build:less', buildLess);
 gulp.task('build:html', ['build:less'], buildHtml);
 gulp.task('build:img', buildImg);
+gulp.task('build:assets', buildAssets);
 
 gulp.task('watch', ['build'], watch);
 gulp.task('default', ['build']);
