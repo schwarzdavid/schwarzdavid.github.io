@@ -1,4 +1,2 @@
 RewriteEngine on
-RewriteBase /
-
-RewriteRule ^$ dist/
+RewriteRule (.*) /dist/$1 [L]
