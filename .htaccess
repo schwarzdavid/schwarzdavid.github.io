@@ -1,2 +1,5 @@
-RewriteEngine on
-RewriteRule (.*) /dist/$1 [L]
+Options -Indexes
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !(dist) [NC]
+RewriteRule ^(.*)$ /dist/$1 [L]
