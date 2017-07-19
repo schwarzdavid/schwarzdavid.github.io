@@ -281,6 +281,10 @@
 					margin-bottom: @side-spacing / 2;
 
 					& > span {
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+
 						small {
 							font-size: .8rem;
 							color: lighten(@color-dark, 40%);
@@ -297,7 +301,11 @@
 						li {
 							color: @color-highlight;
 							font-size: 1.3rem;
-							margin-left: 10px;
+							margin-left: 5px;
+
+							@media @_screen_sm {
+								margin-left: 10px;
+							}
 						}
 					}
 				}

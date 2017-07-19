@@ -14,7 +14,8 @@ Source code  of my personal website. **Under construction yet**
 - [ ] Add Favicons
 - [x] Show cookie hint
 - [ ] Add OG and Twitter meta tags
-- [ ] Add dist/src folders
+- [x] Add dist/src folders
+- [ ] Check .htaccess file
 
 # License
 

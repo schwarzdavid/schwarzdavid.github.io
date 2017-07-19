@@ -30,7 +30,8 @@ body {
 	}
 
 	&[data-active='teaser'] {
-		margin-left: 0;
+		// Because of stupid css bug
+		margin-left: 0.3px;
 
 		#teaser {
 			background: @color-dark;
