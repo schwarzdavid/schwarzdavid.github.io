@@ -20,7 +20,9 @@
 			delete document.body.dataset.active;
 			return;
 		}
-		document.body.dataset.active = 'teaser';
+		requestAnimationFrame(() => {
+			document.body.dataset.active = 'teaser';
+		});
 	});
 
 	for (let i = 0; i < activeTrigger.length; i++) {
@@ -33,7 +35,9 @@
 					break;
 				}
 			}
-			document.body.dataset.active = target;
+			requestAnimationFrame(() => {
+				document.body.dataset.active = target;	
+			});
 		});
 	}
 

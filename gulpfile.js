@@ -128,6 +128,10 @@ function watch() {
 	let watcher_less;
 	watcher_less = gulp.watch(LESS_FILES, ['build:less']);
 	watcher_less.on('change', watcherChangeEvent);
+
+	let watcher_html;
+	watcher_html = gulp.watch(HTML_MAIN_SRC_FILE, ['build:html']);
+	watcher_html.on('change', watcherChangeEvent);
 }
 
 //************************************************

@@ -230,7 +230,9 @@
 
 			<!-- SKILLS -->
 			<div class="skills">
-				<div>
+
+				<!-- DEV SKILLS -->
+				<div class="dev">
 					<h3 class="subtitle">Programming skills</h3>
 
 					<!-- HTML & CSS -->
@@ -325,25 +327,39 @@
 							<li>Websockets</li>
 							<li>Typescript</li>
 							<li>REST</li>
+							<li>Mobile First</li>
 						</ul>
 					</div>
 
 				</div>
+				<!-- / DEV SKILLS -->
 
+				<!-- LANGUAGES -->
 				<div id="languages">
 					<h3 class="subtitle">Languages</h3>
-					<div class="lang">
-						<canvas data-value="95"></canvas>
-						<span>German</span></div>
-					<div class="lang">
-						<canvas data-value="80"></canvas>
-						<span>English</span></div>
-					<div class="lang">
-						<canvas data-value="65"></canvas>
-						<span>Czech</span></div>
+					<div class="lang-wrapper">
+						<div class="lang">
+							<canvas data-value="95"></canvas>
+							<span>German</span>
+						</div>
+						<div class="lang">
+							<canvas data-value="80"></canvas>
+							<span>English</span>
+						</div>
+						<div class="lang">
+							<canvas data-value="65"></canvas>
+							<span>Czech</span>
+						</div>
+					</div>
 				</div>
+				<!-- / LANGUAGES -->
+
 			</div>
 			<!-- / SKILLS -->
+
+			<!-- AWARDS -->
+
+			<!-- / AWARDS -->
 
 		</div>
 	</div>
@@ -362,21 +378,15 @@
 
 <!-- LOAD CSS FILES -->
 <script>
-	function loadDeferredStyle() {
-		var addStylesNode = document.getElementById('deferred-styles');
-		var replacement = document.createElement('div');
-		replacement.innerHTML = addStylesNode.textContent;
-		document.body.appendChild(replacement);
-		addStylesNode.parentElement.removeChild(addStylesNode);
-	}
-	var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
-	if (raf) {
-		raf(function () {
-			setTimeout(loadDeferredStyle, 0);
-		});
-	} else {
-		window.addEventListener('load', loadDeferredStyle);
-	}
+	requestAnimationFrame(function loadDeferredStyle() {
+		setTimeout(function () {
+			var addStylesNode = document.getElementById('deferred-styles');
+			var replacement = document.createElement('div');
+			replacement.innerHTML = addStylesNode.textContent;
+			document.body.appendChild(replacement);
+			addStylesNode.parentElement.removeChild(addStylesNode);
+		}, 0);
+	});
 </script>
 <!-- / LOAD CSS FILES -->
 
