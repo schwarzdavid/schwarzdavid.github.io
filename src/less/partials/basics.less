@@ -4,70 +4,19 @@ html {
 	@media @_screen_sm {
 		font-size: 20px;
 	}
+
+	@media @_screen_md {
+		font-size: 22px;
+	}
 }
 
 body {
 	margin: 0;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
 	height: 100vh;
 	width: 100vw;
 	overflow: hidden;
 	font-family: 'Raleway', 'Segoe UI', 'Open Sans', Helvetica, Arial, sans-serif;
 	color: @color-dark;
-	transition: margin-left @transition-duration linear;
-	margin-left: ~"calc(-100vw + (2 * @{side-spacing}))";
-
-	// Make transition less laggy
-	transform: translateZ(0);
-	transform-style: preserve-3d;
-	backface-visibility: hidden;
-	will-change: margin-left;
-
-	@media @_screen_sm {
-		margin-left: ~"calc(-100vw + (2 * @{side-spacing-sm}))";
-	}
-
-	&[data-active='teaser'] {
-		margin-left: 0;
-
-		#teaser {
-			background: @color-dark;
-			border-right-color: lighten(@color-dark, 4%);
-
-			#trigger {
-				span {
-					margin-left: 2px;
-
-					&:after {
-						transform: rotateZ(-45deg);
-					}
-
-					&:before {
-						transform: rotateZ(45deg);
-					}
-				}
-			}
-		}
-
-		#main {
-			background: lighten(@color-dark, 2%);
-			padding-left: @side-spacing;
-
-			@media @_screen_sm {
-				padding-left: @side-spacing-sm;
-			}
-		}
-	}
-
-	&[data-active='resume'] {
-		margin-left: @_addition_margin;
-
-		@media @_screen_sm {
-			margin-left: @_addition_margin-sm;
-		}
-	}
 }
 
 *, :after, :before {
@@ -105,4 +54,66 @@ p {
 
 .notransition {
 	transition: none !important;
+}
+
+#wrapper {
+	margin: 0;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	height: 100vh;
+	overflow: hidden;
+	transition: transform @transition-duration linear;
+	transform: translate3d(~"calc(-100vw + (2 * @{side-spacing}))", 0, 0);
+
+	// Make transition less laggy
+	transform-style: preserve-3d;
+	will-change: transform;
+
+	@media @_screen_sm {
+		transform: translate3d(~"calc(-100vw + (2 * @{side-spacing-sm}))", 0, 0);
+	}
+
+	&[data-active='teaser'] {
+		transform: translate3d(0, 0, 0);
+
+		#teaser {
+			background: @color-dark;
+			border-right-color: lighten(@color-dark, 4%);
+
+			#trigger {
+				span {
+					margin-left: 2px;
+
+					&:after {
+						transform: rotateZ(-45deg);
+					}
+
+					&:before {
+						transform: rotateZ(45deg);
+					}
+				}
+			}
+		}
+
+		#main {
+			background: lighten(@color-dark, 2%);
+			padding-left: @side-spacing;
+
+			@media @_screen_sm {
+				padding-left: @side-spacing-sm;
+			}
+		}
+	}
+
+	&[data-active='resume'] {
+		transform: translate3d(@_addition_margin, 0, 0);
+
+		@media @_screen_sm {
+			transform: translate3d(@_addition_margin-sm, 0, 0);
+		}
+	}
 }

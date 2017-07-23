@@ -12,6 +12,7 @@
 	justify-content: space-between;
 	align-items: flex-start;
 	transition: background @transition-duration ease, border-right-color @transition-duration ease;
+	will-change: background;
 
 	@media @_screen_sm {
 		width: @_section_size_sm;
@@ -218,6 +219,7 @@
 			left: 50%;
 			transform: translateX(-50%);
 			transition: margin-left @transition-duration ease;
+			will-change: margin-left;
 
 			&:before,
 			&:after {
@@ -230,6 +232,7 @@
 				left: 0;
 				top: 0;
 				transition: transform @transition-duration ease;
+				will-change: transform;
 			}
 
 			&:after {

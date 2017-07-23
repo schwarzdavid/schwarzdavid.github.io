@@ -5,7 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp build",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "server": "php -S localhost:8080 -t ./dist"
   },
   "repository": {
     "type": "git",
