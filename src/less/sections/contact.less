@@ -1,0 +1,60 @@
+#contact {
+	padding: @side-spacing;
+
+	@media @_screen_sm {
+		padding: @side-spacing-sm;
+	}
+
+	@media @_screen_lg {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
+	.title {
+		text-align: center;
+	}
+
+	.contact-wrapper {
+		display: flex;
+		flex-direction: column;
+
+		@media @_screen_xs {
+			flex-direction: row;
+		}
+
+		.info {
+			width: 100%;
+
+			@media @_screen_xs {
+				width: 40%;
+			}
+		}
+
+		.form {
+			width: 100%;
+			background: @color-dark;
+
+			@media @_screen_xs {
+				width: 60%;
+			}
+
+			.form-element {
+				label {
+
+				}
+
+				input {
+
+				}
+
+				textarea {
+
+				}
+			}
+
+			button {
+
+			}
+		}
+	}
+}

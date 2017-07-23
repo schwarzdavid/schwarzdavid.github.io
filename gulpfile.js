@@ -31,7 +31,7 @@ const LESS_DIR = `${SRC_DIR}/less`;
 const CSS_DIR = `${DIST_DIR}/css`;
 const IMG_DIST_DIR = `${DIST_DIR}`;
 const IMG_SRC_PATTERN = [`${SRC_DIR}/**/*.{ico,png,jpg}`, `!${SRC_DIR}/img/resources/**/*`];
-const ASSET_PATTERN = `${SRC_DIR}/*.{xml,json}`;
+const ASSET_PATTERN = `${SRC_DIR}/*.{xml,json,txt}`;
 
 // MAIN FILES
 const LESS_FILES = `${LESS_DIR}/**/*.less`;
