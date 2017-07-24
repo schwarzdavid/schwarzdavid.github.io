@@ -72,20 +72,20 @@
 			.rotate {
 				display: block;
 				position: absolute;
-				transform-origin: left center;
-				transform: rotateZ(90deg) translateX(-100%);
+				transform-origin: right top;
+				transform: rotateZ(90deg);
+				padding-right: @side-spacing / 2;
+				right: 0;
+				transform-style: preserve-3d;
 				height: @side-spacing;
 				text-align: right;
-				top: 0;
-				left: 50%;
-				padding-right: @side-spacing / 2;
 				font-weight: 500;
 				white-space: nowrap;
 				line-height: @side-spacing;
+				will-change: height, line-height;
 
 				@media @_screen_xs {
 					height: @side-spacing-sm;
-					padding-right: @side-spacing-sm / 1.5;
 					line-height: @side-spacing-sm;
 				}
 			}

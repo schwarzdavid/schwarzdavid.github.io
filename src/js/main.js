@@ -29,13 +29,22 @@
 	for (let i = 0; i < activeTrigger.length; i++) {
 		activeTrigger[i].addEventListener('click', (e) => {
 			e.preventDefault();
-			let target;
-			for(let j of e.path){
-				if(j.dataset.hasOwnProperty('targetActive')){
-					target = j.dataset.targetActive;
-					break;
+
+			let target = e.target.dataset.targetActive;
+
+			if(typeof target !== 'string') {
+				for (let j = e.target; j = j.parentElement;) {
+					if (j.dataset.hasOwnProperty('targetActive')) {
+						target = j.dataset.targetActive;
+						break;
+					}
 				}
 			}
+
+			if(typeof target !== 'string'){
+				throw new Error("cannot find target attribute");
+			}
+
 			requestAnimationFrame(() => {
 				wrapper.dataset.active = target;
 			});
