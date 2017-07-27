@@ -12,6 +12,11 @@
 
 	.title {
 		text-align: center;
+		margin-bottom: @side-spacing;
+
+		@media @_screen_md {
+			margin-bottom: @side-spacing-sm;
+		}
 	}
 
 	.contact-wrapper {
@@ -27,24 +32,52 @@
 
 			@media @_screen_xs {
 				width: 40%;
+				padding-top: @side-spacing;
+				padding-bottom: @side-spacing;
+			}
+
+			@media @_screen_md {
+				padding-top: @side-spacing-sm;
+				padding-bottom: @side-spacing-sm;
 			}
 		}
 
 		.form {
 			width: 100%;
 			background: @color-dark;
+			padding: @side-spacing;
+			color: @color-light;
 
 			@media @_screen_xs {
 				width: 60%;
 			}
 
+			@media @_screen_sm {
+				padding: @side-spacing-sm;
+			}
+
 			.form-element {
+				display: block;
+				position: relative;
+
 				label {
 
 				}
 
-				input {
+				input,
+				textarea {
+					border: none;
+					background: transparent;
+					color: @color-light;
+					font: inherit;
 
+					&:focus,
+					&:active {
+						outline: none;
+					}
+				}
+
+				input {
 				}
 
 				textarea {
