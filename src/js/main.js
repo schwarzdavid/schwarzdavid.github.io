@@ -3,7 +3,7 @@
 
 	let activeTrigger = document.querySelectorAll('[data-target-active]');
 	let languages = document.querySelectorAll('#languages .lang canvas');
-	let wrapper = document.querySelector('#wrapper');
+	let body = document.body;
 
 	if (!window.localStorage.getItem('cookiesAccepted')) {
 		let cookieEl = document.querySelector('#cookies');
@@ -17,12 +17,12 @@
 	}
 
 	document.querySelector('#trigger').addEventListener('click', () => {
-		if (wrapper.dataset.active === 'teaser') {
-			delete wrapper.dataset.active;
+		if (body.dataset.active === 'teaser') {
+			delete body.dataset.active;
 			return;
 		}
 		requestAnimationFrame(() => {
-			wrapper.dataset.active = 'teaser';
+			body.dataset.active = 'teaser';
 		});
 	});
 
@@ -46,7 +46,7 @@
 			}
 
 			requestAnimationFrame(() => {
-				wrapper.dataset.active = target;
+				body.dataset.active = target;
 			});
 		});
 	}

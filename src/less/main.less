@@ -1,7 +1,10 @@
 @import "variables";
-@import "partials/main";
-@import "sections/resume";
+
+@import "sections/about";
+@import "sections/projects";
 @import "sections/contact";
+
+@import "sections/resume";
 
 #teaser {
 	.content .content-wrapper .socials,
@@ -10,5 +13,14 @@
 		opacity: 1;
 		transition-delay: .1s;
 		will-change: opacity;
+	}
+}
+
+#main {
+	background: @color-light;
+	padding-left: @side-spacing;
+
+	@media @_screen_sm {
+		padding-left: @side-spacing-sm;
 	}
 }
