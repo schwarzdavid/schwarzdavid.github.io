@@ -30,13 +30,13 @@
 		content: "";
 		position: absolute;
 		height: 100%;
-		width: @side-spacing + 1;
+		width: @side-spacing + 2;
 		background: darken(@color-light, 4%);
-		right: 0 - 1;
+		right: -1px;
 		transition: background @transition-duration ease;
 
 		@media @_screen_sm {
-			width: @side-spacing-sm + 1;
+			width: @side-spacing-sm + 2;
 		}
 	}
 
