@@ -19,8 +19,19 @@
 #main {
 	background: @color-light;
 	padding-left: @side-spacing;
+	transition: margin-left @transition-duration ease;
+	max-width: 100%;
+	position: relative;
+	z-index: @z-index-main;
+	box-shadow: 0 0 7px -1px fade(@color-dark, 50%);
 
 	@media @_screen_sm {
 		padding-left: @side-spacing-sm;
+	}
+}
+
+&[data-active="resume"]{
+	#main {
+		margin-left: -100vw;
 	}
 }
