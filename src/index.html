@@ -181,20 +181,34 @@
 
 		<!-- Buchcafe Melange -->
 		<article class="project buchcafe-melange">
-			<h3 class="name">Buchcafe Melange</h3>
-			<span class="work">Design & Programming</span>
-			<a href="http://buchcafe-melange.com" target="_blank" class="goto"><span
-					class="fa fa-share"></span></a>
+			<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<defs>
+					<g id="stripes-buchcafe-melange">
+						<rect width="50" height="500" x="0" y="-50" transform="rotate(47 45,250)"></rect>
+						<rect width="50" height="500" x="55" y="-30" transform="rotate(47 45,250)"></rect>
+						<rect width="50" height="500" x="110" y="-90" transform="rotate(47 45,250)"></rect>
+					</g>
+
+					<rect x="100" y="100" width="600" height="300" id="bg-buchcafe-melange"></rect>
+
+					<mask id="mask-buchcafe-melange">
+						<use xlink:href="#bg-buchcafe-melange" fill="white" fill-opacity="0.6"></use>
+						<use xlink:href="#stripes-buchcafe-melange" x="300" y="0" fill="white"></use>
+					</mask>
+
+					<clipPath id="clippath-buchcafe-melange">
+						<use xlink:href="#bg-buchcafe-melange"></use>
+					</clipPath>
+				</defs>
+
+				<rect x="0" y="0" width="800" height="600" fill="black"
+				      clip-path="url(#clippath-buchcafe-melange)"></rect>
+
+				<image xlink:href="./img/buchcafe-melange-template.jpg" x="0" y="0" width="800" height="600"
+				       mask="url(#mask-buchcafe-melange)"></image>
+			</svg>
 		</article>
 		<!-- Buchcafe Melange -->
-
-		<!-- Haus Kamila -->
-		<article class="project haus-kamila">
-			<h3 class="name">Haus Kamila</h3>
-			<span class="work">Design & Programming</span>
-			<a href="https://kamila.at" target="_blank" class="goto"><span class="fa fa-share"></span></a>
-		</article>
-		<!-- / Haus Kamila -->
 
 	</section>
 	<!-- / PROJECTS -->
