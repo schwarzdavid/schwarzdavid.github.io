@@ -1,38 +1,50 @@
+//****************************************************
+// VARIABLES
+//****************************************************
+
+// SCREEN SIZES
 @screen-xs: 480px;
 @screen-sm: 768px;
 @screen-md: 992px;
 @screen-lg: 1180px;
 
-@side-spacing: 40px;
-@side-spacing-sm: 70px;
-
-@trigger-size: @side-spacing * 1.3;
-@trigger-size-sm: @side-spacing-sm;
-
-@transition-duration: .5s;
-
-@border-radius: 2px;
-
+// COLORS
 @color-dark: #1a1a1a;
 @color-light: #fff;
 @color-highlight: #ff6518;
 @color-gradient: linear-gradient(135deg, #FF9200 -30%, #FF004E 140%);
 
+// Z-INDEX
 @z-index-teaser: 1000;
 @z-index-main: 500;
 @z-index-resume: 10;
 
+// MARGIN/PADDING SIZE
+@side-spacing: 40px;
+@side-spacing-sm: 70px;
+
+// SQUARE BUTTON SIZE
+@trigger-size: @side-spacing * 1.3;
+@trigger-size-sm: @side-spacing-sm;
+
+// TRANSITION SETTINGS
+@transition-duration: .5s;
+
+// BORDER SETTINGS
+@border-radius: 2px;
+
+// SECTION SETTINGS
+@section-max-size: 1000px;
+
+//****************************************************
+// CONSTANTS
+//****************************************************
 @_screen_xs: ~"screen and (min-width: @{screen-xs})";
 @_screen_sm: ~"screen and (min-width: @{screen-sm})";
 @_screen_md: ~"screen and (min-width: @{screen-md})";
 @_screen_lg: ~"screen and (min-width: @{screen-lg})";
 @_screen_landscape: ~"(orientation: landscape)";
 
-@_section_size: ~"calc(100vw - @{side-spacing})";
-@_section_size_sm: ~"calc(100vw - @{side-spacing-sm})";
-
+// TODO: remove them
 @_resume_size: ~"calc(100% - 2 * @{side-spacing})";
 @_resume_size_sm: ~"calc(100% - 2 * @{side-spacing-sm})";
-
-@_addition_margin: ~"calc(-200vw + (2 * @{side-spacing}))";
-@_addition_margin-sm: ~"calc(-200vw + (2 * @{side-spacing-sm}))";

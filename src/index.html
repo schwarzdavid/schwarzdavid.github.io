@@ -179,37 +179,45 @@
 	<section id="projects">
 		<h1 class="title">My work</h1>
 
-		<!-- Buchcafe Melange -->
-		<article class="project buchcafe-melange">
-			<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-				<defs>
-					<g id="stripes-buchcafe-melange">
-						<rect width="50" height="500" x="0" y="-50" transform="rotate(47 45,250)"></rect>
-						<rect width="50" height="500" x="55" y="-30" transform="rotate(47 45,250)"></rect>
-						<rect width="50" height="500" x="110" y="-90" transform="rotate(47 45,250)"></rect>
-					</g>
+		<div class="project-wrapper">
 
-					<rect x="100" y="100" width="600" height="300" id="bg-buchcafe-melange"></rect>
+			<!-- Buchcafe Melange -->
+			<article class="project">
+				<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
+				     xmlns:xlink="http://www.w3.org/1999/xlink">
+					<defs>
+						<g id="stripes-buchcafe-melange" transform="rotate(50 -35,250)">
+							<rect width="70" height="500" x="-72" y="-50"></rect>
+							<rect width="70" height="500" x="0" y="0"></rect>
+							<rect width="70" height="500" x="72" y="50"></rect>
+						</g>
 
-					<mask id="mask-buchcafe-melange">
-						<use xlink:href="#bg-buchcafe-melange" fill="white" fill-opacity="0.6"></use>
-						<use xlink:href="#stripes-buchcafe-melange" x="300" y="0" fill="white"></use>
-					</mask>
+						<rect x="0" y="100" width="800" height="400" id="bg-buchcafe-melange"></rect>
 
-					<clipPath id="clippath-buchcafe-melange">
-						<use xlink:href="#bg-buchcafe-melange"></use>
-					</clipPath>
-				</defs>
+						<mask id="mask-buchcafe-melange">
+							<use xlink:href="#bg-buchcafe-melange" fill="white" fill-opacity="0.6"></use>
+							<use xlink:href="#stripes-buchcafe-melange" x="400" y="0" fill="white"></use>
+						</mask>
 
-				<rect x="0" y="0" width="800" height="600" fill="black"
-				      clip-path="url(#clippath-buchcafe-melange)"></rect>
+						<clipPath id="clippath-buchcafe-melange">
+							<use xlink:href="#bg-buchcafe-melange"></use>
+						</clipPath>
+					</defs>
 
-				<image xlink:href="./img/buchcafe-melange-template.jpg" x="0" y="0" width="800" height="600"
-				       mask="url(#mask-buchcafe-melange)"></image>
-			</svg>
-		</article>
-		<!-- Buchcafe Melange -->
+					<rect x="0" y="0" width="800" height="600" fill="black"
+					      clip-path="url(#clippath-buchcafe-melange)"></rect>
 
+					<image xlink:href="./img/buchcafe-melange-template.jpg" x="0" y="0" width="800" height="600"
+					       mask="url(#mask-buchcafe-melange)"></image>
+				</svg>
+				<div>
+					<h4>Buchcafe Melange</h4>
+					<span>Design, Coding, Wordpress</span>
+				</div>
+			</article>
+			<!-- Buchcafe Melange -->
+
+		</div>
 	</section>
 	<!-- / PROJECTS -->
 
