@@ -49,7 +49,7 @@
 	<!-- DEFAULT STYLES -->
 
 </head>
-<body data-active="teaser">
+<body data-active="">
 
 <!-- LANDING PAGE -->
 <section id="teaser">
@@ -179,6 +179,7 @@
 	<section id="projects">
 		<h1 class="title">My work</h1>
 
+		<!-- PROJECT SLIDER -->
 		<div class="project-wrapper">
 
 			<!-- Buchcafe Melange -->
@@ -210,14 +211,61 @@
 					<image xlink:href="./img/buchcafe-melange-template.jpg" x="0" y="0" width="800" height="600"
 					       mask="url(#mask-buchcafe-melange)"></image>
 				</svg>
-				<div>
-					<h4>Buchcafe Melange</h4>
-					<span>Design, Coding, Wordpress</span>
+				<div class="project-content">
+					<h4 class="title">Buchcafe Melange</h4>
+					<span class="services">Design, Coding, Wordpress</span>
 				</div>
 			</article>
-			<!-- Buchcafe Melange -->
+			<!-- / Buchcafe Melange -->
+
+			<!-- Haus Kamila -->
+			<article class="project">
+				<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
+				     xmlns:xlink="http://www.w3.org/1999/xlink">
+					<defs>
+						<g id="stripes-haus-kamila" transform="rotate(-20 -35,250)">
+							<rect width="70" height="500" x="-90" y="70"></rect>
+							<rect width="70" height="500" x="0" y="50"></rect>
+							<rect width="70" height="500" x="90" y="100"></rect>
+						</g>
+
+						<rect x="0" y="100" width="800" height="400" id="bg-haus-kamila"></rect>
+
+						<mask id="mask-haus-kamila">
+							<use xlink:href="#bg-haus-kamila" fill="white" fill-opacity="0.6"></use>
+							<use xlink:href="#stripes-haus-kamila" x="350" y="0" fill="white"></use>
+						</mask>
+
+						<clipPath id="clippath-haus-kamila">
+							<use xlink:href="#bg-haus-kamila"></use>
+						</clipPath>
+					</defs>
+
+					<rect x="0" y="0" width="800" height="600" fill="black"
+					      clip-path="url(#clippath-haus-kamila)"></rect>
+
+					<image xlink:href="./img/haus-kamila-template.jpg" x="0" y="0" width="800" height="600"
+					       mask="url(#mask-haus-kamila)"></image>
+				</svg>
+				<div class="project-content">
+					<h4 class="title">Haus Kamila</h4>
+					<span class="services">Design, Coding, CMS</span>
+				</div>
+			</article>
+			<!-- / Haus Kamila -->
 
 		</div>
+		<!-- / PROJECT SLIDER -->
+
+		<!-- PROJECT CONTROL -->
+		<div class="controls">
+			<ul>
+
+			</ul>
+		</div>
+		<!-- / PROJECT CONTROL -->
+
+
 	</section>
 	<!-- / PROJECTS -->
 

@@ -1,33 +1,96 @@
 (function () {
 	'use strict';
 
-	let activeTrigger = document.querySelectorAll('[data-target-active]');
-	let languages = document.querySelectorAll('#languages .lang canvas');
-	let body = document.body;
+	//********************************************
+	// CONSTANTS
+	//********************************************
+	const _cookieAcceptName = 'cookiesAccepted';
+	const _allowedPageNames = ['', 'teaser', 'resume'];
 
-	if (!window.localStorage.getItem('cookiesAccepted')) {
-		let cookieEl = document.querySelector('#cookies');
+	//********************************************
+	// SELECTORS
+	//********************************************
+	const cookieElement = document.querySelector('#cookies');
+	const triggerElements = document.querySelectorAll('[data-target-active]');
+	const circleCanvasElements = document.querySelectorAll('#languages .lang canvas');
+	const switchElement = document.body;
+	const menuSwitchElement = document.querySelector('#trigger');
 
-		cookieEl.style.display = 'block';
-		cookieEl.addEventListener('click', (e) => {
-			e.preventDefault();
-			window.localStorage.setItem('cookiesAccepted', 'yes');
-			cookieEl.style.display = 'none';
+	//********************************************
+	// REGISTER EVENT HANDLER
+	//********************************************
+	menuSwitchElement.addEventListener('click', onMenuSwitchClick);
+
+	//********************************************
+	// INITIALIZATION
+	//********************************************
+	init();
+
+	///////////////////////////////////////////////////////////////////////
+
+	//********************************************
+	// FUNCTIONS
+	//********************************************
+	function init(){
+		// Show console welcome message
+		console.info('You like to look under the hood? Check out the source code on github 😎\nhttps://github.com/schwarzdavid/schwarzdavid.rocks');
+
+		// Show cookie hint
+		if (!window.localStorage.getItem(_cookieAcceptName)) {
+			cookieElement.style.display = 'block';
+			cookieElement.addEventListener('click', (e) => {
+				e.preventDefault();
+				window.localStorage.setItem(_cookieAcceptName, true);
+				cookieElement.style.display = 'none';
+			});
+		}
+	}
+
+	function setCurrentPage(page) {
+		if(page && _allowedPageNames.indexOf(page) < 0){
+			throw new Error('Page not allowed');
+		}
+
+		requestAnimationFrame(() => {
+			switchElement.dataset.active = 'teaser';
 		});
 	}
 
-	document.querySelector('#trigger').addEventListener('click', () => {
-		if (body.dataset.active === 'teaser') {
-			delete body.dataset.active;
+	//********************************************
+	// EVENT HANDLER
+	//********************************************
+	function onMenuSwitchClick(e) {
+		if (switchElement.dataset.active === 'teaser') {
+			delete switchElement.dataset.active;
 			return;
 		}
 		requestAnimationFrame(() => {
-			body.dataset.active = 'teaser';
+			switchElement.dataset.active = 'teaser';
 		});
-	});
+	}
 
-	for (let i = 0; i < activeTrigger.length; i++) {
-		activeTrigger[i].addEventListener('click', (e) => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////// OLD CONTENT
+
+	for (let i = 0; i < triggerElements.length; i++) {
+		triggerElements[i].addEventListener('click', (e) => {
 			e.preventDefault();
 
 			let target = e.target.dataset.targetActive;
@@ -46,20 +109,20 @@
 			}
 
 			requestAnimationFrame(() => {
-				body.dataset.active = target;
+				switchElement.dataset.active = target;
 			});
 		});
 	}
 
-	for (let i = 0; i < languages.length; i++) {
-		let ctx = languages[i].getContext('2d');
-		let length = parseInt(window.getComputedStyle(languages[i]).width);
+	for (let i = 0; i < circleCanvasElements.length; i++) {
+		let ctx = circleCanvasElements[i].getContext('2d');
+		let length = parseInt(window.getComputedStyle(circleCanvasElements[i]).width);
 		let strokeWidth = 15;
 		let backgroundStroke = '#eaeaea';
 		let foregroundStroke = '#2c2c2c';
-		let value = parseInt(languages[i].dataset.value);
+		let value = parseInt(circleCanvasElements[i].dataset.value);
 
-		languages[i].width = languages[i].height = length;
+		circleCanvasElements[i].width = circleCanvasElements[i].height = length;
 
 		ctx.lineWidth = strokeWidth;
 
