@@ -41,7 +41,7 @@ const JS_MAIN_FILE = `${JS_SRC_DIR}/main.js`;
 const HTML_MAIN_SRC_FILE = `${SRC_DIR}/index.html`;
 
 // FILES TO INJECT
-const INJECT_CSS =`${CSS_DIR}/inject.css`;
+const INJECT_CSS = `${CSS_DIR}/inject.css`;
 const INJECT_LOGO = `${SRC_DIR}/img/resources/logo.svg`;
 
 //************************************************
@@ -57,6 +57,7 @@ function init() {
 		)
 	);
 }
+
 init();
 
 //************************************************

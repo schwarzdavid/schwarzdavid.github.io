@@ -8,6 +8,9 @@
 	const _allowedPageNames = {none: '', teaser: 'teaser', resume: 'resume'};
 	const _abandonedTitle = '❤ Come back ❤';
 	const _defaultTitle = document.title;
+	const _circleStrokeWith = 15;
+	const _circleBackgroundStroke = '#eaeaea';
+	const _circleForegroundStroke = '#2c2c2c';
 
 	//********************************************
 	// SELECTORS
@@ -51,10 +54,18 @@
 
 		// Redraw window-size-dependent elements
 		onWindowResize();
+
+		// Bind events to all trigger buttons
+		for (let i = 0; i < triggerElements.length; i++) {
+			triggerElements[i].addEventListener('click', (e) => {
+				e.preventDefault();
+				setCurrentPage(triggerElements[i].dataset.targetActive);
+			});
+		}
 	}
 
 	function setCurrentPage(page) {
-		if (page && _allowedPageNames.indexOf(page) < 0) {
+		if (page && _allowedPageNames.hasOwnProperty(page) < 0) {
 			throw new Error('Page not allowed');
 		}
 
@@ -66,24 +77,22 @@
 	function drawCanvasCircles() {
 		for (let i = 0; i < circleCanvasElements.length; i++) {
 			let ctx = circleCanvasElements[i].getContext('2d');
-			let length = parseInt(window.getComputedStyle(circleCanvasElements[i]).width);
-			let strokeWidth = 15;
-			let backgroundStroke = '#eaeaea';
-			let foregroundStroke = '#2c2c2c';
+			let size = parseInt(window.getComputedStyle(circleCanvasElements[i]).width);
 			let value = parseInt(circleCanvasElements[i].dataset.value);
 
-			circleCanvasElements[i].width = circleCanvasElements[i].height = length;
+			// TODO: check with firefox
+			circleCanvasElements[i].width = circleCanvasElements[i].height = size;
 
-			ctx.lineWidth = strokeWidth;
+			ctx.lineWidth = _circleStrokeWith;
 
 			ctx.beginPath();
-			ctx.strokeStyle = backgroundStroke;
-			ctx.arc(length / 2, length / 2, length / 2 - strokeWidth, 0, 2 * Math.PI);
+			ctx.strokeStyle = _circleBackgroundStroke;
+			ctx.arc(size / 2, size / 2, size / 2 - _circleStrokeWith, 0, 2 * Math.PI);
 			ctx.stroke();
 
 			ctx.beginPath();
-			ctx.strokeStyle = foregroundStroke;
-			ctx.arc(length / 2, length / 2, length / 2 - strokeWidth, -Math.PI / 2, 2 * Math.PI / 100 * value - Math.PI / 2);
+			ctx.strokeStyle = _circleForegroundStroke;
+			ctx.arc(size / 2, size / 2, size / 2 - _circleStrokeWith, -Math.PI / 2, 2 * Math.PI / 100 * value - Math.PI / 2);
 			ctx.stroke();
 		}
 	}
@@ -93,9 +102,9 @@
 	//********************************************
 	function onMenuSwitchClick() {
 		if (switchElement.dataset.active === _allowedPageNames.none) {
-			setCurrentPage(_allowedPageNames.none);
-		} else {
 			setCurrentPage(_allowedPageNames.teaser);
+		} else {
+			setCurrentPage(_allowedPageNames.none);
 		}
 	}
 
@@ -110,34 +119,4 @@
 	function onWindowResize() {
 		drawCanvasCircles();
 	}
-
-
-	////////////////////////////////////////////////////////////////////////////////////////////// OLD CONTENT
-
-	for (let i = 0; i < triggerElements.length; i++) {
-		triggerElements[i].addEventListener('click', (e) => {
-			e.preventDefault();
-
-			let target = e.target.dataset.targetActive;
-
-			if (typeof target !== 'string') {
-				for (let j = e.target; j = j.parentElement;) {
-					if (j.dataset.hasOwnProperty('targetActive')) {
-						target = j.dataset.targetActive;
-						break;
-					}
-				}
-			}
-
-			if (typeof target !== 'string') {
-				throw new Error("cannot find target attribute");
-			}
-
-			requestAnimationFrame(() => {
-				switchElement.dataset.active = target;
-			});
-		});
-	}
-
-
 }());
