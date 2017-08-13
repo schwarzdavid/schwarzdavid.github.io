@@ -10,6 +10,9 @@
 		flex-wrap: nowrap;
 		width: ~"calc(100% + @{side-spacing})";
 		margin-left: -@side-spacing / 2;
+		transition: transform @transition-duration ease;
+		transform-style: preserve-3d;
+		will-change: transform;
 
 		@media @_screen_sm {
 			width: ~"calc(100% + @{side-spacing-sm})";
@@ -25,6 +28,8 @@
 			transform: scale(.8);
 			cursor: pointer;
 			padding: 0 @side-spacing/2;
+			transition: transform @transition-duration ease;
+			transform-style: preserve-3d;
 
 			@media @_screen_sm {
 				padding-left: @side-spacing-sm/2;

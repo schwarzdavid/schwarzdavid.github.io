@@ -20,6 +20,7 @@
 	const circleCanvasElements = document.querySelectorAll('#languages .lang canvas');
 	const switchElement = document.body;
 	const menuSwitchElement = document.querySelector('#trigger');
+	const projectsElement = document.querySelectorAll('#projects .project');
 
 	//********************************************
 	// REGISTER EVENT HANDLER
@@ -57,11 +58,37 @@
 
 		// Bind events to all trigger buttons
 		for (let i = 0; i < triggerElements.length; i++) {
-			triggerElements[i].addEventListener('click', (e) => {
+			const el = triggerElements[i];
+
+			el.addEventListener('click', (e) => {
 				e.preventDefault();
-				setCurrentPage(triggerElements[i].dataset.targetActive);
+				setCurrentPage(el.dataset.targetActive);
 			});
 		}
+
+		// Bind events to projects
+		for (let i = 0; i < projectsElement.length; i++) {
+			const el = projectsElement[i];
+			const wrapper = el.parentElement;
+			const siblings = Array.prototype.slice.call(wrapper.children, 0);
+			const position = siblings.indexOf(el);
+
+			el.addEventListener('click', () => {
+				if(el.classList.contains('active')){
+					return;
+				}
+
+				requestAnimationFrame(() => {
+					for(let sibling of siblings){
+						sibling.classList.remove('active');
+					}
+
+					wrapper.style.transform = `translateX(-${position * 100}%)`;
+					el.classList.add('active');
+				});
+			});
+		}
+
 	}
 
 	function setCurrentPage(page) {
