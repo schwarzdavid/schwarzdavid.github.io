@@ -6,6 +6,9 @@
 	z-index: @z-index-resume;
 	top: 0;
 	left: 0;
+	transform: translateX(100%);
+	transition: transform @transition-duration ease;
+	transform-style: preserve-3d;
 
 	& > button {
 		display: block;
@@ -442,5 +445,11 @@
 
 			}
 		}
+	}
+}
+
+&[data-active='resume'] {
+	#resume {
+		transform: none;
 	}
 }

@@ -20,7 +20,8 @@ body {
 	font-family: 'Raleway', 'Segoe UI', 'Open Sans', Helvetica, Arial, sans-serif;
 	color: @color-dark;
 
-	&[data-active="teaser"]{
+	&[data-active="teaser"],
+	&[data-active="resume"]{
 		overflow-y: hidden;
 	}
 }
@@ -60,4 +61,9 @@ p {
 
 .notransition {
 	transition: none !important;
+}
+
+// FIX FOR TRANSITION
+#resume {
+	transform: translateX(100%);
 }
