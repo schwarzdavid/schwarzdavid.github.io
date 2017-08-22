@@ -1,4 +1,4 @@
-(function () {
+(function (win) {
 	'use strict';
 
 	//********************************************
@@ -21,6 +21,7 @@
 	const switchElement = document.body;
 	const menuSwitchElement = document.querySelector('#trigger');
 	const projectsElement = document.querySelectorAll('#projects .project');
+	const mapElement = document.querySelector('#map');
 
 	//********************************************
 	// REGISTER EVENT HANDLER
@@ -28,6 +29,11 @@
 	menuSwitchElement.addEventListener('click', onMenuSwitchClick);
 	document.addEventListener('visibilitychange', onWindowVisibilityChange);
 	window.addEventListener('resize', onWindowResize);
+
+	//********************************************
+	// EXPORTS
+	//********************************************
+	win.initMap = initMap;
 
 	//********************************************
 	// INITIALIZATION
@@ -74,12 +80,12 @@
 			const position = siblings.indexOf(el);
 
 			el.addEventListener('click', () => {
-				if(el.classList.contains('active')){
+				if (el.classList.contains('active')) {
 					return;
 				}
 
 				requestAnimationFrame(() => {
-					for(let sibling of siblings){
+					for (let sibling of siblings) {
 						sibling.classList.remove('active');
 					}
 
@@ -124,6 +130,42 @@
 		}
 	}
 
+	function initMap() {
+		let markerPosition = {
+			lat: 48.202765,
+			lng: 16.303881
+		};
+
+		let mapPosition = {
+			lat: markerPosition.lat - 0.007,
+			lng: markerPosition.lng
+		};
+
+		let map = new google.maps.Map(mapElement, {
+			center: mapPosition,
+			zoom: 13,
+			clickableIcons: false,
+			disableDefaultUI: true,
+			keyboardShortcuts: false,
+			zoomControl: false,
+			scrollwheel: false,
+			styles: [{
+				"stylers": [{
+					"hue": "#000000"
+				}, {
+					saturation: -110
+				}, {
+					gamma: 1.7
+				}]
+			}]
+		});
+
+		let marker = new google.maps.Marker({
+			position: markerPosition,
+			map: map
+		});
+	}
+
 	//********************************************
 	// EVENT HANDLER
 	//********************************************
@@ -146,4 +188,4 @@
 	function onWindowResize() {
 		drawCanvasCircles();
 	}
-}());
+}(window));
