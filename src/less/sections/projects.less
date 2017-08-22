@@ -1,8 +1,37 @@
+@import "../mixins";
+
 #main #projects {
 	padding: @side-spacing;
 	max-width: @section-max-size;
 	margin-left: auto;
 	margin-right: auto;
+	position: relative;
+
+	@media @_screen_sm {
+		padding: @side-spacing-sm;
+	}
+
+	.title {
+		h1 {
+			font-weight: 300;
+			font-size: 2.5rem;
+		}
+
+		h4 {
+			.noselect;
+
+			top: 30px;
+			left: 50%;
+			transform: translateX(-50%);
+			margin: 0;
+			font-size: 7rem;
+			position: absolute;
+			white-space: nowrap;
+			color: @color-light;
+			text-shadow: 0 0 100px fade(@color-dark, 15%);
+			z-index: -1;
+		}
+	}
 
 	.project-wrapper {
 		display: flex;
@@ -20,6 +49,8 @@
 		}
 
 		.project {
+			.noselect;
+
 			position: relative;
 			display: block;
 			width: 100%;
