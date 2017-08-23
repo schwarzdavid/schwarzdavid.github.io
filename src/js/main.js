@@ -11,22 +11,25 @@
 	const _circleStrokeWith = 15;
 	const _circleBackgroundStroke = '#eaeaea';
 	const _circleForegroundStroke = '#2c2c2c';
+	const _projectActiveClass = 'active';
+	const _inputFilledClass = 'filled';
 
 	//********************************************
 	// SELECTORS
 	//********************************************
-	const cookieElement = document.querySelector('#cookies');
-	const triggerElements = document.querySelectorAll('[data-target-active]');
-	const circleCanvasElements = document.querySelectorAll('#languages .lang canvas');
-	const switchElement = document.body;
-	const menuSwitchElement = document.querySelector('#trigger');
-	const projectsElement = document.querySelectorAll('#projects .project');
-	const mapElement = document.querySelector('#map');
+	const elCookieHint = document.querySelector('#cookies');
+	const elSwitch = document.body;
+	const elMenuSwitch = document.querySelector('#trigger');
+	const elMap = document.querySelector('#map');
+	const elsTriggers = document.querySelectorAll('[data-target-active]');
+	const elsCircleCanvas = document.querySelectorAll('#languages .lang canvas');
+	const elsProjects = document.querySelectorAll('#projects .project');
+	const elsInput = document.querySelectorAll('#contact input, #contact textarea');
 
 	//********************************************
 	// REGISTER EVENT HANDLER
 	//********************************************
-	menuSwitchElement.addEventListener('click', onMenuSwitchClick);
+	elMenuSwitch.addEventListener('click', onMenuSwitchClick);
 	document.addEventListener('visibilitychange', onWindowVisibilityChange);
 	window.addEventListener('resize', onWindowResize);
 
@@ -51,11 +54,11 @@
 
 		// Show cookie hint
 		if (!window.localStorage.getItem(_cookieAcceptName)) {
-			cookieElement.style.display = 'block';
-			cookieElement.addEventListener('click', (e) => {
+			elCookieHint.style.display = 'block';
+			elCookieHint.addEventListener('click', (e) => {
 				e.preventDefault();
 				window.localStorage.setItem(_cookieAcceptName, true);
-				cookieElement.style.display = 'none';
+				elCookieHint.style.display = 'none';
 			});
 		}
 
@@ -63,8 +66,8 @@
 		onWindowResize();
 
 		// Bind events to all trigger buttons
-		for (let i = 0; i < triggerElements.length; i++) {
-			const el = triggerElements[i];
+		for (let i = 0; i < elsTriggers.length; i++) {
+			const el = elsTriggers[i];
 
 			el.addEventListener('click', (e) => {
 				e.preventDefault();
@@ -73,28 +76,41 @@
 		}
 
 		// Bind events to projects
-		for (let i = 0; i < projectsElement.length; i++) {
-			const el = projectsElement[i];
+		for (let i = 0; i < elsProjects.length; i++) {
+			const el = elsProjects[i];
 			const wrapper = el.parentElement;
 			const siblings = Array.prototype.slice.call(wrapper.children, 0);
 			const position = siblings.indexOf(el);
 
 			el.addEventListener('click', () => {
-				if (el.classList.contains('active')) {
+				if (el.classList.contains(_projectActiveClass)) {
 					return;
 				}
 
 				requestAnimationFrame(() => {
 					for (let sibling of siblings) {
-						sibling.classList.remove('active');
+						sibling.classList.remove(_projectActiveClass);
 					}
 
 					wrapper.style.transform = `translateX(-${position * 100}%)`;
-					el.classList.add('active');
+					el.classList.add(_projectActiveClass);
 				});
 			});
 		}
 
+		// Bind events to inputs
+		for(let i = 0; i < elsInput.length; i++){
+			const el = elsInput[i];
+
+			el.addEventListener('keyup', () => {
+				requestAnimationFrame(() => {
+					if (el.value) {
+						return el.classList.add(_inputFilledClass);
+					}
+					el.classList.remove(_inputFilledClass);
+				});
+			});
+		}
 	}
 
 	function setCurrentPage(page) {
@@ -103,18 +119,18 @@
 		}
 
 		requestAnimationFrame(() => {
-			switchElement.dataset.active = page;
+			elSwitch.dataset.active = page;
 		});
 	}
 
 	function drawCanvasCircles() {
-		for (let i = 0; i < circleCanvasElements.length; i++) {
-			let ctx = circleCanvasElements[i].getContext('2d');
-			let size = parseInt(window.getComputedStyle(circleCanvasElements[i]).width);
-			let value = parseInt(circleCanvasElements[i].dataset.value);
+		for (let i = 0; i < elsCircleCanvas.length; i++) {
+			let ctx = elsCircleCanvas[i].getContext('2d');
+			let size = parseInt(window.getComputedStyle(elsCircleCanvas[i]).width);
+			let value = parseInt(elsCircleCanvas[i].dataset.value);
 
 			// TODO: check with firefox
-			circleCanvasElements[i].width = circleCanvasElements[i].height = size;
+			elsCircleCanvas[i].width = elsCircleCanvas[i].height = size;
 
 			ctx.lineWidth = _circleStrokeWith;
 
@@ -137,11 +153,11 @@
 		};
 
 		let mapPosition = {
-			lat: markerPosition.lat - 0.007,
+			lat: markerPosition.lat - 0.005,
 			lng: markerPosition.lng
 		};
 
-		let map = new google.maps.Map(mapElement, {
+		let map = new google.maps.Map(elMap, {
 			center: mapPosition,
 			zoom: 13,
 			clickableIcons: false,
@@ -170,7 +186,7 @@
 	// EVENT HANDLER
 	//********************************************
 	function onMenuSwitchClick() {
-		if (switchElement.dataset.active === _allowedPageNames.none) {
+		if (elSwitch.dataset.active === _allowedPageNames.none) {
 			setCurrentPage(_allowedPageNames.teaser);
 		} else {
 			setCurrentPage(_allowedPageNames.none);
