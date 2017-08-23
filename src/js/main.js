@@ -159,7 +159,7 @@
 
 		let map = new google.maps.Map(elMap, {
 			center: mapPosition,
-			zoom: 13,
+			zoom: 11,
 			clickableIcons: false,
 			disableDefaultUI: true,
 			keyboardShortcuts: false,
