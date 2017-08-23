@@ -4,15 +4,16 @@
 	//********************************************
 	// CONSTANTS
 	//********************************************
-	const _cookieAcceptName = 'cookiesAccepted';
-	const _allowedPageNames = {none: '', teaser: 'teaser', resume: 'resume'};
 	const _abandonedTitle = '❤ Come back ❤';
-	const _defaultTitle = document.title;
-	const _circleStrokeWith = 15;
+	const _allowedPageNames = {none: '', teaser: 'teaser', resume: 'resume'};
+	const _cookieAcceptName = 'cookiesAccepted';
 	const _circleBackgroundStroke = '#eaeaea';
 	const _circleForegroundStroke = '#2c2c2c';
-	const _projectActiveClass = 'active';
+	const _circleStrokeWith = 15;
+	const _defaultTitle = document.title;
 	const _inputFilledClass = 'filled';
+	const _invertMeClass = 'invertMe';
+	const _projectActiveClass = 'active';
 
 	//********************************************
 	// SELECTORS
@@ -25,6 +26,7 @@
 	const elsCircleCanvas = document.querySelectorAll('#languages .lang canvas');
 	const elsProjects = document.querySelectorAll('#projects .project');
 	const elsInput = document.querySelectorAll('#contact input, #contact textarea');
+	const elsSensible = document.querySelectorAll(`a.${_invertMeClass}`);
 
 	//********************************************
 	// REGISTER EVENT HANDLER
@@ -110,6 +112,20 @@
 					el.classList.remove(_inputFilledClass);
 				});
 			});
+		}
+
+		// Inverts content
+		for(let i = 0; i < elsSensible.length; i++){
+			const el = elsSensible[i];
+			let invertedText = el.textContent.split('').reverse().join('');
+
+			el.textContent = invertedText;
+			el.classList.remove(_invertMeClass);
+
+			if(el.nodeName === 'A'){
+				let prefix = el.href.split('#')[1];
+				el.href = (prefix ? prefix + ':' : '') + invertedText;
+			}
 		}
 	}
 
