@@ -4,13 +4,11 @@
 	//********************************************
 	// CONSTANTS
 	//********************************************
-	const _abandonedTitle = '❤ Come back ❤';
 	const _allowedPageNames = {none: '', teaser: 'teaser', resume: 'resume'};
 	const _cookieAcceptName = 'cookiesAccepted';
 	const _circleBackgroundStroke = '#eaeaea';
 	const _circleForegroundStroke = '#2c2c2c';
 	const _circleStrokeWith = 15;
-	const _defaultTitle = document.title;
 	const _inputFilledClass = 'filled';
 	const _invertMeClass = 'invertMe';
 	const _projectActiveClass = 'active';
@@ -32,7 +30,6 @@
 	// REGISTER EVENT HANDLER
 	//********************************************
 	elMenuSwitch.addEventListener('click', onMenuSwitchClick);
-	document.addEventListener('visibilitychange', onWindowVisibilityChange);
 	window.addEventListener('resize', onWindowResize);
 
 	//********************************************
@@ -206,14 +203,6 @@
 			setCurrentPage(_allowedPageNames.teaser);
 		} else {
 			setCurrentPage(_allowedPageNames.none);
-		}
-	}
-
-	function onWindowVisibilityChange() {
-		if (!document.hidden) {
-			document.title = _defaultTitle;
-		} else {
-			document.title = _abandonedTitle;
 		}
 	}
 

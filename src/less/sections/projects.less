@@ -32,8 +32,7 @@
 			z-index: -1;
 		}
 	}
-
-	.project-wrapper {
+	.project-slider {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
@@ -56,11 +55,8 @@
 			width: 100%;
 			flex-shrink: 0;
 			margin: 0;
-			transform: scale(.8);
-			cursor: pointer;
+			cursor: url('../img/cursor_left.png'), pointer;
 			padding: 0 @side-spacing/2;
-			transition: transform @transition-duration ease;
-			transform-style: preserve-3d;
 
 			@media @_screen_sm {
 				padding-left: @side-spacing-sm/2;
@@ -68,53 +64,63 @@
 			}
 
 			&.active {
-				transform: none;
-			}
+				cursor: url('../img/cursor_glass.png'), pointer;
 
-			.project-content {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				text-align: center;
-
-				.title {
-					color: @color-light;
-					font-size: 1.4rem;
-					font-weight: 400;
-					margin-top: 0;
-					margin-bottom: 15px;
-					text-shadow: 3px 3px @color-dark;
-
-					@media @_screen_xs {
-						font-size: 2rem;
-						margin-bottom: 30px;
-					}
-
-					@media @_screen_md {
-						font-size: 2.4rem;
-					}
+				& ~ .project {
+					cursor: url('../img/cursor_right.png'), pointer;
 				}
 
-				.services {
-					background: @color-gradient;
-					font-size: .8rem;
-					color: @color-light;
-					padding: 3px 6px;
-					font-weight: 400;
-					text-shadow: 1px 1px fade(@color-dark, 50%);
-					white-space: nowrap;
+				.project-wrapper {
+					transform: none;
+				}
+			}
 
-					@media @_screen_xs {
-						font-size: .9rem;
-						padding: 5px 10px;
+			.project-wrapper {
+				transition: transform @transition-duration ease;
+				transform-style: preserve-3d;
+				transform: scale(.8);
+
+				.project-content {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					text-align: center;
+
+					.title {
+						color: @color-light;
+						font-size: 1.4rem;
+						font-weight: 400;
+						margin-top: 0;
+						margin-bottom: 15px;
+						text-shadow: 3px 3px @color-dark;
+
+						@media @_screen_xs {
+							font-size: 2rem;
+							margin-bottom: 30px;
+						}
+
+						@media @_screen_md {
+							font-size: 2.4rem;
+						}
+					}
+
+					.services {
+						background: @color-gradient;
+						font-size: .8rem;
+						color: @color-light;
+						padding: 3px 6px;
+						font-weight: 400;
+						text-shadow: 1px 1px fade(@color-dark, 50%);
+						white-space: nowrap;
+
+						@media @_screen_xs {
+							font-size: .9rem;
+							padding: 5px 10px;
+						}
 					}
 				}
 			}
 		}
-	}
-
-	.controls {
-		display: none;
 	}
 }
