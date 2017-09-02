@@ -6,8 +6,7 @@
 	align-items: flex-start;
 	top: 0;
 	left: 0;
-	transform: translateX(~"calc(-100% + @{side-spacing})");
-	transform-style: preserve-3d;
+	transform: translate3d(~"calc(-100% + @{side-spacing})", 0, 0);
 	height: 100%;
 	width: 100%;
 	background: @color-dark;
@@ -17,7 +16,7 @@
 
 	@media @_screen_sm {
 		padding-right: @side-spacing-sm;
-		transform: translateX(~"calc(-100% + @{side-spacing-sm})");
+		transform: translate3d(~"calc(-100% + @{side-spacing-sm})", 0, 0);
 	}
 
 	@media @_screen_landscape, @_screen_lg {
@@ -51,7 +50,7 @@
 			width: 100%;
 			top: 50%;
 			position: absolute;
-			transform: translateY(-50%);
+			transform: translate3d(0, -50%, 0);
 
 			@media @_screen_landscape {
 				margin-top: 0;
@@ -134,7 +133,7 @@
 				font-size: .6rem;
 				top: 100%;
 				left: 50%;
-				transform: translateX(-50%);
+				transform: translate3d(-50%, 0, 0);
 				font-weight: 300;
 				margin-top: 10px;
 
@@ -145,6 +144,16 @@
 						display: none;
 					}
 				}
+			}
+
+			#ie {
+				color: @color-light;
+				max-width: 50%;
+				text-align: center;
+				text-shadow: 0 0 10px @color-highlight;
+				margin-left: auto;
+				margin-right: auto;
+				display: none;
 			}
 		}
 	}
@@ -199,7 +208,7 @@
 		}
 	}
 
-	#trigger {
+	button[data-menu-switch] {
 		display: block;
 		position: absolute;
 		bottom: @side-spacing;
@@ -230,7 +239,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			transform: translateX(-50%);
+			transform: translate3d(-50%, 0, 0);
 			transition: margin-left @transition-duration ease;
 			will-change: margin-left;
 
@@ -250,12 +259,12 @@
 
 			&:after {
 				top: 4px;
-				transform: rotateZ(45deg);
+				transform: rotate3d(0, 0, 1, 45deg);
 			}
 
 			&:before {
 				top: -4px;
-				transform: rotateZ(-45deg);
+				transform: rotate3d(0, 0, 1, -45deg);
 			}
 		}
 	}
@@ -269,7 +278,7 @@
 			background: lighten(@color-dark, 2%);
 		}
 
-		#trigger {
+		button[data-menu-switch] {
 			right: @trigger-size / 2;
 
 			@media @_screen_sm {
@@ -280,11 +289,11 @@
 				margin-left: 2px;
 
 				&:after {
-					transform: rotateZ(-45deg);
+					transform: rotate3d(0,0,1,-45deg);
 				}
 
 				&:before {
-					transform: rotateZ(45deg);
+					transform: rotate3d(0,0,1,45deg);
 				}
 			}
 		}

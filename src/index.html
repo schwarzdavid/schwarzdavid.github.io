@@ -60,9 +60,9 @@
 
 	<!-- DEFAULT STYLES -->
 	<noscript id="deferred-styles">
-		<link type="text/css" rel="stylesheet" href="css/main.css">
 		<link type="text/css" rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600">
+		<link type="text/css" rel="stylesheet" href="css/main.css">
 	</noscript>
 	<!-- DEFAULT STYLES -->
 
@@ -124,6 +124,13 @@
 			</div>
 			<!-- / COOKIE HINT -->
 
+			<!-- OLD BROWSER HINT -->
+			<div id="ie">
+				<p>You are using Internet Explorer or any other antique browser. You might experience some malfunctions
+					while visiting this website.</p>
+			</div>
+			<!-- / OLD BROWSER HINT -->
+
 		</div>
 	</div>
 	<!-- / CENTER CONTENT -->
@@ -131,15 +138,15 @@
 	<!-- BOTTOM/SIDE NAVIGATION -->
 	<nav class="nav">
 		<ul>
-			<li><a href="#">about me</a></li>
-			<li><a href="#">projects</a></li>
-			<li><a href="#">contact me</a></li>
+			<li><a href="#about" data-target="#about">about me</a></li>
+			<li><a href="#" data-target="#about">projects</a></li>
+			<li><a href="#" data-target="#contact">contact me</a></li>
 		</ul>
 	</nav>
 	<!-- / BOTTOM/SIDE NAVIGATION -->
 
 	<!-- SWITCH BUTTON -->
-	<button type="button" id="trigger" aria-label="Show page"><span>&nbsp;</span></button>
+	<button type="button" class="trigger" data-menu-switch aria-label="Show page"><span>&nbsp;</span></button>
 	<!-- / SWITCH BUTTON -->
 
 </section>
@@ -159,7 +166,7 @@
 				<source srcset="./img/me.jpg" type="image/jpeg">
 				<img src="img/me.jpg" alt="me" draggable="false">
 			</picture>
-			<a href="#resume" id="resume-trigger" data-target-active="resume">
+			<a href="#resume" id="resume-trigger" data-resume-switch>
 				<span class="rotate">resume / cv</span><span class="fa fa-long-arrow-right"></span>
 			</a>
 		</div>
@@ -404,12 +411,12 @@
 
 					<div class="contact">
 						<strong><span class="fa fa-phone"></span><span>Phone</span></strong>
-						<a href="#tel" target="_blank" class="invertMe">0330421 876 )0( 34+</a>
+						<a href="#tel" target="_blank" class="invertMe" rel="noopener">0330421 876 )0( 34+</a>
 					</div>
 
 					<div class="contact">
 						<strong><span class="fa fa-envelope"></span><span>E-Mail</span></strong>
-						<a href="#mailto" target="_blank" class="invertMe">moc.liamg@01divad.zrawhcs</a>
+						<a href="#mailto" target="_blank" class="invertMe" rel="noopener">moc.liamg@01divad.zrawhcs</a>
 					</div>
 				</div>
 			</div>
@@ -434,8 +441,7 @@
 <section id="resume">
 
 	<!-- ACTION BUTTONS -->
-	<button type="button" class="back" data-target-active aria-label="Back to page"><span>&nbsp;</span></button>
-	<button type="button" class="menu" data-target-active="teaser" aria-label="Show menu"><span>&nbsp;</span></button>
+	<button type="button" class="back" data-resume-switch aria-label="Back to page"><span>&nbsp;</span></button>
 	<!-- / ACTION BUTTONS -->
 
 	<!-- SCROLL CONTAINER -->

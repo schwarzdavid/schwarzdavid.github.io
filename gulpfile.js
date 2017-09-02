@@ -18,6 +18,7 @@ const gulp_uglify = require('gulp-uglify');
 const gulp_inject = require('gulp-inject');
 const gulp_webp = require('gulp-webp');
 const gulp_filter = require('gulp-filter');
+const gulp_concat = require('gulp-concat');
 
 //************************************************
 // CONSTANTS
@@ -40,7 +41,8 @@ const ASSET_PATTERN = `${SRC_DIR}/*.{xml,json,txt}`;
 const LESS_FILES = `${LESS_DIR}/**/*.less`;
 const LESS_MAIN_FILE = `${LESS_DIR}/main.less`;
 const LESS_INLINE_FILE = `${LESS_DIR}/inject.less`;
-const JS_MAIN_FILE = `${JS_SRC_DIR}/main.js`;
+const JS_FILES = `${JS_SRC_DIR}/**/*.js`;
+const JS_DIST_FILE = `main.js`;
 const HTML_MAIN_SRC_FILE = `${SRC_DIR}/index.html`;
 
 // FILES TO INJECT
@@ -67,8 +69,9 @@ init();
 // TASK HANDLER FOR JS
 //************************************************
 function buildJs() {
-	return gulp.src(JS_MAIN_FILE)
+	return gulp.src(JS_FILES)
 		.pipe(gulp_sourcemaps.init())
+		.pipe(gulp_concat(JS_DIST_FILE))
 		.pipe(gulp_babel({presets: ['es2015']}))
 		.pipe(gulp_uglify())
 		.pipe(gulp_sourcemaps.write('./'))
@@ -146,7 +149,7 @@ function watcherChangeEvent(e) {
 
 function watch() {
 	let watcher_js;
-	watcher_js = gulp.watch(JS_MAIN_FILE, ['build:js']);
+	watcher_js = gulp.watch(JS_FILES, ['build:js']);
 	watcher_js.on('change', watcherChangeEvent);
 
 	let watcher_less;
