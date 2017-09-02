@@ -2,11 +2,12 @@
 // NPM DEPENDENCIES
 //************************************************
 const chalk = require('chalk');
+const gulp = require('gulp');
+const imagemin_jpeg_recompress = require('imagemin-jpeg-recompress');
 
 //************************************************
 // LOAD GULP DEPENDENCIES
 //************************************************
-const gulp = require('gulp');
 const gulp_babel = require('gulp-babel');
 const gulp_clean_css = require('gulp-clean-css');
 const gulp_htmlmin = require('gulp-htmlmin');
@@ -15,6 +16,8 @@ const gulp_less = require('gulp-less');
 const gulp_sourcemaps = require('gulp-sourcemaps');
 const gulp_uglify = require('gulp-uglify');
 const gulp_inject = require('gulp-inject');
+const gulp_webp = require('gulp-webp');
+const gulp_filter = require('gulp-filter');
 
 //************************************************
 // CONSTANTS
@@ -89,7 +92,19 @@ function buildLess() {
 //************************************************
 function buildImg() {
 	return gulp.src(IMG_SRC_PATTERN)
-		.pipe(gulp_imagemin())
+		.pipe(gulp_imagemin([
+			gulp_imagemin.optipng(),
+			imagemin_jpeg_recompress({
+				loops: 6,
+				min: 60,
+				quality: 'veryhigh'
+			})
+		], {
+			progressive: true
+		}))
+		.pipe(gulp.dest(IMG_DIST_DIR))
+		.pipe(gulp_filter(['*/img/**/*.jpg']))
+		.pipe(gulp_webp())
 		.pipe(gulp.dest(IMG_DIST_DIR));
 }
 

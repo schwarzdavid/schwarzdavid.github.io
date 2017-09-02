@@ -154,7 +154,11 @@
 			Austria.</h1>
 
 		<div class="picture">
-			<img src="img/me.jpg" alt="me" draggable="false">
+			<picture>
+				<source srcset="./img/me.webp" type="image/webp">
+				<source srcset="./img/me.jpg" type="image/jpeg">
+				<img src="img/me.jpg" alt="me" draggable="false">
+			</picture>
 			<a href="#resume" id="resume-trigger" data-target-active="resume">
 				<span class="rotate">resume / cv</span><span class="fa fa-long-arrow-right"></span>
 			</a>
@@ -237,8 +241,16 @@
 							<rect x="0" y="0" width="800" height="600" fill="black"
 							      clip-path="url(#clippath-buchcafe-melange)"></rect>
 
-							<image xlink:href="./img/buchcafe-melange-template.jpg" x="0" y="0" width="800" height="600"
-							       mask="url(#mask-buchcafe-melange)"></image>
+							<!--<image xlink:href="./img/buchcafe-melange-template.jpg" x="0" y="0" width="800" height="600"
+							       mask="url(#mask-buchcafe-melange)"></image>-->
+
+							<foreignObject width="800" height="600" x="0" y="0" mask="url(#mask-buchcafe-melange)">
+								<picture>
+									<source srcset="./img/buchcafe-melange-template.webp" type="image/webp">
+									<source srcset="./img/buchcafe-melange-template.jpg" type="image/jpeg">
+									<img src="./img/buchcafe-melange-template.jpg" alt="buchcafe melange teaserpicture">
+								</picture>
+							</foreignObject>
 						</svg>
 						<div class="project-content">
 							<h4 class="title">Buchcafe Melange</h4>
@@ -275,8 +287,16 @@
 							<rect x="0" y="0" width="800" height="600" fill="black"
 							      clip-path="url(#clippath-haus-kamila)"></rect>
 
-							<image xlink:href="./img/haus-kamila-template.jpg" x="0" y="0" width="800" height="600"
-							       mask="url(#mask-haus-kamila)"></image>
+							<!--<image xlink:href="./img/haus-kamila-template.jpg" x="0" y="0" width="800" height="600"
+							       mask="url(#mask-haus-kamila)"></image>-->
+
+							<foreignObject width="800" height="600" x="0" y="0" mask="url(#mask-buchcafe-melange)">
+								<picture>
+									<source srcset="./img/haus-kamila-template.webp" type="image/webp">
+									<source srcset="./img/haus-kamila-template.jpg" type="image/jpeg">
+									<img src="./img/haus-kamila-template.jpg" alt="haus kamila teaserpicture">
+								</picture>
+							</foreignObject>
 						</svg>
 						<div class="project-content">
 							<h4 class="title">Haus Kamila</h4>
@@ -313,8 +333,16 @@
 							<rect x="0" y="0" width="800" height="600" fill="black"
 							      clip-path="url(#clippath-haus-kamila)"></rect>
 
-							<image xlink:href="./img/haus-kamila-template.jpg" x="0" y="0" width="800" height="600"
-							       mask="url(#mask-haus-kamila)"></image>
+							<!--<image xlink:href="./img/haus-kamila-template.jpg" x="0" y="0" width="800" height="600"
+							       mask="url(#mask-haus-kamila)"></image>-->
+
+							<foreignObject width="800" height="600" x="0" y="0" mask="url(#mask-buchcafe-melange)">
+								<picture>
+									<source srcset="./img/haus-kamila-template.webp" type="image/webp">
+									<source srcset="./img/haus-kamila-template.jpg" type="image/jpeg">
+									<img src="./img/haus-kamila-template.jpg" alt="haus kamila teaserpicture">
+								</picture>
+							</foreignObject>
 						</svg>
 						<div class="project-content">
 							<h4 class="title">Haus Kamila</h4>
