@@ -38,6 +38,7 @@
 			let ctx = circle.getContext('2d');
 			let size = parseInt(window.getComputedStyle(circle).width);
 			let value = parseInt(circle.dataset.value);
+			let pixelRatio = window.devicePixelRatio;
 
 			circle.width = size;
 			circle.height = size;
@@ -53,6 +54,8 @@
 			ctx.strokeStyle = CIRCLE_FOREGROUND_STROKE;
 			ctx.arc(size / 2, size / 2, size / 2 - CIRCLE_STROKE_WIDTH, -Math.PI / 2, 2 * Math.PI / 100 * value - Math.PI / 2);
 			ctx.stroke();
+
+			ctx.scale(pixelRatio, pixelRatio);
 		});
 	}
 

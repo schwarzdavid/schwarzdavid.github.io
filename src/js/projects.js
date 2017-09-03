@@ -10,7 +10,8 @@
 	// VARIABLES
 	//********************************************
 	let touchMoveVector;
-	let tocuhStartPosition;
+	let touchStartPosition;
+	let lastTouchPosition;
 	let activeProjectIndex;
 
 	//********************************************
@@ -61,11 +62,27 @@
 	// EVENT HANDLER
 	//********************************************
 	function onContainerTouchStart(e){
-		console.log(e);
+		if(e.touches.length > 1){
+			return;
+		}
+
+		let touch = e.touches[0];
+
+		touchStartPosition = {
+			x: touch.screenX,
+			y: touch.screenY
+		};
 	}
 
 	function onContainerTouchMove(e) {
+		e.preventDefault();
 
+		let touch = e.touches[0];
+
+		lastTouchPosition = {
+			x: touch.screenX,
+			y: touch.screenY
+		};
 	}
 
 	function onContainerTouchEnd(e) {
