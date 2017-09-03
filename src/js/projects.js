@@ -7,10 +7,25 @@
 	const PROJECT_ACTIVE_CLASS = 'active';
 
 	//********************************************
+	// VARIABLES
+	//********************************************
+	let touchMoveVector;
+	let tocuhStartPosition;
+	let activeProjectIndex;
+
+	//********************************************
 	// SELECTORS
 	//********************************************
 	const _projectPreviews = Array.from(document.querySelectorAll('#projects .project'));
 	const _projectPreviewContainer = document.querySelector('#projects .project-slider');
+
+	//********************************************
+	// REGISTER EVENTS
+	//********************************************
+	_projectPreviewContainer.addEventListener('touchstart', onContainerTouchStart);
+	_projectPreviewContainer.addEventListener('touchmove', onContainerTouchMove);
+	_projectPreviewContainer.addEventListener('touchend', onContainerTouchEnd);
+	_projectPreviewContainer.addEventListener('touchcancel', onContainerTouchEnd);
 
 	//********************************************
 	// INITIALIZE
@@ -40,5 +55,20 @@
 				});
 			});
 		});
+	}
+
+	//********************************************
+	// EVENT HANDLER
+	//********************************************
+	function onContainerTouchStart(e){
+		console.log(e);
+	}
+
+	function onContainerTouchMove(e) {
+
+	}
+
+	function onContainerTouchEnd(e) {
+
 	}
 }());
