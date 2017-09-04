@@ -70,22 +70,58 @@
 
 		touchStartPosition = {
 			x: touch.screenX,
-			y: touch.screenY
+			y: touch.screenY,
+			indentifier: touch.identifier
 		};
 	}
 
 	function onContainerTouchMove(e) {
-		e.preventDefault();
+		let touch;
 
-		let touch = e.touches[0];
+		for(let t of e.touches){
+			if(t.identifier === touchStartPosition.indentifier){
+				touch = t;
+				break;
+			}
+		}
 
-		lastTouchPosition = {
+		if(!touch){
+			return onContainerTouchEnd();
+		}
+
+		let currTouch = {
 			x: touch.screenX,
 			y: touch.screenY
+		};
+
+		if(lastTouchPosition && touchMoveVector) {
+			let lastMoveVector = {
+				x: currTouch.x - lastTouchPosition.x,
+				y: currTouch.y - lastTouchPosition.y
+			};
+
+			let lastMoveAngle = Math.atan2(lastMoveVector.y, lastMoveVector.x);
+			let touchMoveAngle = Math.atan2(lastMoveVector.y - touchMoveVector.y, lastMoveVector.x - touchMoveVector.x);
+
+			let lastMoveDirection = Math.abs(lastMoveAngle) <= Math.PI / 2;
+			let touchMoveDirection = Math.abs(touchMoveAngle) <= Math.PI / 2;
+
+			if(Math.abs(touchMoveAngle) * 180 / Math.PI >= 145){
+				e.preventDefault();
+			}
+
+			console.log(touchMoveAngle * 180 / Math.PI);
+		}
+
+		lastTouchPosition = currTouch;
+
+		touchMoveVector = {
+			x: lastTouchPosition.x - touchStartPosition.x,
+			y: lastTouchPosition.y - touchStartPosition.y
 		};
 	}
 
 	function onContainerTouchEnd(e) {
-
+		console.log("Touch ended");
 	}
 }());
