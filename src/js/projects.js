@@ -9,9 +9,9 @@
 	//********************************************
 	// VARIABLES
 	//********************************************
-	let touchMoveVector;
-	let touchStartPosition;
-	let lastTouchPosition;
+	let firstTouchPosition;
+	let firstInteractionPosition;
+	let lastInteractionPosition;
 	let activeProjectIndex;
 
 	//********************************************
@@ -27,6 +27,9 @@
 	_projectPreviewContainer.addEventListener('touchmove', onContainerTouchMove);
 	_projectPreviewContainer.addEventListener('touchend', onContainerTouchEnd);
 	_projectPreviewContainer.addEventListener('touchcancel', onContainerTouchEnd);
+	_projectPreviewContainer.addEventListener('mousedown', onContainerMouseDown);
+	_projectPreviewContainer.addEventListener('mousemove', onContainerMouseMove);
+	_projectPreviewContainer.addEventListener('mouseup', onContainerMouseUp);
 
 	//********************************************
 	// INITIALIZE
@@ -58,70 +61,89 @@
 		});
 	}
 
+	function containerInteractionStart(x, y) {
+		firstInteractionPosition = {
+			x: x,
+			y: y
+		};
+	}
+
+	function containerInteractionMove(x, y) {
+		
+
+		lastInteractionPosition = {
+			x: x,
+			y: y
+		};
+	}
+
+	function containerInteractionEnd() {
+
+	}
+
 	//********************************************
 	// EVENT HANDLER
 	//********************************************
-	function onContainerTouchStart(e){
-		if(e.touches.length > 1){
+	function onContainerTouchStart(e) {
+		if (e.touches.length > 1) {
 			return;
 		}
 
-		let touch = e.touches[0];
-
-		touchStartPosition = {
-			x: touch.screenX,
-			y: touch.screenY,
-			indentifier: touch.identifier
+		firstTouchPosition = {
+			x: e.touches[0].screenX,
+			y: e.touches[0].screenY,
+			indentifier: e.touches[0].identifier
 		};
+
+		containerInteractionStart(firstTouchPosition.x, firstTouchPosition.y);
 	}
 
 	function onContainerTouchMove(e) {
 		let touch;
 
-		for(let t of e.touches){
-			if(t.identifier === touchStartPosition.indentifier){
-				touch = t;
+		for (let t of e.touches) {
+			if (t.identifier === firstTouchPosition.indentifier) {
+				touch = {
+					x: t.screenX,
+					y: t.screenY
+				};
 				break;
 			}
 		}
 
-		if(!touch){
+		if (!touch) {
 			return onContainerTouchEnd();
 		}
 
-		let currTouch = {
-			x: touch.screenX,
-			y: touch.screenY
-		};
-
-		if(lastTouchPosition && touchMoveVector) {
-			let lastMoveVector = {
-				x: currTouch.x - lastTouchPosition.x,
-				y: currTouch.y - lastTouchPosition.y
+		if (lastInteractionPosition) {
+			let touchMoveVector = {
+				x: touch.x - firstTouchPosition.x,
+				y: touch.y - firstTouchPosition.y
 			};
 
-			let lastMoveAngle = Math.atan2(lastMoveVector.y, lastMoveVector.x);
-			let touchMoveAngle = Math.atan2(lastMoveVector.y - touchMoveVector.y, lastMoveVector.x - touchMoveVector.x);
+			let touchMoveAngle = Math.abs(Math.atan2(touchMoveVector.y, touchMoveVector.x));
 
-			let lastMoveDirection = Math.abs(lastMoveAngle) <= Math.PI / 2;
-			let touchMoveDirection = Math.abs(touchMoveAngle) <= Math.PI / 2;
-
-			if(Math.abs(touchMoveAngle) * 180 / Math.PI >= 145){
-				e.preventDefault();
+			if ((touchMoveAngle < Math.PI / 4 || (Math.PI + touchMoveAngle) > Math.PI / 4 * 3) || e.cancelable) {
+				return e.preventDefault();
 			}
-
-			console.log(touchMoveAngle * 180 / Math.PI);
 		}
 
-		lastTouchPosition = currTouch;
-
-		touchMoveVector = {
-			x: lastTouchPosition.x - touchStartPosition.x,
-			y: lastTouchPosition.y - touchStartPosition.y
-		};
+		return containerInteractionMove(touch.x, touch.y);
 	}
 
-	function onContainerTouchEnd(e) {
-		console.log("Touch ended");
+	function onContainerTouchEnd() {
+		containerInteractionEnd();
+	}
+
+	function onContainerMouseDown(e) {
+		containerInteractionStart(e.clientX, e.clientY);
+	}
+
+	function onContainerMouseMove(e) {
+		containerInteractionMove(e.clientX, e.clientY);
+	}
+
+	function onContainerMouseUp(e) {
+		containerInteractionEnd();
 	}
 }());
