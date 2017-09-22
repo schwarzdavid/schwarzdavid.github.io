@@ -16,6 +16,7 @@
 	let lastInteractionPosition;
 	let activeProjectIndex = 0;
 	let unsetActiveTimeout;
+	let preventNextClick;
 
 	//********************************************
 	// SELECTORS
@@ -52,6 +53,11 @@
 					return;
 				}
 
+				if(preventNextClick){
+					preventNextClick = false;
+					return;
+				}
+
 				activeProjectIndex = index;
 				setActiveProject(activeProjectIndex);
 			});
@@ -66,7 +72,7 @@
 				sibling.classList.remove(PROJECT_ACTIVE_CLASS);
 			}
 
-			_projectPreviewContainer.style.transform = `translateX(-${index * 100}%)`;
+			_projectPreviewContainer.style.transform = `translateX(${index * -100}%)`;
 			_projectPreviews[index].classList.add(PROJECT_ACTIVE_CLASS);
 		});
 	}
@@ -81,9 +87,9 @@
 			_projectPreviewContainer.classList.add('notransition')
 		});
 
-		if(!unsetActiveTimeout){
+		if (!unsetActiveTimeout) {
 			unsetActiveTimeout = setTimeout(() => {
-				for(let prev of _projectPreviews){
+				for (let prev of _projectPreviews) {
 					prev.classList.remove(PROJECT_ACTIVE_CLASS);
 				}
 			}, UNSET_ACTIVE_TIME);
@@ -91,16 +97,16 @@
 	}
 
 	function containerInteractionMove(x, y) {
-		if(!firstInteractionPosition){
+		if (!firstInteractionPosition) {
 			return;
 		}
 
 		let xDist = firstInteractionPosition.x - x;
 		let projectWidth = parseInt(window.getComputedStyle(_projectPreviewContainer).width);
 		let percentOffset = xDist / projectWidth;
-		let totalOffset = ((activeProjectIndex) + percentOffset) * 100;
+		let totalOffset = ((activeProjectIndex) + percentOffset) * -100;
 
-		_projectPreviewContainer.style.transform = `translateX(-${totalOffset}%)`;
+		_projectPreviewContainer.style.transform = `translateX(${totalOffset}%)`;
 
 		lastInteractionPosition = {
 			x: x,
@@ -115,17 +121,18 @@
 
 		firstInteractionPosition = null;
 
-		if(percentOffset < -MIN_DRAG_DISTANCE && activeProjectIndex > 0){
+		if (percentOffset < -MIN_DRAG_DISTANCE && activeProjectIndex > 0) {
 			activeProjectIndex--;
 		}
 
-		if(percentOffset > MIN_DRAG_DISTANCE && activeProjectIndex < _projectPreviews.length-1){
+		if (percentOffset > MIN_DRAG_DISTANCE && activeProjectIndex < _projectPreviews.length - 1) {
 			activeProjectIndex++;
 		}
 
+		setActiveProject(activeProjectIndex);
 		clearTimeout(unsetActiveTimeout);
 		unsetActiveTimeout = null;
-		setActiveProject(activeProjectIndex);
+		preventNextClick = true;
 	}
 
 	//********************************************
@@ -146,8 +153,13 @@
 	}
 
 	function onContainerTouchMove(e) {
-		let touch;
+		// Return if no touch position was found
+		if (firstTouchPosition) {
+			return;
+		}
 
+		// Identify touch
+		let touch;
 		for (let t of e.touches) {
 			if (t.identifier === firstTouchPosition.indentifier) {
 				touch = {
@@ -162,20 +174,18 @@
 			return onContainerTouchEnd();
 		}
 
-		if (firstTouchPosition) {
-			let touchMoveVector = {
-				x: touch.x - firstTouchPosition.x,
-				y: touch.y - firstTouchPosition.y
-			};
+		let touchMoveVector = {
+			x: touch.x - firstTouchPosition.x,
+			y: touch.y - firstTouchPosition.y
+		};
 
-			let touchMoveAngle = Math.abs(Math.atan2(touchMoveVector.y, touchMoveVector.x));
+		let touchMoveAngle = Math.abs(Math.atan2(touchMoveVector.y, touchMoveVector.x));
 
-			if ((touchMoveAngle < Math.PI / 4 || (Math.PI - touchMoveAngle) > Math.PI / 4 * 3) && e.cancelable) {
-				e.preventDefault();
-				containerInteractionMove(touch.x, touch.y);
-			} else {
-				onContainerTouchEnd();
-			}
+		if ((touchMoveAngle < Math.PI / 4 || (Math.PI - touchMoveAngle) > Math.PI / 4 * 3) && e.cancelable) {
+			e.preventDefault();
+			containerInteractionMove(touch.x, touch.y);
+		} else {
+			onContainerTouchEnd();
 		}
 	}
 
@@ -185,14 +195,14 @@
 	}
 
 	function onContainerMouseDown(e) {
-		containerInteractionStart(e.clientX, e.clientY);
+		containerInteractionStart(e.screenX, e.screenY);
 	}
 
 	function onContainerMouseMove(e) {
-		containerInteractionMove(e.clientX, e.clientY);
+		containerInteractionMove(e.screenX, e.screenY);
 	}
 
-	function onContainerMouseUp(e) {
+	function onContainerMouseUp() {
 		containerInteractionEnd();
 	}
 }());
