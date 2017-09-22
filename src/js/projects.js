@@ -5,6 +5,8 @@
 	// CONSTANTS
 	//********************************************
 	const PROJECT_ACTIVE_CLASS = 'active';
+	const MIN_DRAG_DISTANCE = 0.25;
+	const UNSET_ACTIVE_TIME = 100;
 
 	//********************************************
 	// VARIABLES
@@ -12,7 +14,8 @@
 	let firstTouchPosition;
 	let firstInteractionPosition;
 	let lastInteractionPosition;
-	let activeProjectIndex;
+	let activeProjectIndex = 0;
+	let unsetActiveTimeout;
 
 	//********************************************
 	// SELECTORS
@@ -49,15 +52,22 @@
 					return;
 				}
 
-				requestAnimationFrame(() => {
-					for (let sibling of _projectPreviews) {
-						sibling.classList.remove(PROJECT_ACTIVE_CLASS);
-					}
-
-					_projectPreviewContainer.style.transform = `translateX(-${index * 100}%)`;
-					project.classList.add(PROJECT_ACTIVE_CLASS);
-				});
+				activeProjectIndex = index;
+				setActiveProject(activeProjectIndex);
 			});
+		});
+	}
+
+	function setActiveProject(index) {
+		requestAnimationFrame(() => {
+			_projectPreviewContainer.classList.remove('notransition');
+
+			for (let sibling of _projectPreviews) {
+				sibling.classList.remove(PROJECT_ACTIVE_CLASS);
+			}
+
+			_projectPreviewContainer.style.transform = `translateX(-${index * 100}%)`;
+			_projectPreviews[index].classList.add(PROJECT_ACTIVE_CLASS);
 		});
 	}
 
@@ -66,10 +76,31 @@
 			x: x,
 			y: y
 		};
+
+		requestAnimationFrame(() => {
+			_projectPreviewContainer.classList.add('notransition')
+		});
+
+		if(!unsetActiveTimeout){
+			unsetActiveTimeout = setTimeout(() => {
+				for(let prev of _projectPreviews){
+					prev.classList.remove(PROJECT_ACTIVE_CLASS);
+				}
+			}, UNSET_ACTIVE_TIME);
+		}
 	}
 
 	function containerInteractionMove(x, y) {
-		
+		if(!firstInteractionPosition){
+			return;
+		}
+
+		let xDist = firstInteractionPosition.x - x;
+		let projectWidth = parseInt(window.getComputedStyle(_projectPreviewContainer).width);
+		let percentOffset = xDist / projectWidth;
+		let totalOffset = ((activeProjectIndex) + percentOffset) * 100;
+
+		_projectPreviewContainer.style.transform = `translateX(-${totalOffset}%)`;
 
 		lastInteractionPosition = {
 			x: x,
@@ -78,7 +109,23 @@
 	}
 
 	function containerInteractionEnd() {
+		let xDist = firstInteractionPosition.x - lastInteractionPosition.x;
+		let projectWidth = parseInt(window.getComputedStyle(_projectPreviewContainer).width);
+		let percentOffset = xDist / projectWidth;
 
+		firstInteractionPosition = null;
+
+		if(percentOffset < -MIN_DRAG_DISTANCE && activeProjectIndex > 0){
+			activeProjectIndex--;
+		}
+
+		if(percentOffset > MIN_DRAG_DISTANCE && activeProjectIndex < _projectPreviews.length-1){
+			activeProjectIndex++;
+		}
+
+		clearTimeout(unsetActiveTimeout);
+		unsetActiveTimeout = null;
+		setActiveProject(activeProjectIndex);
 	}
 
 	//********************************************
@@ -115,7 +162,7 @@
 			return onContainerTouchEnd();
 		}
 
-		if (lastInteractionPosition) {
+		if (firstTouchPosition) {
 			let touchMoveVector = {
 				x: touch.x - firstTouchPosition.x,
 				y: touch.y - firstTouchPosition.y
@@ -123,15 +170,17 @@
 
 			let touchMoveAngle = Math.abs(Math.atan2(touchMoveVector.y, touchMoveVector.x));
 
-			if ((touchMoveAngle < Math.PI / 4 || (Math.PI + touchMoveAngle) > Math.PI / 4 * 3) || e.cancelable) {
-				return e.preventDefault();
+			if ((touchMoveAngle < Math.PI / 4 || (Math.PI - touchMoveAngle) > Math.PI / 4 * 3) && e.cancelable) {
+				e.preventDefault();
+				containerInteractionMove(touch.x, touch.y);
+			} else {
+				onContainerTouchEnd();
 			}
 		}
-
-		return containerInteractionMove(touch.x, touch.y);
 	}
 
 	function onContainerTouchEnd() {
+		firstTouchPosition = null;
 		containerInteractionEnd();
 	}
 
