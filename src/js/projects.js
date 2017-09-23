@@ -6,7 +6,7 @@
 	//********************************************
 	const PROJECT_ACTIVE_CLASS = 'active';
 	const MIN_DRAG_DISTANCE = 0.25;
-	const UNSET_ACTIVE_TIME = 100;
+	const UNSET_ACTIVE_TIME = 150;
 
 	//********************************************
 	// VARIABLES
@@ -49,17 +49,17 @@
 		// Bind events to projects
 		_projectPreviews.forEach((project, index) => {
 			project.addEventListener('click', (e) => {
-				if (project.classList.contains(PROJECT_ACTIVE_CLASS)) {
-					return;
-				}
-
 				if(preventNextClick){
 					preventNextClick = false;
 					return;
 				}
 
-				activeProjectIndex = index;
-				setActiveProject(activeProjectIndex);
+				if (project.classList.contains(PROJECT_ACTIVE_CLASS)) {
+					console.log("open project");
+				} else {
+					activeProjectIndex = index;
+					setActiveProject(activeProjectIndex);
+				}
 			});
 		});
 	}
@@ -92,6 +92,7 @@
 				for (let prev of _projectPreviews) {
 					prev.classList.remove(PROJECT_ACTIVE_CLASS);
 				}
+				preventNextClick = true;
 			}, UNSET_ACTIVE_TIME);
 		}
 	}
@@ -115,24 +116,25 @@
 	}
 
 	function containerInteractionEnd() {
-		let xDist = firstInteractionPosition.x - lastInteractionPosition.x;
-		let projectWidth = parseInt(window.getComputedStyle(_projectPreviewContainer).width);
-		let percentOffset = xDist / projectWidth;
+		if(firstInteractionPosition && lastInteractionPosition) {
+			let xDist = firstInteractionPosition.x - lastInteractionPosition.x;
+			let projectWidth = parseInt(window.getComputedStyle(_projectPreviewContainer).width);
+			let percentOffset = xDist / projectWidth;
 
-		firstInteractionPosition = null;
+			if (percentOffset < -MIN_DRAG_DISTANCE && activeProjectIndex > 0) {
+				activeProjectIndex--;
+			}
 
-		if (percentOffset < -MIN_DRAG_DISTANCE && activeProjectIndex > 0) {
-			activeProjectIndex--;
-		}
-
-		if (percentOffset > MIN_DRAG_DISTANCE && activeProjectIndex < _projectPreviews.length - 1) {
-			activeProjectIndex++;
+			if (percentOffset > MIN_DRAG_DISTANCE && activeProjectIndex < _projectPreviews.length - 1) {
+				activeProjectIndex++;
+			}
 		}
 
 		setActiveProject(activeProjectIndex);
 		clearTimeout(unsetActiveTimeout);
+		firstInteractionPosition = null;
+		lastInteractionPosition = null;
 		unsetActiveTimeout = null;
-		preventNextClick = true;
 	}
 
 	//********************************************
@@ -146,7 +148,7 @@
 		firstTouchPosition = {
 			x: e.touches[0].screenX,
 			y: e.touches[0].screenY,
-			indentifier: e.touches[0].identifier
+			identifier: e.touches[0].identifier
 		};
 
 		containerInteractionStart(firstTouchPosition.x, firstTouchPosition.y);
@@ -154,14 +156,14 @@
 
 	function onContainerTouchMove(e) {
 		// Return if no touch position was found
-		if (firstTouchPosition) {
+		if (!firstTouchPosition) {
 			return;
 		}
 
 		// Identify touch
 		let touch;
 		for (let t of e.touches) {
-			if (t.identifier === firstTouchPosition.indentifier) {
+			if (t.identifier === firstTouchPosition.identifier) {
 				touch = {
 					x: t.screenX,
 					y: t.screenY
@@ -181,7 +183,7 @@
 
 		let touchMoveAngle = Math.abs(Math.atan2(touchMoveVector.y, touchMoveVector.x));
 
-		if ((touchMoveAngle < Math.PI / 4 || (Math.PI - touchMoveAngle) > Math.PI / 4 * 3) && e.cancelable) {
+		if ((touchMoveAngle < Math.PI / 4 || touchMoveAngle > Math.PI / 4 * 3) && e.cancelable) {
 			e.preventDefault();
 			containerInteractionMove(touch.x, touch.y);
 		} else {
@@ -190,6 +192,10 @@
 	}
 
 	function onContainerTouchEnd() {
+		if(!firstTouchPosition){
+			return;
+		}
+
 		firstTouchPosition = null;
 		containerInteractionEnd();
 	}

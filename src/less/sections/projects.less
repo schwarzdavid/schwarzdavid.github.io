@@ -55,7 +55,7 @@
 			width: 100%;
 			flex-shrink: 0;
 			margin: 0;
-			cursor: url('../img/cursor_left.png'), pointer;
+			cursor: move;
 			padding: 0 @side-spacing/2;
 
 			@media @_screen_sm {
@@ -64,11 +64,7 @@
 			}
 
 			&.active {
-				cursor: url('../img/cursor_glass.png'), pointer;
-
-				& ~ .project {
-					cursor: url('../img/cursor_right.png'), pointer;
-				}
+				cursor: pointer;
 
 				.project-wrapper {
 					transform: none;
