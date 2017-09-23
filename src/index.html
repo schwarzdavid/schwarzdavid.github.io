@@ -302,7 +302,8 @@
 								<picture>
 									<source srcset="./img/haus-kamila-template.webp" type="image/webp">
 									<source srcset="./img/haus-kamila-template.jpg" type="image/jpeg">
-									<img src="./img/haus-kamila-template.jpg" alt="haus kamila teaserpicture" draggable="false">
+									<img src="./img/haus-kamila-template.jpg" alt="haus kamila teaserpicture"
+									     draggable="false">
 								</picture>
 							</foreignObject>
 						</svg>
@@ -348,7 +349,8 @@
 								<picture>
 									<source srcset="./img/haus-kamila-template.webp" type="image/webp">
 									<source srcset="./img/haus-kamila-template.jpg" type="image/jpeg">
-									<img src="./img/haus-kamila-template.jpg" alt="haus kamila teaserpicture" draggable="false">
+									<img src="./img/haus-kamila-template.jpg" alt="haus kamila teaserpicture"
+									     draggable="false">
 								</picture>
 							</foreignObject>
 						</svg>
@@ -461,11 +463,22 @@
 					<article class="item">
 						<header class="header">
 							<h6 class="name">University of Economic Sciences Vienna</h6>
-							<span class="time"><time datetime="2017-09">09.2017</time> - now</span>
+							<span class="time"><time datetime="2017-09">10.2017</time> - now</span>
 						</header>
 						<p class="text">Economics and Social Sciences - Bachelor course</p>
 					</article>
 					<!-- / WU -->
+
+					<!-- FH ST.POELTEN -->
+					<article class="item">
+						<header class="header">
+							<h6 class="name">FH St. Pölten</h6>
+							<span class="time"><time datetime="2017-09">09.2017</time> - now</span>
+						</header>
+						<p class="text">Bachelor course in Smart Engineering of Production Technologies and
+							Processes</p>
+					</article>
+					<!-- / FH ST.POELTEN -->
 
 					<!-- UNIVIE -->
 					<article class="item">
@@ -675,15 +688,13 @@
 <!-- / VENDOR JAVASCRIPT FILES -->
 
 <!-- LOAD CSS FILES -->
-<script async>
+<script>
 	requestAnimationFrame(function loadDeferredStyle() {
-		setTimeout(function () {
-			var addStylesNode = document.getElementById('deferred-styles');
-			var replacement = document.createElement('div');
-			replacement.innerHTML = addStylesNode.textContent;
-			document.body.appendChild(replacement);
-			addStylesNode.parentElement.removeChild(addStylesNode);
-		}, 0);
+		var addStylesNode = document.getElementById('deferred-styles');
+		var replacement = document.createElement('div');
+		replacement.innerHTML = addStylesNode.textContent;
+		document.body.appendChild(replacement);
+		addStylesNode.parentElement.removeChild(addStylesNode);
 	});
 </script>
 <!-- / LOAD CSS FILES -->

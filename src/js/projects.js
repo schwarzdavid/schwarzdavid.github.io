@@ -89,10 +89,12 @@
 
 		if (!unsetActiveTimeout) {
 			unsetActiveTimeout = setTimeout(() => {
-				for (let prev of _projectPreviews) {
-					prev.classList.remove(PROJECT_ACTIVE_CLASS);
-				}
-				preventNextClick = true;
+				requestAnimationFrame(() => {
+					for (let prev of _projectPreviews) {
+						prev.classList.remove(PROJECT_ACTIVE_CLASS);
+					}
+					preventNextClick = true;
+				});
 			}, UNSET_ACTIVE_TIME);
 		}
 	}
@@ -107,7 +109,9 @@
 		let percentOffset = xDist / projectWidth;
 		let totalOffset = ((activeProjectIndex) + percentOffset) * -100;
 
-		_projectPreviewContainer.style.transform = `translateX(${totalOffset}%)`;
+		requestAnimationFrame(() => {
+			_projectPreviewContainer.style.transform = `translateX(${totalOffset}%)`;
+		});
 
 		lastInteractionPosition = {
 			x: x,
