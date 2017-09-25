@@ -16,7 +16,10 @@ Source code  of my personal website. **Under construction yet**
 - [x] Add OG and Twitter meta tags
 - [x] Check .htaccess file
 - [ ] Responsive check
-- [ ] Include "im not a robot"-check
+- [x] Include "im not a robot"-check
+- [ ] Check content
+- [ ] Add 404 Page
+- [ ] Add Imprint
 
 # License
 
