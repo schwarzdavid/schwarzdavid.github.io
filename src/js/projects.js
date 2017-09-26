@@ -1,12 +1,17 @@
 (function () {
 	'use strict';
 
+	// TODO: Add documentation to variables
+	// TODO: Add documentation to constants
+	// TODO: Add documentation to functions-
+
 	//********************************************
 	// CONSTANTS
 	//********************************************
 	const PROJECT_ACTIVE_CLASS = 'active';
 	const MIN_DRAG_DISTANCE = 0.25;
 	const UNSET_ACTIVE_TIME = 150;
+	const INTERVAL_TIME = 5000;
 
 	//********************************************
 	// VARIABLES
@@ -17,12 +22,17 @@
 	let activeProjectIndex = 0;
 	let unsetActiveTimeout;
 	let preventNextClick;
+	let projectCarousel;
+	let bodyObserver;
+	let projectsVisible = true;
 
 	//********************************************
 	// SELECTORS
 	//********************************************
 	const _projectPreviews = Array.from(document.querySelectorAll('#projects .project'));
+	const _projectSection = document.querySelector('#projects');
 	const _projectPreviewContainer = document.querySelector('#projects .project-slider');
+	const _projectProgress = document.querySelector('#projects .project-wrapper progress');
 
 	//********************************************
 	// REGISTER EVENTS
@@ -62,6 +72,20 @@
 				}
 			});
 		});
+
+		if('IntersectionObserver' in window){
+			bodyObserver = new IntersectionObserver(observerCallback);
+			bodyObserver.observe(_projectSection);
+		}
+
+		projectCarousel = setInterval(nextProject, INTERVAL_TIME);
+	}
+
+	function observerCallback(entry) {
+		if(entry.length > 1){
+			throw new Error('too many entries on observer');
+		}
+		projectsVisible = entry[0].isIntersecting;
 	}
 
 	function setActiveProject(index) {
@@ -74,19 +98,39 @@
 
 			_projectPreviewContainer.style.transform = `translateX(${index * -100}%)`;
 			_projectPreviews[index].classList.add(PROJECT_ACTIVE_CLASS);
+			_projectProgress.value = index +1;
 		});
 	}
 
+	function nextProject() {
+		if(projectsVisible) {
+			if (activeProjectIndex < _projectPreviews.length - 1) {
+				activeProjectIndex++;
+			} else {
+				activeProjectIndex = 0;
+			}
+
+			setActiveProject(activeProjectIndex);
+		}
+	}
+
 	function containerInteractionStart(x, y) {
+		// Save start position
 		firstInteractionPosition = {
 			x: x,
 			y: y
 		};
 
+		// Clear project rotation
+		clearInterval(projectCarousel);
+		projectCarousel = null;
+
+		// Pause animations when dragging project
 		requestAnimationFrame(() => {
 			_projectPreviewContainer.classList.add('notransition')
 		});
 
+		// Remove active class from project
 		if (!unsetActiveTimeout) {
 			unsetActiveTimeout = setTimeout(() => {
 				requestAnimationFrame(() => {
@@ -139,6 +183,8 @@
 		firstInteractionPosition = null;
 		lastInteractionPosition = null;
 		unsetActiveTimeout = null;
+
+		projectCarousel = setInterval(nextProject, INTERVAL_TIME);
 	}
 
 	//********************************************

@@ -75,15 +75,21 @@
 				&.active {
 					cursor: pointer;
 
-					.project-wrapper {
+					.project-container {
 						transform: none;
 					}
 				}
 
-				.project-wrapper {
+				.project-container {
 					transition: transform @transition-duration ease;
 					transform-style: preserve-3d;
 					transform: scale(.8);
+
+					svg {
+						img {
+							pointer-events: none;
+						}
+					}
 
 					.project-content {
 						position: absolute;
@@ -134,10 +140,24 @@
 			position: absolute;
 			bottom: 17%;
 			z-index: -1;
-			margin-top: 2.5px;
+			margin-bottom: -2.5px;
 			border: 0;
 			height: 5px;
-			background: transparent;
+			background: darken(@color-light, 15%);
+			color: @color-highlight;
+
+			&::-webkit-progress-bar {
+				background: inherit;
+			}
+
+			&::-webkit-progress-value {
+				background: @color-gradient;
+				transition: width @transition-duration ease;
+			}
+
+			&::-moz-progress-bar {
+				background: @color-gradient;
+			}
 		}
 	}
 }
