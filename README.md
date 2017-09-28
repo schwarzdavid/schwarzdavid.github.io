@@ -1,4 +1,4 @@
-<div style="text-align:center;">![schwarzdavid.rocks](./logo.png)</div>
+![schwarzdavid.rocks](./logo.jpg)
 
 # schwarzdavid.rocks
 
