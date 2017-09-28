@@ -2,6 +2,7 @@
 	'use strict';
 
 	// TODO: learn proper english and then update comments
+	// TODO: implement click-event on project previews
 
 	//********************************************
 	// CONSTANTS

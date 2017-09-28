@@ -11,7 +11,7 @@
   - [For development](#for-developmnent)
 - [Checklist](#checklist)
   - [Content](#content)
-  - [SEO & Analytics](#seo-and-analytics)
+  - [SEO & Analytics](#seo--analytics)
   - [Social](#social)
   - [Markdup](#markup)
   - [Accessibility](#accessibility)
@@ -32,7 +32,7 @@ automatically.
 
 #### For production
 
-Run `gulp build` to create fresh production files and point the webserver on the *dist*-Folder. If you're using nginx, 
+Run `gulp build` to create fresh production files and point the webserver to the *dist*-Folder. If you're using nginx, 
 you might find the [nginx.config](./nginx.config) useful.
 
 #### For development
