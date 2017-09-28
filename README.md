@@ -1,4 +1,4 @@
-![schwarzdavid.rocks](./logo.png)
+<div style="text-align:center;">![schwarzdavid.rocks](./logo.png)</div>
 
 # schwarzdavid.rocks
 
@@ -7,6 +7,8 @@
 # Table of content
 
 - [Installation and Usage](#installation-and-usage)
+  - [For production](#for-production)
+  - [For development](#for-developmnent)
 - [Todos](#todos)
 - [License](#license)
 
