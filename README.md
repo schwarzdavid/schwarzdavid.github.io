@@ -80,13 +80,13 @@ running on *localhost:8080* where you can access your local homepage from anywhe
 
 #### Rendering
 
-- Displays & functions correctly in IE 11
-- Displays & functions correctly in Edge 13
-- Displays & functions correctly in Firefox (Windows)
-- Displays & functions correctly in Firefox (Mac)
-- Displays & functions correctly in Chrome (Windows)
-- Displays & functions correctly in Chrome (Max)
-- Displays & functions correctly on large resolutions
+- [ ] Displays & functions correctly in IE 11
+- [ ] Displays & functions correctly in Edge 13
+- [ ] Displays & functions correctly in Firefox (Windows)
+- [ ] Displays & functions correctly in Firefox (Mac)
+- [ ] Displays & functions correctly in Chrome (Windows)
+- [ ] Displays & functions correctly in Chrome (Max)
+- [ ] Displays & functions correctly on large resolutions
 
 #### Functionality
 
