@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	// TODO: learn proper english and update comments then
+	// TODO: learn proper english and then update comments
 
 	//********************************************
 	// CONSTANTS
