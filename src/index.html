@@ -72,8 +72,7 @@
 
 </head>
 
-<!-- data-active="teaser" -->
-<body data-active="">
+<body data-active="teaser">
 
 <!-- LANDING PAGE -->
 <section id="teaser">
@@ -163,38 +162,51 @@
 
 	<!-- ABOUT ME -->
 	<section id="about">
+
+		<!-- HEADING -->
 		<h1 class="title">Hey, I'm David! I'm a Web Developer and Software Engineer, based in Vienna,
 			Austria.</h1>
+		<!-- / HEADING -->
 
+		<!-- PICTURE, LINK TO CV -->
 		<div class="picture">
 			<svg viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg"
 			     xmlns:xlink="http://www.w3.org/1999/xlink">
 				<defs>
-					<filter id="grayscale">
-						<feColorMatrix type="saturate" values="0"></feColorMatrix>
-					</filter>
 
+					<!-- DEFINE STRIPES -->
 					<g id="stripes-me" transform="rotate(-12,35,200)">
 						<rect width="80" height="400" x="-84" y="-20"></rect>
 						<rect width="80" height="400" x="0" y="0"></rect>
 						<rect width="80" height="400" x="84" y="20"></rect>
 					</g>
+					<!-- / DEFINE STRIPES -->
 
+					<!-- PICTURE BOX -->
 					<rect x="100" y="50" width="400" height="400" id="bg-me"></rect>
+					<!-- / PICTURE BOX -->
 
+					<!-- MASK -->
 					<mask id="mask-me">
 						<use xlink:href="#bg-me" fill="white" fill-opacity="0.6"></use>
 						<use xlink:href="#stripes-me" x="130" y="30" fill="white" filter="url(#grayscale)"></use>
 					</mask>
+					<!-- / MASK -->
 
+					<!-- CLIP PATH -->
 					<clipPath id="clippath-me">
 						<use xlink:href="#bg-me"></use>
 					</clipPath>
+					<!-- / CLIP PATH -->
+
 				</defs>
 
+				<!-- BLACK BACKGROUND PLANE -->
 				<rect x="0" y="0" width="500" height="450" fill="black"
 				      clip-path="url(#clippath-me)"></rect>
+				<!-- / BLACK BACKGROUND PLANE -->
 
+				<!-- PICTURE -->
 				<foreignObject width="500" height="450" x="0" y="0" mask="url(#mask-me)">
 					<picture>
 						<source srcset="./img/me.webp" type="image/webp">
@@ -202,7 +214,9 @@
 						<img src="./img/me.jpg" alt="me" draggable="false">
 					</picture>
 				</foreignObject>
+				<!-- / PICTURE -->
 
+				<!-- LINK TO CV -->
 				<a href="#resume" data-resume-switch>
 					<g transform="rotate(78,40,440)">
 						<rect fill="none" x="20" y="415" width="35" height="30"></rect>
@@ -212,20 +226,15 @@
 						<rect fill="transparent" x="20" y="415" width="35" height="30"></rect>
 					</g>
 				</a>
+				<!-- / LINK TO CV -->
+
 			</svg>
-			<!--<picture>
-				<source srcset="./img/me.webp" type="image/webp">
-				<source srcset="./img/me.jpg" type="image/jpeg">
-				<img src="img/me.jpg" alt="me" draggable="false">
-			</picture>
-			<a href="#resume" id="resume-trigger" data-resume-switch>
-				<span class="rotate">resume / cv</span><span class="fa fa-long-arrow-right"></span>
-			</a>-->
 		</div>
+		<!-- / PICTURE, LINK TO CV -->
 
 		<p class="description">Hello, my name is David Schwarz and I am a young, (mostly) motivated and
 			coffee addicted programmer, searching for new adventures. I am currently studying at Viennas
-			University of Economic Siences and working as frontend developer at
+			University of Economic Sciences and working as frontend developer at
 			<a href="https://nu-it.at" rel="noopener" target="_blank">nu-IT</a>.<br>In my spare time I enjoy skiing,
 			hiking and playing video games.</p>
 	</section>
