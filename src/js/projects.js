@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	// TODO: learn proper english and then update comments
+	// TODO: learn proper english and update comments then
 	// TODO: implement click-event on project previews
 
 	//********************************************
