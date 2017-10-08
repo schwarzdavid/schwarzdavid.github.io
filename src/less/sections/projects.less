@@ -1,16 +1,7 @@
-@import "../mixins";
+#projects {
+	.content-wrapper;
 
-#main #projects {
-	padding: @side-spacing;
-	max-width: @section-max-size;
-	margin-left: auto;
-	margin-right: auto;
 	position: relative;
-	margin-top: 100px;
-
-	@media @_screen_sm {
-		padding: @side-spacing-sm;
-	}
 
 	.title {
 		h1 {
@@ -45,15 +36,24 @@
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
-			width: ~"calc(100% + @{side-spacing})";
-			margin-left: -@side-spacing / 2;
 			transition: transform @transition-duration ease;
 			transform-style: preserve-3d;
 			will-change: transform;
+			width: 90%;
+			margin-left: auto;
+			margin-right: auto;
 
 			@media @_screen_sm {
+				width: 95%;
+			}
+
+			@media @_screen_md {
+				width: 100%;
+			}
+
+			@media @_screen_lg {
 				width: ~"calc(100% + @{side-spacing-sm})";
-				margin-left: -@side-spacing-sm / 2;
+				margin-left: -@side-spacing-sm/2;
 			}
 
 			.project {
@@ -65,9 +65,8 @@
 				flex-shrink: 0;
 				margin: 0;
 				cursor: move;
-				padding: 0 @side-spacing/2;
 
-				@media @_screen_sm {
+				@media @_screen_lg {
 					padding-left: @side-spacing-sm/2;
 					padding-right: @side-spacing-sm/2;
 				}
@@ -83,7 +82,11 @@
 				.project-container {
 					transition: transform @transition-duration ease;
 					transform-style: preserve-3d;
-					transform: scale(.8);
+					transform: scale(.9);
+
+					@media @_screen_lg {
+						transform: scale(.8);
+					}
 
 					svg {
 						img {
@@ -136,7 +139,8 @@
 		}
 
 		.progress {
-			width: 100%;
+			width: 90%;
+			margin-left: 5%;
 			position: absolute;
 			bottom: 17%;
 			z-index: -1;
@@ -145,6 +149,16 @@
 			height: 5px;
 			background: darken(@color-light, 15%);
 			color: @color-highlight;
+
+			@media @_screen_sm {
+				width: 95%;
+				margin-left: 2.5%;
+			}
+
+			@media @_screen_md {
+				width: 100%;
+				margin-left: 0;
+			}
 
 			&::-webkit-progress-bar {
 				background: inherit;

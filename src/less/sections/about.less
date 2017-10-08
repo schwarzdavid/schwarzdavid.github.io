@@ -1,21 +1,14 @@
-#main #about {
-	padding: @side-spacing;
-	max-width: @section-max-size;
-	margin-left: auto;
-	margin-right: auto;
-
-	@media @_screen_sm {
-		padding: @side-spacing-sm;
-	}
+#about {
+	.content-wrapper;
 
 	.title {
 		line-height: 150%;
-		margin: @side-spacing / 2 0 @side-spacing;
+		margin-bottom: @side-spacing;
+		margin-top: 0;
 		font-size: 1.7rem;
 		font-weight: 300;
 
 		@media @_screen_sm {
-			margin-top: @side-spacing-sm / 2;
 			margin-bottom: @side-spacing-sm;
 		}
 
@@ -36,64 +29,19 @@
 
 		svg {
 			display: block;
-			width: 60%;
-		}
-		img {
-			//max-width: 200px;
+			max-width: 500px;
 			width: 100%;
-			//border: 15px solid darken(@color-light, 10%);
-			border-right-width: 0;
-			//margin-right: -@side-spacing;
 
-			@media @_screen_xs {
-			//	max-width: 350px;
+			img {
+				width: 100%;
 			}
 
-			@media @_screen_sm {
-			//	margin-right: -@side-spacing-sm;
-			//	max-width: 450px;
-			}
+			a {
+				font-size: 1.8rem;
 
-			@media @_screen_lg {
-			//	border-right-width: 15px;
-			}
-		}
-
-		a {
-			display: block;
-			width: @side-spacing;
-			position: relative;
-			color: currentcolor;
-			text-align: center;
-
-			@media @_screen_xs {
-				width: @side-spacing-sm;
-				font-size: 1.3rem;
-			}
-
-			.rotate {
-				display: block;
-				position: absolute;
-				transform-origin: right top;
-				transform: rotateZ(90deg);
-				padding-right: @side-spacing / 2;
-				right: 0;
-				transform-style: preserve-3d;
-				height: @side-spacing;
-				text-align: right;
-				font-weight: 500;
-				white-space: nowrap;
-				line-height: @side-spacing;
-				will-change: height, line-height;
-
-				@media @_screen_xs {
-					height: @side-spacing-sm;
-					line-height: @side-spacing-sm;
+				@media @_screen_sm {
+					font-size: 1.2rem;
 				}
-			}
-
-			.fa {
-				color: @color-highlight;
 			}
 		}
 	}

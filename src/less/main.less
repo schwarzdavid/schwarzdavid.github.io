@@ -1,3 +1,6 @@
+//*****************************************
+// IMPORTS
+//*****************************************
 @import "variables";
 
 @import "sections/about";
@@ -7,11 +10,55 @@
 
 @import "sections/resume";
 
+//*****************************************
+// GLOBAL TAG SETTINGS
+//*****************************************
+*::selection {
+	background: fade(@color-highlight, 90%);
+	color: #fff;
+}
+
+//*****************************************
+// GLOBAL CLASSES
+//*****************************************
 .invertMe {
 	direction: rtl;
 	unicode-bidi: bidi-override;
 }
+.page-wrapper {
+	max-width: ~"calc(100% - @{side-spacing})";
+	margin-left: @side-spacing;
+	position: relative;
 
+	@media @_screen_sm {
+		max-width: ~"calc(100% - @{side-spacing-sm})";
+		margin-left: @side-spacing-sm;
+	}
+}
+.content-wrapper {
+	max-width: @section-max-size;
+	width: ~"calc(100% - @{side-spacing} * 2)";
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: @side-spacing;
+	padding-bottom: @side-spacing;
+
+	@media @_screen_sm {
+		width: ~"calc(100% - @{side-spacing-sm} * 2)";
+		padding-top: @side-spacing-sm;
+		padding-bottom: @side-spacing-sm;
+	}
+}
+.noselect {
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+//*****************************************
+// TEASER ADDITION
+//*****************************************
 #teaser {
 	.content .content-wrapper .socials,
 	.nav,
@@ -21,9 +68,13 @@
 	}
 }
 
+//*****************************************
+// MAIN CONTENT WRAPPER
+//*****************************************
 #main {
+	.page-wrapper;
+
 	background: @color-light;
-	padding-left: @side-spacing;
 	transition: transform @transition-duration ease;
 	transform-style: preserve-3d;
 	max-width: 100%;
@@ -31,10 +82,6 @@
 	z-index: @z-index-main;
 	box-shadow: 0 0 7px -1px fade(@color-dark, 50%);
 	will-change: transform;
-
-	@media @_screen_sm {
-		padding-left: @side-spacing-sm;
-	}
 }
 
 &[data-active="resume"]{
