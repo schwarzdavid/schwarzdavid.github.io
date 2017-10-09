@@ -1,24 +1,23 @@
 #contact {
-	margin-top: 200px;
+	margin-top: @side-spacing-sm;
 
 	#map {
 		height: 350px;
 	}
 
 	.wrapper {
-		padding: @side-spacing;
-		max-width: @section-max-size;
-		margin-left: auto;
-		margin-right: auto;
+		.content-wrapper;
+
+		max-width: ~"calc(@{section-max-size} + @{side-spacing-sm} * 2)";
 		background: @color-light;
 		box-shadow: 0 0 100px fade(@color-dark, 15%);
 		margin-top: -100px;
 		position: relative;
 		z-index: 100;
-		padding-top: 60px !important;
+		padding: 60px @side-spacing / 2 @side-spacing;
 
 		@media @_screen_sm {
-			padding: @side-spacing-sm;
+			padding: 60px @side-spacing-sm / 2 @side-spacing-sm;
 		}
 
 		.title {
@@ -26,14 +25,28 @@
 			font-weight: 600;
 			font-size: 3rem;
 			margin-top: 0;
+			margin-bottom: 20px;
 		}
 
 		.row {
 			display: flex;
-			flex-direction: row;
+			flex-direction: column-reverse;
+
+			@media @_screen_md {
+				flex-direction: row;
+			}
+
+			& > * {
+				padding: @side-spacing / 2;
+				flex-basis: 50%;
+				flex-shrink: 1;
+
+				@media @_screen_sm {
+					padding: 0 @side-spacing-sm / 2;
+				}
+			}
 
 			.form {
-				width: 50%;
 				padding-right: @side-spacing / 2;
 
 				@media @_screen_sm {
@@ -132,13 +145,6 @@
 			}
 
 			.infos {
-				width: 50%;
-				padding-left: @side-spacing / 2;
-
-				@media @_screen_sm {
-					padding-left: @side-spacing-sm / 2;
-				}
-
 				p {
 					line-height: 150%;
 				}
