@@ -81,10 +81,6 @@
 			}
 
 			.socials {
-				opacity: 0;
-				display: none;
-				transition: opacity @transition-duration ease;
-
 				ul {
 					margin: 0;
 					padding: 0;
@@ -161,9 +157,6 @@
 
 	.nav {
 		flex-shrink: 0;
-		opacity: 0;
-		display: none;
-		transition: opacity @transition-duration ease;
 
 		ul {
 			margin: 0 0 10px 20px;
@@ -223,9 +216,8 @@
 		color: @color-light;
 		outline: none;
 		cursor: pointer;
-		opacity: 0;
 		z-index: @z-index-nav-buttons;
-		transition: opacity @transition-duration ease, right @transition-duration ease;
+		transition: right @transition-duration ease;
 
 		@media @_screen_sm {
 			width: @trigger-size-sm;
