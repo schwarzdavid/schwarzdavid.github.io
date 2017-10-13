@@ -72,7 +72,7 @@
 
 </head>
 
-<body data-active="">
+<body data-active="teaser">
 
 <!-- LANDING PAGE -->
 <section id="teaser">
@@ -150,9 +150,19 @@
 	</nav>
 	<!-- / BOTTOM/SIDE NAVIGATION -->
 
-	<!-- SWITCH BUTTON -->
-	<button type="button" class="trigger" data-menu-switch aria-label="Show page"><span>&nbsp;</span></button>
-	<!-- / SWITCH BUTTON -->
+	<!-- NAV BUTTONS -->
+	<div class="buttons">
+
+		<!-- ACTION BUTTONS -->
+		<button type="button" class="back" data-resume-switch aria-label="Back to page"><span>&nbsp;</span></button>
+		<!-- / ACTION BUTTONS -->
+
+		<!-- SWITCH BUTTON -->
+		<button type="button" class="trigger" data-menu-switch aria-label="Show page"><span>&nbsp;</span></button>
+		<!-- / SWITCH BUTTON -->
+
+	</div>
+	<!-- / NAV BUTTONS -->
 
 </section>
 <!-- / LANDING PAGE -->
@@ -376,21 +386,24 @@
 						<input type="text" name="name" id="input-name" class="field" required>
 						<label class="label" for="input-name">Your name *</label>
 						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
-							<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+							<path
+								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
 					<div class="input">
 						<input type="email" name="email" id="input-email" class="field" required>
 						<label class="label" for="input-email">Your e-mail address *</label>
 						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
-							<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+							<path
+								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
 					<div class="input">
 						<textarea id="input-message" class="field" required></textarea>
 						<label class="label" for="input-message">What do you want to tell me? *</label>
 						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
-							<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+							<path
+								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
 					<small class="hint">* required fields</small>
@@ -435,233 +448,227 @@
 <!-- RESUME -->
 <section id="resume">
 
-	<!-- ACTION BUTTONS -->
-	<button type="button" class="back" data-resume-switch aria-label="Back to page"><span>&nbsp;</span></button>
-	<!-- / ACTION BUTTONS -->
-
 	<!-- SCROLL CONTAINER -->
-	<div class="content-wrapper">
-		<div class="content">
-			<h1 class="title">Resume / CV</h1>
+	<div class="content">
+		<h1 class="title">Resume / CV</h1>
 
-			<!-- TIMELINES -->
-			<div class="history">
+		<!-- TIMELINES -->
+		<div class="history">
 
-				<!-- EDUCATION -->
-				<div class="timeline">
-					<h3 class="subtitle">Education</h3>
+			<!-- EDUCATION -->
+			<div class="timeline">
+				<h3 class="subtitle">Education</h3>
 
-					<!-- WU -->
-					<article class="item">
-						<header class="header">
-							<h6 class="name">University of Economic Sciences Vienna</h6>
-							<span class="time"><time datetime="2017-09">10.2017</time> - now</span>
-						</header>
-						<p class="text">Economics and Social Sciences - Bachelor course</p>
-					</article>
-					<!-- / WU -->
+				<!-- WU -->
+				<article class="item">
+					<header class="header">
+						<h6 class="name">University of Economic Sciences Vienna</h6>
+						<span class="time"><time datetime="2017-09">10.2017</time> - now</span>
+					</header>
+					<p class="text">Economics and Social Sciences - Bachelor course</p>
+				</article>
+				<!-- / WU -->
 
-					<!-- FH ST.POELTEN -->
-					<article class="item">
-						<header class="header">
-							<h6 class="name">FH St. Pölten</h6>
-							<span class="time"><time datetime="2017-09">09.2017</time> - now</span>
-						</header>
-						<p class="text">Bachelor course in Smart Engineering of Production Technologies and
-							Processes</p>
-					</article>
-					<!-- / FH ST.POELTEN -->
+				<!-- FH ST.POELTEN -->
+				<article class="item">
+					<header class="header">
+						<h6 class="name">FH St. Pölten</h6>
+						<span class="time"><time datetime="2017-09">09.2017</time> - now</span>
+					</header>
+					<p class="text">Bachelor course in Smart Engineering of Production Technologies and
+						Processes</p>
+				</article>
+				<!-- / FH ST.POELTEN -->
 
-					<!-- UNIVIE -->
-					<article class="item">
-						<header class="header">
-							<h6 class="name">University of Vienna</h6>
-							<span class="time"><time datetime="2016-10">10.2016</time> - <time
-									datetime="2017-06">06.2017</time></span>
-						</header>
-						<p class="text">Economic Computer Science - Bachelor course</p>
-					</article>
-					<!-- / UNIVIE -->
+				<!-- UNIVIE -->
+				<article class="item">
+					<header class="header">
+						<h6 class="name">University of Vienna</h6>
+						<span class="time"><time datetime="2016-10">10.2016</time> - <time
+							datetime="2017-06">06.2017</time></span>
+					</header>
+					<p class="text">Economic Computer Science - Bachelor course</p>
+				</article>
+				<!-- / UNIVIE -->
 
-					<!-- HTL -->
-					<article class="item">
-						<header class="header">
-							<h6 class="name">HTL Ottakring</h6>
-							<span class="time"><time datetime="2011-09">09.2011</time> - <time
-									datetime="2016-07">07.2016</time></span>
-						</header>
-						<p class="text">College degree in computer science and media technology</p>
-					</article>
-					<!-- / HTL -->
-
-				</div>
-				<!-- / EDUCATION -->
-
-				<!-- WORK EXPERIENCE -->
-				<div class="timeline">
-					<h3 class="subtitle">Work experience</h3>
-
-					<!-- nuIT -->
-					<article class="item">
-						<header class="header">
-							<h6 class="name">nu-IT</h6>
-							<span class="time"><time datetime="2016-07">07.2016</time> - now</span>
-						</header>
-						<p class="text">Frontend Developer</p>
-					</article>
-					<!-- / nuIT -->
-
-					<!-- Getdesigned -->
-					<article class="item">
-						<header class="header">
-							<h6 class="name">Getdesigned</h6>
-							<span class="time"><time datetime="2015-07">07.2015</time> - <time
-									datetime="2015-08">08.2015</time></span>
-							<span class="time"><time datetime="2014-07">07.2014</time> - <time
-									datetime="2015-01">01.2015</time></span>
-						</header>
-						<p class="text">Internship as Webdesigner and Webdeveloper</p>
-					</article>
-					<!-- / Getdesigned -->
-
-				</div>
-				<!-- / WORK EXPERIENCE -->
+				<!-- HTL -->
+				<article class="item">
+					<header class="header">
+						<h6 class="name">HTL Ottakring</h6>
+						<span class="time"><time datetime="2011-09">09.2011</time> - <time
+							datetime="2016-07">07.2016</time></span>
+					</header>
+					<p class="text">College degree in computer science and media technology</p>
+				</article>
+				<!-- / HTL -->
 
 			</div>
-			<!-- / TIMELINES -->
+			<!-- / EDUCATION -->
 
-			<!-- SKILLS -->
-			<div class="skills">
+			<!-- WORK EXPERIENCE -->
+			<div class="timeline">
+				<h3 class="subtitle">Work experience</h3>
 
-				<!-- DEV SKILLS -->
-				<div class="dev">
-					<h3 class="subtitle">Programming skills</h3>
+				<!-- nuIT -->
+				<article class="item">
+					<header class="header">
+						<h6 class="name">nu-IT</h6>
+						<span class="time"><time datetime="2016-07">07.2016</time> - now</span>
+					</header>
+					<p class="text">Frontend Developer</p>
+				</article>
+				<!-- / nuIT -->
 
-					<!-- HTML & CSS -->
-					<div class="skill">
-						<span>HTML5, CSS3 <small>(Flex-Layout, Less, etc.)</small></span>
-						<ul>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-						</ul>
-					</div>
-					<!-- / HTML & CSS -->
-
-					<!-- JS -->
-					<div class="skill">
-						<span>Javascript <small>(Angular 1 + 2, jQuery, etc.)</small></span>
-						<ul>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star-half-full"></span></li>
-						</ul>
-					</div>
-					<!-- / JS -->
-
-					<!-- NodeJS -->
-					<div class="skill">
-						<span>NodeJS <small>(Express, Restify, etc.)</small></span>
-						<ul>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star-half-full"></span></li>
-						</ul>
-					</div>
-					<!-- / NodeJS -->
-
-					<!-- PHP -->
-					<div class="skill">
-						<span>PHP <small>(Laravel)</small></span>
-						<ul>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star-half-full"></span></li>
-							<li><span class="fa fa-star-o"></span></li>
-							<li><span class="fa fa-star-o"></span></li>
-						</ul>
-					</div>
-					<!-- / PHP -->
-
-					<h3 class="subtitle">Databases</h3>
-
-					<!-- MySQL -->
-					<div class="skill">
-						<span>MySQL</span>
-						<ul>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star-half-full"></span></li>
-							<li><span class="fa fa-star-o"></span></li>
-							<li><span class="fa fa-star-o"></span></li>
-						</ul>
-					</div>
-					<!-- / MySQL -->
-
-					<!-- MongoDB -->
-					<div class="skill">
-						<span>MongoDB</span>
-						<ul>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star"></span></li>
-							<li><span class="fa fa-star-half-full"></span></li>
-							<li><span class="fa fa-star-o"></span></li>
-						</ul>
-					</div>
-					<!-- / MongoDB -->
-
-					<h3 class="subtitle">Tl;dr</h3>
-
-					<!-- TAGCLOUD -->
-					<div class="tagcloud">
-						<ul>
-							<li>Git</li>
-							<li>Linux</li>
-							<li>Grunt</li>
-							<li>Gulp</li>
-							<li>Photoshop CC</li>
-							<li>Websockets</li>
-							<li>Typescript</li>
-							<li>REST</li>
-							<li>Mobile First</li>
-						</ul>
-					</div>
-					<!-- / TAGCLOUD -->
-
-				</div>
-				<!-- / DEV SKILLS -->
-
-				<!-- LANGUAGES -->
-				<div id="languages">
-					<h3 class="subtitle">Languages</h3>
-					<div class="lang-wrapper">
-						<div class="lang">
-							<canvas data-value="95"></canvas>
-							<span>German</span>
-						</div>
-						<div class="lang">
-							<canvas data-value="80"></canvas>
-							<span>English</span>
-						</div>
-						<div class="lang">
-							<canvas data-value="65"></canvas>
-							<span>Czech</span>
-						</div>
-					</div>
-				</div>
-				<!-- / LANGUAGES -->
+				<!-- Getdesigned -->
+				<article class="item">
+					<header class="header">
+						<h6 class="name">Getdesigned</h6>
+						<span class="time"><time datetime="2015-07">07.2015</time> - <time
+							datetime="2015-08">08.2015</time></span>
+						<span class="time"><time datetime="2014-07">07.2014</time> - <time
+							datetime="2015-01">01.2015</time></span>
+					</header>
+					<p class="text">Internship as Webdesigner and Webdeveloper</p>
+				</article>
+				<!-- / Getdesigned -->
 
 			</div>
-			<!-- / SKILLS -->
+			<!-- / WORK EXPERIENCE -->
 
 		</div>
+		<!-- / TIMELINES -->
+
+		<!-- SKILLS -->
+		<div class="skills">
+
+			<!-- DEV SKILLS -->
+			<div class="dev">
+				<h3 class="subtitle">Programming skills</h3>
+
+				<!-- HTML & CSS -->
+				<div class="skill">
+					<span>HTML5, CSS3 <small>(Flex-Layout, Less, etc.)</small></span>
+					<ul>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+					</ul>
+				</div>
+				<!-- / HTML & CSS -->
+
+				<!-- JS -->
+				<div class="skill">
+					<span>Javascript <small>(Angular 1 + 2, jQuery, etc.)</small></span>
+					<ul>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star-half-full"></span></li>
+					</ul>
+				</div>
+				<!-- / JS -->
+
+				<!-- NodeJS -->
+				<div class="skill">
+					<span>NodeJS <small>(Express, Restify, etc.)</small></span>
+					<ul>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star-half-full"></span></li>
+					</ul>
+				</div>
+				<!-- / NodeJS -->
+
+				<!-- PHP -->
+				<div class="skill">
+					<span>PHP <small>(Laravel)</small></span>
+					<ul>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star-half-full"></span></li>
+						<li><span class="fa fa-star-o"></span></li>
+						<li><span class="fa fa-star-o"></span></li>
+					</ul>
+				</div>
+				<!-- / PHP -->
+
+				<h3 class="subtitle">Databases</h3>
+
+				<!-- MySQL -->
+				<div class="skill">
+					<span>MySQL</span>
+					<ul>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star-half-full"></span></li>
+						<li><span class="fa fa-star-o"></span></li>
+						<li><span class="fa fa-star-o"></span></li>
+					</ul>
+				</div>
+				<!-- / MySQL -->
+
+				<!-- MongoDB -->
+				<div class="skill">
+					<span>MongoDB</span>
+					<ul>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star"></span></li>
+						<li><span class="fa fa-star-half-full"></span></li>
+						<li><span class="fa fa-star-o"></span></li>
+					</ul>
+				</div>
+				<!-- / MongoDB -->
+
+				<h3 class="subtitle">Tl;dr</h3>
+
+				<!-- TAGCLOUD -->
+				<div class="tagcloud">
+					<ul>
+						<li>Git</li>
+						<li>Linux</li>
+						<li>Grunt</li>
+						<li>Gulp</li>
+						<li>Photoshop CC</li>
+						<li>Websockets</li>
+						<li>Typescript</li>
+						<li>REST</li>
+						<li>Mobile First</li>
+					</ul>
+				</div>
+				<!-- / TAGCLOUD -->
+
+			</div>
+			<!-- / DEV SKILLS -->
+
+			<!-- LANGUAGES -->
+			<div id="languages">
+				<h3 class="subtitle">Languages</h3>
+				<div class="lang-wrapper">
+					<div class="lang">
+						<canvas data-value="95"></canvas>
+						<span>German</span>
+					</div>
+					<div class="lang">
+						<canvas data-value="80"></canvas>
+						<span>English</span>
+					</div>
+					<div class="lang">
+						<canvas data-value="65"></canvas>
+						<span>Czech</span>
+					</div>
+				</div>
+			</div>
+			<!-- / LANGUAGES -->
+
+		</div>
+		<!-- / SKILLS -->
+
 	</div>
 	<!-- / SCROLL CONTAINER -->
 

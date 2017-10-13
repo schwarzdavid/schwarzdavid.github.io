@@ -81,7 +81,7 @@
 			}
 
 			.socials {
-				opacity: 0;
+				opacity: 1;
 				transition: opacity @transition-duration ease;
 
 				ul {
@@ -160,7 +160,7 @@
 
 	.nav {
 		flex-shrink: 0;
-		opacity: 0;
+		opacity: 1;
 		transition: opacity @transition-duration ease;
 
 		ul {
@@ -222,7 +222,7 @@
 		outline: none;
 		cursor: pointer;
 		opacity: 0;
-		z-index: 10;
+		z-index: @z-index-nav-buttons;
 		transition: opacity @transition-duration ease, right @transition-duration ease;
 
 		@media @_screen_sm {
