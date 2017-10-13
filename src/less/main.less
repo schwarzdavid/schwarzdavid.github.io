@@ -60,19 +60,6 @@
 }
 
 //*****************************************
-// TEASER ADDITION
-//*****************************************
-#teaser {
-	.content .content-wrapper .socials,
-	.nav,
-	button[data-menu-switch] {
-		opacity: 1;
-		display: block;
-		transition-delay: .1s;
-	}
-}
-
-//*****************************************
 // MAIN CONTENT WRAPPER
 //*****************************************
 #main {
@@ -87,6 +74,10 @@
 }
 
 &[data-active="resume"]{
+	#teaser .buttons .home {
+		opacity: 1;
+	}
+
 	#main {
 		transform: translateX(-100%);
 	}
