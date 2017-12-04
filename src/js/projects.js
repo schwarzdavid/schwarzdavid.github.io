@@ -11,6 +11,7 @@
 	const MIN_DRAG_DISTANCE = 0.25;                 // Factor of preview width, that the user has to swipe
 	const PROJECT_ACTIVE_CLASS = 'active';          // Classname for currently visible project preview
 	const UNSET_ACTIVE_TIME = 150;                  // Duration how long the preview has to be pressed until the zoom effect will be disabled
+	const INTERVAL_TIMEOUT = 2000;                  // Time to wait after last interaction before carousel starts again
 
 	//********************************************
 	// VARIABLES
@@ -24,6 +25,7 @@
 	let projectCarousel;                            // Contains the interval object of the preview carousel
 	let projectsVisible = true;                     // Contains information, if projects are visible or not
 	let unsetActiveTimeout;                         // Contains timeout which will be created when a interaction start begins. When finished, it will remove the active-class from all project previews
+	let intervalTimeoutId;
 
 	//********************************************
 	// SELECTORS
@@ -145,7 +147,9 @@
 
 		// Clear project rotation
 		clearInterval(projectCarousel);
+		clearTimeout(intervalTimeoutId);
 		projectCarousel = null;
+		intervalTimeoutId = null;
 
 		// Pause animations when dragging project
 		requestAnimationFrame(() => {
@@ -216,7 +220,9 @@
 		lastInteractionPosition = null;
 		unsetActiveTimeout = null;
 
-		projectCarousel = setInterval(nextProject, INTERVAL_TIME);
+		intervalTimeoutId = setTimeout(() => {
+			projectCarousel = setInterval(nextProject, INTERVAL_TIME);
+		}, INTERVAL_TIMEOUT);
 	}
 
 	//********************************************

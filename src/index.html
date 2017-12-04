@@ -74,7 +74,11 @@
 	<script src='https://www.googletagmanager.com/gtag/js?id=UA-105123430-1' async></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+
 		gtag('js', new Date());
 
 		gtag('config', 'UA-105123430-1');
@@ -245,7 +249,8 @@
 
 		<!-- DESCRIPTION -->
 		<p class="description">Hello, my name is David Schwarz and I am a young, (mostly) motivated and
-			coffee addicted programmer, searching for new adventures. Currently I am studying Smart Engineering at FH St. Pölten near Vienna and working as frontend developer at
+			coffee addicted programmer, searching for new adventures. Currently I am studying Smart Engineering at FH
+			St. Pölten near Vienna and working as frontend developer at
 			<a href="https://nu-it.at" rel="noopener" target="_blank">nu-IT</a>.<br>In my spare time I enjoy skiing,
 			hiking and playing video games.</p>
 		<!-- DESCRIPTION -->
@@ -272,10 +277,15 @@
 						<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
 						     xmlns:xlink="http://www.w3.org/1999/xlink">
 							<defs>
-								<g id="stripes-buchcafe-melange" transform="rotate(50 -35,250)">
-									<rect width="70" height="500" x="-72" y="-50"></rect>
-									<rect width="70" height="500" x="0" y="0"></rect>
-									<rect width="70" height="500" x="72" y="50"></rect>
+								<g id="stripes-buchcafe-melange" transform="rotate(-3, 400, 300)">
+									<rect width="200" height="120" x="-202" y="0"></rect>
+									<rect width="200" height="150" x="-202" y="124"></rect>
+									<rect width="200" height="100" x="-202" y="278"></rect>
+									<rect width="200" height="150" x="-202" y="382"></rect>
+									<rect width="200" height="120" x="2" y="50"></rect>
+									<rect width="200" height="160" x="2" y="174"></rect>
+									<rect width="200" height="110" x="2" y="338"></rect>
+									<rect width="200" height="60" x="2" y="452"></rect>
 								</g>
 
 								<rect x="0" y="100" width="800" height="400" id="bg-buchcafe-melange"></rect>
@@ -317,18 +327,17 @@
 						<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
 						     xmlns:xlink="http://www.w3.org/1999/xlink">
 							<defs>
-								<g id="stripes-haus-kamila">
-									<circle r="120" cx="-140" cy="180"></circle>
-									<circle r="100" cx="320" cy="450"></circle>
-									<circle r="50" cx="-50" cy="400"></circle>
-									<circle r="90" cx="200" cy="220"></circle>
+								<g id="stripes-haus-kamila" transform="rotate(50, 400, 300)">
+									<rect width="70" height="470" x="-72" y="-50"></rect>
+									<rect width="70" height="470" x="0" y="0"></rect>
+									<rect width="70" height="470" x="72" y="50"></rect>
 								</g>
 
 								<rect x="0" y="100" width="800" height="400" id="bg-haus-kamila"></rect>
 
 								<mask id="mask-haus-kamila">
 									<use xlink:href="#bg-haus-kamila" fill="white" fill-opacity="0.6"></use>
-									<use xlink:href="#stripes-haus-kamila" x="350" y="0" fill="white"></use>
+									<use xlink:href="#stripes-haus-kamila" x="200" y="310" fill="white"></use>
 								</mask>
 
 								<clipPath id="clippath-haus-kamila">
@@ -338,9 +347,6 @@
 
 							<rect x="0" y="0" width="800" height="600" fill="black"
 							      clip-path="url(#clippath-haus-kamila)"></rect>
-
-							<!--<image xlink:href="./img/haus-kamila-template.jpg" x="0" y="0" width="800" height="600"
-								   mask="url(#mask-haus-kamila)"></image>-->
 
 							<foreignObject width="800" height="600" x="0" y="0" mask="url(#mask-haus-kamila)">
 								<picture>
@@ -359,11 +365,55 @@
 				</article>
 				<!-- / Haus Kamila -->
 
+				<!-- S'COOL -->
+				<article class="project">
+					<div class="project-container">
+						<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
+						     xmlns:xlink="http://www.w3.org/1999/xlink">
+							<defs>
+								<g id="circles-scool">
+									<circle r="120" cx="-130" cy="150"></circle>
+									<circle r="100" cx="320" cy="450"></circle>
+									<circle r="60" cx="-150" cy="450"></circle>
+								</g>
+
+								<rect x="0" y="100" width="800" height="400" id="bg-scool"></rect>
+
+								<mask id="mask-scool">
+									<use xlink:href="#bg-scool" fill="white" fill-opacity="0.6"></use>
+									<use xlink:href="#circles-scool" x="350" y="0" fill="white"></use>
+								</mask>
+
+								<clipPath id="clippath-scool">
+									<use xlink:href="#bg-scool"></use>
+								</clipPath>
+							</defs>
+
+							<rect x="0" y="0" width="800" height="600" fill="black"
+							      clip-path="url(#clippath-scool)"></rect>
+
+							<foreignObject width="800" height="600" x="0" y="0" mask="url(#mask-scool)">
+								<picture>
+									<source srcset="./img/scool-template.webp" type="image/webp">
+									<source srcset="./img/scool-template.jpg" type="image/jpeg">
+									<img src="./img/scool-template.jpg" alt="scool teaserpicture"
+									     draggable="false">
+								</picture>
+							</foreignObject>
+						</svg>
+						<div class="project-content">
+							<h4 class="title">ÖBB S'cool - Die Wintersportwoche</h4>
+							<span class="services">Online Anmeldeplattform</span>
+						</div>
+					</div>
+				</article>
+				<!-- / S'COOL -->
+
 			</div>
 			<!-- / PROJECT SLIDER -->
 
 			<!-- PROGRESS BAR -->
-			<progress class="progress" value="1" max="2"></progress>
+			<progress class="progress" value="1" max="3"></progress>
 			<!-- / PROGRESS BAR -->
 
 		</div>
@@ -387,7 +437,7 @@
 						<label class="label" for="input-name">Your name *</label>
 						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
 							<path
-								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
 					<div class="input">
@@ -395,7 +445,7 @@
 						<label class="label" for="input-email">Your e-mail address *</label>
 						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
 							<path
-								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
 					<div class="input">
@@ -403,7 +453,7 @@
 						<label class="label" for="input-message">What do you want to tell me? *</label>
 						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
 							<path
-								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
 					<small class="hint">* required fields</small>
@@ -414,7 +464,8 @@
 				</form>
 
 				<div class="infos">
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.</p>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+						ut labore et.</p>
 
 					<div class="contact">
 						<strong><span class="fa fa-phone"></span><span>Phone</span></strong>
@@ -485,7 +536,7 @@
 					<header class="header">
 						<h6 class="name">University of Vienna</h6>
 						<span class="time"><time datetime="2016-10">10.2016</time> - <time
-							datetime="2017-06">06.2017</time></span>
+								datetime="2017-06">06.2017</time></span>
 					</header>
 					<p class="text">Economic Computer Science - Bachelor course</p>
 				</article>
@@ -496,7 +547,7 @@
 					<header class="header">
 						<h6 class="name">HTL Ottakring</h6>
 						<span class="time"><time datetime="2011-09">09.2011</time> - <time
-							datetime="2016-07">07.2016</time></span>
+								datetime="2016-07">07.2016</time></span>
 					</header>
 					<p class="text">College degree in computer science and media technology</p>
 				</article>
@@ -524,9 +575,9 @@
 					<header class="header">
 						<h6 class="name">Getdesigned</h6>
 						<span class="time"><time datetime="2015-07">07.2015</time> - <time
-							datetime="2015-08">08.2015</time></span>
+								datetime="2015-08">08.2015</time></span>
 						<span class="time"><time datetime="2014-07">07.2014</time> - <time
-							datetime="2015-01">01.2015</time></span>
+								datetime="2015-01">01.2015</time></span>
 					</header>
 					<p class="text">Internship as Webdesigner and Webdeveloper</p>
 				</article>
