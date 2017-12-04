@@ -432,30 +432,43 @@
 
 			<div class="row">
 				<form class="form">
+
+					<!-- NOSCRIPT HINT -->
+					<noscript style="color:#f00">
+						To use the contact form, Javascript must be enabled!
+					</noscript>
+					<!-- / NOSCRIPT HINT -->
+
+					<!-- NAME FIELD -->
 					<div class="input">
 						<input type="text" name="name" id="input-name" class="field" required>
 						<label class="label" for="input-name">Your name *</label>
-						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
-							<path
-									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="xMinYMin">
+							<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
+					<!-- / NAME FIELD -->
+
+					<!-- EMAIL FIELD -->
 					<div class="input">
 						<input type="email" name="email" id="input-email" class="field" required>
 						<label class="label" for="input-email">Your e-mail address *</label>
-						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
-							<path
-									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="xMinYMin">
+							<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
+					<!-- / EMAIL FIELD -->
+
+					<!-- MESSAGE FIELD -->
 					<div class="input">
-						<textarea id="input-message" class="field" required></textarea>
+						<textarea id="input-message" rows="1" class="field" name="data" required></textarea>
 						<label class="label" for="input-message">What do you want to tell me? *</label>
-						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="none">
-							<path
-									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+						<svg class="graphic" viewBox="0 0 1200 60" preserveAspectRatio="xMinYMin">
+							<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 						</svg>
 					</div>
+					<!-- / MESSAGE FIELD -->
+
 					<small class="hint">* required fields</small>
 
 					<div class="g-recaptcha" data-sitekey="6Lfu9i4UAAAAACird7iU-pnT2pJq0T9fKwrr0GUS"></div>
@@ -474,8 +487,7 @@
 
 					<div class="contact">
 						<strong><span class="fa fa-envelope"></span><span>E-Mail</span></strong>
-						<a href="#mailto" target="_blank" class="invertMe"
-						   rel="noopener">moc.liamg@01divad.zrawhcs</a>
+						<a href="#mailto" target="_blank" class="invertMe" rel="noopener">moc.liamg@01divad.zrawhcs</a>
 					</div>
 				</div>
 			</div>

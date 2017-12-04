@@ -64,6 +64,7 @@
 						position: relative;
 						display: block;
 						border: none;
+						height: 50px;
 						min-height: 50px;
 						border-radius: 0;
 						width: 100%;
@@ -72,6 +73,7 @@
 						font-size: 1.1rem;
 						color: inherit;
 						-webkit-appearance: none;
+						padding: 0;
 
 						&:focus,
 						&.filled {
@@ -89,11 +91,19 @@
 						}
 					}
 
+					textarea.field {
+						resize: none;
+						max-height: 200px;
+						margin: 10px 0;
+						min-height: 30px;
+						height: 30px;
+					}
+
 					.label {
 						pointer-events: none;
 						position: absolute;
 						display: block;
-						bottom: 0;
+						top: 20px;
 						left: 0;
 						height: 50px;
 						line-height: 50px;
@@ -108,7 +118,6 @@
 						display: block;
 						bottom: 0;
 						left: 0;
-						height: 100%;
 						width: 300%;
 						stroke: #92989e;
 						fill: transparent;
@@ -137,10 +146,18 @@
 					border-radius: 30px;
 					height: 60px;
 					color: @color-light;
-					padding: 0 50px;
+					padding: 0;
 					margin: 50px auto 0;
 					font-family: inherit;
 					font-size: .7rem;
+					width: 240px;
+					transition: background @transition-duration ease;
+					outline: none;
+					cursor: pointer;
+
+					&.finished {
+						background: #49940d;
+					}
 				}
 			}
 
