@@ -69,17 +69,13 @@
 		<link type="text/css" rel="stylesheet" href="css/main.css">
 	</noscript>
 	<!-- DEFERRED STYLES -->
-	
+
 	<!-- GOOGLE ANALYTICS -->
 	<script>
-		window.GoogleAnalyticsObject = 'ga';
-		window.ga = window.ga || function () {
-			(window.ga.q = window.ga.q || []).push(arguments);
-		};
-		window.ga.l = 1 * new Date();
-
-		ga('create', 'UA-105123430-1', 'auto');
-		ga('send', 'pageview');
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments)};
+		gtag('js', new Date());
+		gtag('config', 'UA-105123430-1');
 	</script>
 	<!-- / GOOGLE ANALYTICS -->
 
