@@ -81,6 +81,7 @@
 		httpRequest.addEventListener('load', () => {
 			const activeInputs = Array.from(document.querySelectorAll(`.${INPUT_FILLED_CLASS}`));
 
+			_form.removeEventListener('submit', onSubmit);
 			_form.reset();
 			requestAnimationFrame(() => {
 				_submitButton.classList.add('finished');
