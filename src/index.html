@@ -74,14 +74,8 @@
 	<script src='https://www.googletagmanager.com/gtag/js?id=UA-105123430-1' async></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-
-		gtag('js', new Date());
-
-		gtag('config', 'UA-105123430-1');
+		dataLayer.push(['js', new Date()]);
+		dataLayer.push(['config', 'UA-105123430-1']);
 	</script>
 	<!-- / GOOGLE ANALYTICS -->
 
@@ -500,7 +494,7 @@
 	<footer id="footer">
 		<div class="wrapper">
 			<p>Copyright &copy; 2017 by David Schwarz. All rights reserved.</p>
-			<p><a href="#">Future Imprint & Privacy</a></p>
+			<p><a href="imprint.html">Imprint</a></p>
 		</div>
 	</footer>
 	<!-- / FOOTER -->
