@@ -12,6 +12,7 @@
 	const PROJECT_ACTIVE_CLASS = 'active';          // Classname for currently visible project preview
 	const UNSET_ACTIVE_TIME = 150;                  // Duration how long the preview has to be pressed until the zoom effect will be disabled
 	const INTERVAL_TIMEOUT = 2000;                  // Time to wait after last interaction before carousel starts again
+	const ACTIVE_PROJECT_BODY_CLASS = 'details';
 
 	//********************************************
 	// VARIABLES
@@ -34,6 +35,7 @@
 	const _projectPreviews = Array.from(document.querySelectorAll('#projects .project'));
 	const _projectProgress = document.querySelector('#projects .project-wrapper progress');
 	const _projectSection = document.querySelector('#projects');
+	const _projectDetails = Array.from(document.querySelectorAll('#details .project'));
 
 	//********************************************
 	// REGISTER EVENTS
@@ -71,7 +73,7 @@
 				}
 
 				if (project.classList.contains(PROJECT_ACTIVE_CLASS)) {
-					console.log("open project");
+					openProject(index);
 				} else {
 					activeProjectIndex = index;
 					setActiveProject(activeProjectIndex);
@@ -85,6 +87,21 @@
 		}
 
 		projectCarousel = setInterval(nextProject, INTERVAL_TIME);
+	}
+
+	function openProject(index){
+
+		requestAnimationFrame(() => {
+			document.body.dataset.active = ACTIVE_PROJECT_BODY_CLASS;
+
+			for(let i in _projectDetails){
+				if(parseInt(i) === index){
+					_projectDetails[i].classList.add(PROJECT_ACTIVE_CLASS);
+				} else {
+					_projectDetails[i].classList.remove(PROJECT_ACTIVE_CLASS);
+				}
+			}
+		});
 	}
 
 	/**

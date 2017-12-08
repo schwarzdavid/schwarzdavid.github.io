@@ -10,6 +10,8 @@
 
 @import "sections/resume";
 
+@import "sections/details";
+
 //*****************************************
 // GLOBAL TAG SETTINGS
 //*****************************************
@@ -80,5 +82,11 @@
 
 	#main {
 		transform: translateX(-100%);
+	}
+}
+
+&[data-active="details"]{
+	#main {
+		overflow: hidden;
 	}
 }
