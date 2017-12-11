@@ -1,41 +1,42 @@
 (function () {
 	'use strict';
 
-	// TODO: learn proper english and update comments then
-	// TODO: implement click-event on project previews
+	// TODO: Add documentation to variables
+	// TODO: Add documentation to constants
+	// TODO: Add documentation to functions
 
 	//********************************************
 	// CONSTANTS
 	//********************************************
-	const INTERVAL_TIME = 5000;                     // Preview carousel interval
-	const MIN_DRAG_DISTANCE = 0.25;                 // Factor of preview width, that the user has to swipe
-	const PROJECT_ACTIVE_CLASS = 'active';          // Classname for currently visible project preview
-	const UNSET_ACTIVE_TIME = 150;                  // Duration how long the preview has to be pressed until the zoom effect will be disabled
-	const INTERVAL_TIMEOUT = 2000;                  // Time to wait after last interaction before carousel starts again
+	const PROJECT_ACTIVE_CLASS = 'active';
+	const MIN_DRAG_DISTANCE = 0.25;
+	const UNSET_ACTIVE_TIME = 150;
+	const INTERVAL_TIME = 5000;
 	const ACTIVE_PROJECT_BODY_CLASS = 'details';
 
 	//********************************************
 	// VARIABLES
 	//********************************************
-	let activeProjectIndex = 0;                     // Determinates the currently visible preview
-	let bodyObserver;                               // Contains intersection observer to check, if projects are visible or not
-	let firstInteractionPosition;                   // Contains the position of the last interaction start position (mouse or touch)
-	let firstTouchPosition;                         // Contains the position of the last touch start position
-	let lastInteractionPosition;                    // Contains the position of the last interaction move position (mouse or touch)
-	let preventNextClick;                           // Next click-event should be aborted, because touchend event cannot prevent click event
-	let projectCarousel;                            // Contains the interval object of the preview carousel
-	let projectsVisible = true;                     // Contains information, if projects are visible or not
-	let unsetActiveTimeout;                         // Contains timeout which will be created when a interaction start begins. When finished, it will remove the active-class from all project previews
-	let intervalTimeoutId;
+	let firstTouchPosition;
+	let firstInteractionPosition;
+	let lastInteractionPosition;
+	let activeProjectIndex = 0;
+	let unsetActiveTimeout;
+	let preventNextClick;
+	let projectCarousel;
+	let bodyObserver;
+	let projectsVisible = true;
 
 	//********************************************
 	// SELECTORS
 	//********************************************
-	const _projectPreviewContainer = document.querySelector('#projects .project-slider');
 	const _projectPreviews = Array.from(document.querySelectorAll('#projects .project'));
-	const _projectProgress = document.querySelector('#projects .project-wrapper progress');
 	const _projectSection = document.querySelector('#projects');
+	const _projectPreviewContainer = document.querySelector('#projects .project-slider');
+	const _projectProgress = document.querySelector('#projects .project-wrapper progress');
 	const _projectDetails = Array.from(document.querySelectorAll('#details .project'));
+	const _navigatorMaster = document.body;
+	const _detailCloseButton = document.querySelector('#details > .close');
 
 	//********************************************
 	// REGISTER EVENTS
@@ -47,6 +48,7 @@
 	_projectPreviewContainer.addEventListener('mousedown', onContainerMouseDown);
 	_projectPreviewContainer.addEventListener('mousemove', onContainerMouseMove);
 	_projectPreviewContainer.addEventListener('mouseup', onContainerMouseUp);
+	_detailCloseButton.addEventListener('click', onDetailClose);
 
 	//********************************************
 	// INITIALIZE
@@ -58,16 +60,11 @@
 	//********************************************
 	// FUNCTIONS
 	//********************************************
-	/**
-	 * Should be run once, when the page is loaded.
-	 * Dynamically binds click-event to all project previews, initializes the intersection observer and starts
-	 * the project carousel
-	 */
 	function init() {
 		// Bind events to projects
 		_projectPreviews.forEach((project, index) => {
 			project.addEventListener('click', (e) => {
-				if (preventNextClick) {
+				if(preventNextClick){
 					preventNextClick = false;
 					return;
 				}
@@ -81,7 +78,7 @@
 			});
 		});
 
-		if ('IntersectionObserver' in window) {
+		if('IntersectionObserver' in window){
 			bodyObserver = new IntersectionObserver(observerCallback);
 			bodyObserver.observe(_projectSection);
 		}
@@ -89,38 +86,14 @@
 		projectCarousel = setInterval(nextProject, INTERVAL_TIME);
 	}
 
-	function openProject(index){
-
-		requestAnimationFrame(() => {
-			document.body.dataset.active = ACTIVE_PROJECT_BODY_CLASS;
-
-			for(let i in _projectDetails){
-				if(parseInt(i) === index){
-					_projectDetails[i].classList.add(PROJECT_ACTIVE_CLASS);
-				} else {
-					_projectDetails[i].classList.remove(PROJECT_ACTIVE_CLASS);
-				}
-			}
-		});
-	}
-
-	/**
-	 * Should be executed whenever the observer detects a change.
-	 * Determinates, if the project container is visible and saves the result to projectsVisible variable
-	 * @param entry
-	 */
 	function observerCallback(entry) {
-		if (entry.length > 1) {
+		if(entry.length > 1){
 			throw new Error('too many entries on observer');
 		}
 		projectsVisible = entry[0].isIntersecting;
 	}
 
-	/**
-	 * Sets focus to the project preview on given index
-	 * @param {int} [index=activeProjectIndex] - Index of project preview, which should be focused
-	 */
-	function setActiveProject(index = activeProjectIndex) {
+	function setActiveProject(index) {
 		requestAnimationFrame(() => {
 			_projectPreviewContainer.classList.remove('notransition');
 
@@ -130,31 +103,22 @@
 
 			_projectPreviewContainer.style.transform = `translateX(${index * -100}%)`;
 			_projectPreviews[index].classList.add(PROJECT_ACTIVE_CLASS);
-			_projectProgress.value = index + 1;
+			_projectProgress.value = index +1;
 		});
 	}
 
-	/**
-	 * Makes a next step in the project carousel. When the end is reached, the index will be set to 0
-	 */
 	function nextProject() {
-		if (projectsVisible) {
+		if(projectsVisible && _navigatorMaster.dataset.active !== ACTIVE_PROJECT_BODY_CLASS) {
 			if (activeProjectIndex < _projectPreviews.length - 1) {
 				activeProjectIndex++;
 			} else {
 				activeProjectIndex = 0;
 			}
 
-			setActiveProject();
+			setActiveProject(activeProjectIndex);
 		}
 	}
 
-	/**
-	 * Prepares further move-interactions with projectpreviews.
-	 * Should be called whenever an interaction starts (touch or mouse)
-	 * @param {number} x - X-Position of interaction start
-	 * @param {number} y - Y-Position of interaction start
-	 */
 	function containerInteractionStart(x, y) {
 		// Save start position
 		firstInteractionPosition = {
@@ -164,9 +128,7 @@
 
 		// Clear project rotation
 		clearInterval(projectCarousel);
-		clearTimeout(intervalTimeoutId);
 		projectCarousel = null;
-		intervalTimeoutId = null;
 
 		// Pause animations when dragging project
 		requestAnimationFrame(() => {
@@ -186,12 +148,6 @@
 		}
 	}
 
-	/**
-	 * Calculates percentual move offset and moves project previews to calculated offset.
-	 * Should be called on every interaction move
-	 * @param {number} x - X-Position of interaction move
-	 * @param {number} y - Y-Position of interaction move
-	 */
 	function containerInteractionMove(x, y) {
 		if (!firstInteractionPosition) {
 			return;
@@ -212,12 +168,8 @@
 		};
 	}
 
-	/**
-	 * Should be called whenever the interaction ends or the interaction should be aborted.
-	 * Resets all values and sets focus to new project index
-	 */
 	function containerInteractionEnd() {
-		if (firstInteractionPosition && lastInteractionPosition) {
+		if(firstInteractionPosition && lastInteractionPosition) {
 			let xDist = firstInteractionPosition.x - lastInteractionPosition.x;
 			let projectWidth = parseInt(window.getComputedStyle(_projectPreviewContainer).width);
 			let percentOffset = xDist / projectWidth;
@@ -229,27 +181,35 @@
 			if (percentOffset > MIN_DRAG_DISTANCE && activeProjectIndex < _projectPreviews.length - 1) {
 				activeProjectIndex++;
 			}
+
+			setActiveProject(activeProjectIndex);
 		}
 
-		setActiveProject(activeProjectIndex);
 		clearTimeout(unsetActiveTimeout);
 		firstInteractionPosition = null;
 		lastInteractionPosition = null;
 		unsetActiveTimeout = null;
 
-		intervalTimeoutId = setTimeout(() => {
-			projectCarousel = setInterval(nextProject, INTERVAL_TIME);
-		}, INTERVAL_TIMEOUT);
+		projectCarousel = setInterval(nextProject, INTERVAL_TIME);
+	}
+
+	function openProject(index){
+		requestAnimationFrame(() => {
+			_navigatorMaster.dataset.active = ACTIVE_PROJECT_BODY_CLASS;
+
+			for(let i in _projectDetails){
+				if(parseInt(i) === index){
+					_projectDetails[i].classList.add(PROJECT_ACTIVE_CLASS);
+				} else {
+					_projectDetails[i].classList.remove(PROJECT_ACTIVE_CLASS);
+				}
+			}
+		});
 	}
 
 	//********************************************
 	// EVENT HANDLER
 	//********************************************
-	/**
-	 * Gets called when a touch starts.
-	 * If started touch is the first one, starts project interaction
-	 * @param e Event
-	 */
 	function onContainerTouchStart(e) {
 		if (e.touches.length > 1) {
 			return;
@@ -264,11 +224,6 @@
 		containerInteractionStart(firstTouchPosition.x, firstTouchPosition.y);
 	}
 
-	/**
-	 * Gets called when a touch move has been detected.
-	 * If the touch angle is less than +- 45deg, the interaction move function gets called.
-	 * @param e Event
-	 */
 	function onContainerTouchMove(e) {
 		// Return if no touch position was found
 		if (!firstTouchPosition) {
@@ -299,21 +254,15 @@
 		let touchMoveAngle = Math.abs(Math.atan2(touchMoveVector.y, touchMoveVector.x));
 
 		if ((touchMoveAngle < Math.PI / 4 || touchMoveAngle > Math.PI / 4 * 3) && e.cancelable) {
-			// Prevents native page-foward/-back interactions
 			e.preventDefault();
-
 			containerInteractionMove(touch.x, touch.y);
 		} else {
 			onContainerTouchEnd();
 		}
 	}
 
-	/**
-	 * Gets called when a touch ends.
-	 * Resets all, by the touch used, variables and calls the interaction end function
-	 */
 	function onContainerTouchEnd() {
-		if (!firstTouchPosition) {
+		if(!firstTouchPosition){
 			return;
 		}
 
@@ -321,26 +270,20 @@
 		containerInteractionEnd();
 	}
 
-	/**
-	 * Proxy function for interactionstart on mousedown
-	 * @param e
-	 */
 	function onContainerMouseDown(e) {
 		containerInteractionStart(e.screenX, e.screenY);
 	}
 
-	/**
-	 * Proxy function for interactionmove on mousemove
-	 * @param e
-	 */
 	function onContainerMouseMove(e) {
 		containerInteractionMove(e.screenX, e.screenY);
 	}
 
-	/**
-	 * Procy function for interactionend on mouseup
-	 */
 	function onContainerMouseUp() {
 		containerInteractionEnd();
+	}
+
+	function onDetailClose() {
+		clearInterval(projectCarousel);
+		projectCarousel = setInterval(nextProject, INTERVAL_TIME);
 	}
 }());
