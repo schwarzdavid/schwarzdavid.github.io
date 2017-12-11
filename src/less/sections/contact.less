@@ -8,16 +8,17 @@
 	.wrapper {
 		.content-wrapper;
 
-		max-width: ~"calc(@{section-max-size} + @{side-spacing-sm} * 2)";
+		max-width: ~"calc(@{section-max-size} + @{side-spacing-sm})";
 		background: @color-light;
 		box-shadow: 0 0 100px fade(@color-dark, 15%);
 		margin-top: -100px;
 		position: relative;
 		z-index: 100;
-		padding: 60px @side-spacing / 2 @side-spacing;
+		padding: 60px @side-spacing / 4 @side-spacing;
 
 		@media @_screen_sm {
 			padding: 60px @side-spacing-sm / 2 @side-spacing-sm;
+			//max-width: ~"calc(@{section-max-size} + @{side-spacing-sm} * 2)";
 		}
 
 		.title {

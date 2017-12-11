@@ -1,10 +1,6 @@
 (function () {
 	'use strict';
 
-	// TODO: Add documentation to variables
-	// TODO: Add documentation to constants
-	// TODO: Add documentation to functions
-
 	//********************************************
 	// CONSTANTS
 	//********************************************

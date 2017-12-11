@@ -71,14 +71,19 @@
 		.page-wrapper;
 		height: 100%;
 		overflow-y: auto;
+		margin-left: 0;
+		max-width: 100%;
 
 		.project {
 			.content-wrapper;
 
 			position:relative;
 			min-height: 100%;
-			padding-top: 40vh !important;
 			display: none;
+
+			@media @_screen_sm {
+				padding-top: 40vh !important;
+			}
 
 			&.active {
 				display: block;
@@ -86,31 +91,39 @@
 
 			img {
 				display: block;
-				position: absolute;
-				right: 0;
-				max-width: 40%;
-				max-height: 80vh;
-				top: 50%;
-				transform: translateY(-50%);
+				max-width: 60%;
+				max-height: 60vh;
+				margin:0 auto;
+
+				@media @_screen_sm {
+					position: absolute;
+					right: 0;
+					max-width: 40%;
+					max-height: 80vh;
+					top: 50%;
+					transform: translateY(-50%);
+					margin: unset;
+				}
 			}
 
 			.heading {
-				position: absolute;
-				left: 0;
-				margin: 0;
-				transform: translateY(-100%);
 				font-size: 3rem;
-				padding-bottom: 20px;
-				width: 50%;
+
+				@media @_screen_sm {
+					margin: 0;
+					padding-bottom: 20px;
+					position: absolute;
+					left: 0;
+					transform: translateY(-100%);
+					width: 50%;
+				}
 			}
 
 			.content {
-				width: 50%;
-				padding-top: 25px;
-
 				a {
 					color: @color-highlight;
 					text-decoration: none;
+					word-break: break-all;
 
 					&:before {
 						content: "\f0ac";
@@ -127,6 +140,11 @@
 				p {
 					line-height: 150%;
 					margin-top: 50px;
+				}
+
+				@media @_screen_sm {
+					width: 50%;
+					padding-top: 25px;
 				}
 			}
 		}
