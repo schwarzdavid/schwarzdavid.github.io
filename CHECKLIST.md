@@ -3,25 +3,25 @@
 #### Content
 
 - [ ] Text free from spelling and grammar errors
-- [ ] Placeholder text removed
+- [x] Placeholder text removed
 - [ ] Print stylesheet exists and texted
 - [x] Favicon and device icons created and displays correctly
-- [ ] Footer includes copyright statement
+- [x] Footer includes copyright statement
 - [ ] 404 page exists and informative
 
 #### SEO & Analytics
 
-- [ ] Page title and meta data included and appropriate
+- [x] Page title and meta data included and appropriate
 - [ ] XML sitemap has been generated and added to root of website
-- [ ] robots.txt is generated and aded to root of website
+- [x] robots.txt is generated and aded to root of website
 - [x] Website can be accessed by search engines
 - [x] Google analytics installed
 - [ ] HTML microdata added and tested
 
 #### Social
 
-- [ ] OG Tags included across website and appropriate
-- [ ] Twitter meta tags included and appropriate
+- [x] OG Tags included across website and appropriate
+- [x] Twitter meta tags included and appropriate
 - [ ] Social accounts integrated, linking to correct URLs
 
 #### Markup
@@ -33,11 +33,11 @@
 #### Accessibility
 
 - [ ] Website meets appropriate level of WCAG compliance
-- [ ] ARIA Landmark Roles specified
+- [x] ARIA Landmark Roles specified
 - [ ] Semantic headings and structure used
 - [ ] Links are clearly recognisable and have :focus state
 - [ ] Images use appropriate ALT text
-- [ ] Alternatives provided for users with Javascript disabled
+- [x] Alternatives provided for users with Javascript disabled
 - [ ] Forms have logical layout
 - [ ] Associated label for all form controls
 - [ ] Colour contrast tested
@@ -83,5 +83,5 @@
 - [x] Images, media and links reference live URL
 - [x] Webfonts integrated and working correctly on live site
 - [x] Website URL has been submitted to Google
-- [ ] Site added to Google Webmaster tools and sitemap submitted
+- [x] Site added to Google Webmaster tools and sitemap submitted
 - [x] Analytics has been setup and integrated into website
