@@ -22,7 +22,7 @@
 
 - [x] OG Tags included across website and appropriate
 - [x] Twitter meta tags included and appropriate
-- [ ] Social accounts integrated, linking to correct URLs
+- [x] Social accounts integrated, linking to correct URLs
 
 #### Markup
 
@@ -35,7 +35,6 @@
 - [ ] Website meets appropriate level of WCAG compliance
 - [x] ARIA Landmark Roles specified
 - [ ] Semantic headings and structure used
-- [ ] Links are clearly recognisable and have :focus state
 - [ ] Images use appropriate ALT text
 - [x] Alternatives provided for users with Javascript disabled
 - [ ] Forms have logical layout
@@ -49,7 +48,7 @@
 - [ ] Displays & functions correctly in Firefox (Windows)
 - [ ] Displays & functions correctly in Firefox (Mac)
 - [ ] Displays & functions correctly in Chrome (Windows)
-- [ ] Displays & functions correctly in Chrome (Max)
+- [ ] Displays & functions correctly in Chrome (Mac)
 - [ ] Displays & functions correctly on large resolutions
 
 #### Functionality
@@ -69,7 +68,8 @@
 - [ ] [Google speed test](https://developers.google.com/speed/pagespeed/insights/) has a better score than 90 on mobile
 - [ ] Run [Web page test](http://www.webpagetest.org/) and optimise accordingly
 - [ ] Run Chrome Audits test and optimise accordingly
-- [ ] Incorporate CDN / Caching as required
+- [ ] Run Google Responsive test and optimise accordingly
+- [x] Incorporate CDN / Caching as required
 
 #### Security
 
