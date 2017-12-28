@@ -11,6 +11,7 @@
 	<meta name="robots" content="index,nofollow">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="title" content="David Schwarz - Webdeveloper and Software Enginner">
 	<meta name="description"
 		  content="David Schwarz is a webdeveloper and software engineer from Austria, always looking for new adventures.">
 	<!-- / METATAGS -->
@@ -77,11 +78,40 @@
 	<script src='https://www.googletagmanager.com/gtag/js?id=UA-105123430-1' async></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+
 		gtag('js', new Date());
 		gtag('config', 'UA-105123430-1');
 	</script>
 	<!-- / GOOGLE ANALYTICS -->
+
+	<!-- STRUCTURED DATA -->
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "Person",
+			"url": "https://schwarzdavid.rocks",
+			"name": "David Schwarz",
+			"logo": "https://schwarzdavid.rocks/img/logo.png",
+			"image": "https://schwarzdavid.rocks/img/me.jpg",
+			"sameAs": [
+				"https://www.github.com/schwarzdavid",
+				"https://www.xing.com/profile/David_Schwarz25",
+				"https://www.linkedin.com/in/david-schwarz"
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "St. Pölten",
+				"addressCountry": "Austria",
+				"addressRegion": "Niederösterreich"
+			}
+		}
+
+	</script>
+	<!-- / STRUCTURED DATA -->
 
 </head>
 
